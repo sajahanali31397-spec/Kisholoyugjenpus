@@ -1,0 +1,1331 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test Exam 1 — ANM & GNM Set 1 Mock Test</title>
+    <meta name="description" content="ANM & GNM Mock Test - Test Exam 1 with Negative Marking & Live Leaderboard">
+    <script>
+        window.MathJax = {
+            tex: { inlineMath: [['$','$'],['\\(','\\)']], displayMath: [['$$','$$'],['\\[','\\]']] },
+            chtml: { fontURL: 'https://cdn.jsdelivr.net/npm/mathjax@3/es5/output/chtml/fonts/woff-v2' },
+            startup: { typeset: true }
+        };
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" async></script>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Bengali:wght@400;500;600;700&family=Inter:wght@400;500;600;700;800;900&family=Outfit:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        /* ===== THEME VARIABLES ===== */
+        :root, [data-theme="dark"] {
+            --bg-primary: #0b0f19;
+            --bg-secondary: #111827;
+            --bg-card: #141b2d;
+            --bg-card-hover: #1a2440;
+            --bg-option: #1a2240;
+            --bg-option-hover: #1f2d52;
+            --bg-option-selected: #1c3a6e;
+            --border-default: #2a3352;
+            --border-selected: #60a5fa;
+            --text-primary: #f1f5f9;
+            --text-secondary: #94a3b8;
+            --text-muted: #64748b;
+            --accent-blue: #3b82f6;
+            --accent-cyan: #06b6d4;
+            --accent-purple: #8b5cf6;
+            --accent-pink: #ec4899;
+            --accent-green: #10b981;
+            --accent-red: #ef4444;
+            --accent-amber: #f59e0b;
+            --shadow-lg: 0 20px 60px rgba(0,0,0,0.5);
+            --shadow-card: 0 4px 24px rgba(0,0,0,0.3);
+            --shadow-glow: 0 0 30px rgba(59,130,246,0.12);
+            --topbar-bg: rgba(11,15,25,0.92);
+            --modal-bg: rgba(0,0,0,0.75);
+            --print-bg: #0b0f19;
+        }
+
+        [data-theme="light"] {
+            --bg-primary: #f0f4f8;
+            --bg-secondary: #e8ecf1;
+            --bg-card: #ffffff;
+            --bg-card-hover: #f8f9fb;
+            --bg-option: #f3f5f9;
+            --bg-option-hover: #e8ecf4;
+            --bg-option-selected: #dbeafe;
+            --border-default: #d1d9e6;
+            --border-selected: #3b82f6;
+            --text-primary: #1a1a2e;
+            --text-secondary: #4a5568;
+            --text-muted: #718096;
+            --shadow-lg: 0 20px 60px rgba(0,0,0,0.08);
+            --shadow-card: 0 2px 12px rgba(0,0,0,0.06);
+            --shadow-glow: 0 0 20px rgba(59,130,246,0.08);
+            --topbar-bg: rgba(240,244,248,0.92);
+            --modal-bg: rgba(0,0,0,0.4);
+            --print-bg: #ffffff;
+        }
+
+        * { margin:0; padding:0; box-sizing:border-box; }
+        html { scroll-behavior: smooth; }
+
+        body {
+            font-family: 'Noto Sans Bengali', 'Outfit', 'Inter', sans-serif;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.7;
+            min-height: 100vh;
+            transition: background-color 0.4s, color 0.4s;
+        }
+
+        ::-webkit-scrollbar { width: 7px; }
+        ::-webkit-scrollbar-track { background: var(--bg-primary); }
+        ::-webkit-scrollbar-thumb { background: var(--border-default); border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: var(--accent-blue); }
+
+        /* ===== THEME TOGGLE ===== */
+        .theme-toggle {
+            position: fixed; bottom: 24px; right: 24px; z-index: 999;
+            width: 50px; height: 50px; border-radius: 50%; border: 2px solid var(--border-default);
+            background: var(--bg-card); color: var(--text-primary);
+            font-size: 22px; cursor: pointer; display: flex; align-items: center; justify-content: center;
+            box-shadow: var(--shadow-card); transition: all 0.3s;
+        }
+        .theme-toggle:hover { transform: scale(1.1); border-color: var(--accent-blue); box-shadow: 0 0 20px rgba(59,130,246,0.3); }
+
+        /* ===== ANIMATIONS ===== */
+        @keyframes fadeUp { from { opacity:0; transform:translateY(30px); } to { opacity:1; transform:translateY(0); } }
+        @keyframes pulse { 0%,100% { opacity:1; } 50% { opacity:0.5; } }
+        @keyframes shimmer { 0% { background-position: -200% center; } 100% { background-position: 200% center; } }
+        .fade-up { animation: fadeUp 0.6s ease-out; }
+
+        /* ===== GRADIENT ===== */
+        .gradient-text { background: linear-gradient(135deg, #3b82f6, #8b5cf6, #ec4899); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+        .gradient-bg { background: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 50%, #ec4899 100%); }
+        .gradient-border { border-image: linear-gradient(135deg, #3b82f6, #8b5cf6, #ec4899) 1; }
+
+        /* ===== REGISTRATION ===== */
+        #reg-screen {
+            display: flex; align-items: center; justify-content: center; min-height: 100vh; padding: 20px;
+            position: relative; overflow: hidden;
+        }
+        #reg-screen::before, #reg-screen::after {
+            content:''; position:absolute; width:500px; height:500px; border-radius:50%; pointer-events:none;
+        }
+        #reg-screen::before { top:-200px; right:-150px; background: radial-gradient(circle, rgba(59,130,246,0.07) 0%, transparent 70%); }
+        #reg-screen::after { bottom:-200px; left:-150px; background: radial-gradient(circle, rgba(139,92,246,0.07) 0%, transparent 70%); }
+
+        .reg-card {
+            background: var(--bg-card); border: 1px solid var(--border-default); border-radius: 24px;
+            padding: 44px; max-width: 520px; width: 100%; box-shadow: var(--shadow-lg);
+            position: relative; z-index: 1; animation: fadeUp 0.6s ease-out;
+            transition: background-color 0.4s, border-color 0.4s;
+        }
+        .reg-logo { text-align: center; margin-bottom: 28px; }
+        .reg-logo .icon { width: 68px; height: 68px; border-radius: 18px; display: inline-flex; align-items: center; justify-content: center; font-size: 30px; margin-bottom: 14px; box-shadow: 0 8px 28px rgba(59,130,246,0.3); }
+        .reg-logo h1 { font-family: 'Outfit', sans-serif; font-size: 26px; font-weight: 800; }
+        .reg-logo .sub { color: var(--text-secondary); font-size: 13px; margin-top: 4px; }
+
+        .exam-pills { display: flex; gap: 8px; justify-content: center; flex-wrap: wrap; margin: 18px 0 24px; }
+        .pill { background: var(--bg-option); border: 1px solid var(--border-default); border-radius: 20px; padding: 5px 14px; font-size: 12px; color: var(--text-secondary); font-weight: 500; transition: all 0.3s; }
+        .pill strong { color: var(--accent-cyan); }
+        .pill.neg { border-color: rgba(239,68,68,0.3); }
+        .pill.neg strong { color: var(--accent-red); }
+
+        .form-group { margin-bottom: 18px; }
+        .form-group label { display: block; font-size: 12px; font-weight: 600; color: var(--text-secondary); margin-bottom: 7px; text-transform: uppercase; letter-spacing: 0.5px; }
+        .form-group input {
+            width: 100%; padding: 13px 16px; background: var(--bg-option); border: 1px solid var(--border-default);
+            border-radius: 12px; color: var(--text-primary); font-size: 16px; font-family: inherit;
+            transition: all 0.3s; outline: none;
+        }
+        .form-group input:focus { border-color: var(--accent-blue); box-shadow: 0 0 0 3px rgba(59,130,246,0.15); }
+        .form-group input::placeholder { color: var(--text-muted); }
+
+        .btn-primary {
+            width: 100%; padding: 15px; border: none; border-radius: 12px; color: white;
+            font-size: 16px; font-weight: 700; font-family: inherit; cursor: pointer;
+            transition: all 0.3s; letter-spacing: 0.3px;
+        }
+        .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 28px rgba(59,130,246,0.35); }
+        .btn-primary:disabled { opacity: 0.5; cursor: not-allowed; transform: none; }
+
+        /* ===== EXAM SCREEN ===== */
+        #exam-screen { display: none; }
+
+        .top-bar {
+            position: sticky; top: 0; z-index: 100;
+            background: var(--topbar-bg); backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--border-default); padding: 10px 20px;
+            transition: background-color 0.4s;
+        }
+        .top-inner { max-width: 880px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; gap: 12px; flex-wrap: wrap; }
+        .stu-info { display: flex; align-items: center; gap: 10px; }
+        .stu-avatar { width: 36px; height: 36px; border-radius: 10px; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 15px; color: white; }
+        .stu-name { font-weight: 600; font-size: 14px; }
+
+        .timer-box { display: flex; align-items: center; gap: 7px; background: var(--bg-card); border: 1px solid var(--border-default); border-radius: 12px; padding: 7px 14px; transition: all 0.3s; }
+        .timer-display { font-family: 'JetBrains Mono', monospace; font-size: 20px; font-weight: 600; color: var(--accent-cyan); min-width: 75px; text-align: center; }
+        .timer-box.warn .timer-display { color: var(--accent-amber); }
+        .timer-box.danger .timer-display { color: var(--accent-red); animation: pulse 1s infinite; }
+
+        .progress-strip { max-width: 880px; margin: 0 auto; padding: 0 20px; }
+        .progress-info { display: flex; justify-content: space-between; margin: 14px 0 6px; font-size: 12px; color: var(--text-secondary); }
+        .progress-bg { width: 100%; height: 5px; background: var(--bg-option); border-radius: 3px; overflow: hidden; }
+        .progress-fill { height: 100%; border-radius: 3px; transition: width 0.4s ease; width: 0%; }
+
+        /* Questions */
+        .q-container { max-width: 880px; margin: 0 auto; padding: 20px; }
+        .sec-header { text-align: center; margin: 32px 0 20px; position: relative; }
+        .sec-header::before { content:''; position:absolute; top:50%; left:0; right:0; height:1px; background: linear-gradient(to right, transparent, var(--border-default), transparent); }
+        .sec-header h2 { display: inline-block; background: var(--bg-primary); padding: 0 20px; position: relative; font-size: 17px; font-weight: 700; transition: background-color 0.4s; }
+        .sec-badge { display: inline-block; background: var(--bg-card); border: 1px solid var(--border-default); border-radius: 18px; padding: 3px 14px; font-size: 10px; color: var(--accent-cyan); margin-top: 6px; font-weight: 600; letter-spacing: 1px; text-transform: uppercase; }
+
+        .q-block {
+            background: var(--bg-card); border: 1px solid var(--border-default); border-radius: 14px;
+            padding: 22px; margin-bottom: 16px; transition: all 0.3s;
+        }
+        .q-block:hover { border-color: rgba(59,130,246,0.25); box-shadow: var(--shadow-glow); }
+        .q-block.answered { border-color: rgba(16,185,129,0.3); }
+
+        .q-stem { display: flex; gap: 12px; margin-bottom: 14px; align-items: flex-start; }
+        .q-num { flex-shrink: 0; width: 36px; height: 36px; border-radius: 10px; display: flex; align-items: center; justify-content: center; font-family: 'Inter'; font-weight: 800; font-size: 14px; color: white; }
+        .q-text { flex: 1; font-size: 15px; font-weight: 500; line-height: 1.8; padding-top: 5px; }
+
+        .opts-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 9px; margin-left: 48px; }
+        .opts-grid.single-col { grid-template-columns: 1fr; }
+
+        .opt-label {
+            display: flex; align-items: flex-start; gap: 10px; padding: 11px 14px;
+            background: var(--bg-option); border: 1.5px solid var(--border-default); border-radius: 10px;
+            cursor: pointer; transition: all 0.25s; position: relative; overflow: hidden;
+        }
+        .opt-label:hover { background: var(--bg-option-hover); border-color: rgba(59,130,246,0.35); }
+        .opt-label.selected { background: var(--bg-option-selected); border-color: var(--border-selected); box-shadow: 0 0 16px rgba(59,130,246,0.08); }
+        .opt-label.selected::before { content:''; position:absolute; top:0; left:0; width:3px; height:100%; background: var(--accent-blue); }
+        .opt-label input[type="radio"] { display: none; }
+
+        .radio-dot { flex-shrink: 0; width: 18px; height: 18px; border: 2px solid var(--border-default); border-radius: 50%; display: flex; align-items: center; justify-content: center; transition: all 0.25s; margin-top: 2px; }
+        .opt-label.selected .radio-dot { border-color: var(--accent-blue); background: var(--accent-blue); }
+        .opt-label.selected .radio-dot::after { content:''; width: 7px; height: 7px; background: white; border-radius: 50%; }
+
+        .opt-letter { font-family: 'Inter'; font-weight: 700; font-size: 12px; color: var(--text-muted); min-width: 18px; margin-top: 1px; }
+        .opt-label.selected .opt-letter { color: var(--accent-blue); }
+        .opt-content { flex: 1; font-size: 13px; color: var(--text-secondary); line-height: 1.6; }
+        .opt-label.selected .opt-content { color: var(--text-primary); }
+
+        .submit-area { text-align: center; margin: 36px 0 50px; padding: 28px; background: var(--bg-card); border: 1px solid var(--border-default); border-radius: 20px; transition: all 0.3s; }
+        .submit-area p { color: var(--text-secondary); margin-bottom: 18px; font-size: 13px; }
+        .btn-submit { padding: 14px 44px; border: none; border-radius: 12px; color: white; font-size: 17px; font-weight: 700; font-family: inherit; cursor: pointer; transition: all 0.3s; }
+        .btn-submit:hover { transform: translateY(-2px); box-shadow: 0 8px 28px rgba(59,130,246,0.35); }
+
+        /* ===== RESULT SCREEN ===== */
+        #result-screen { display: none; }
+        .result-box { max-width: 880px; margin: 0 auto; padding: 20px; }
+
+        .result-hero { text-align: center; padding: 40px 28px; background: var(--bg-card); border: 1px solid var(--border-default); border-radius: 20px; margin-bottom: 28px; position: relative; overflow: hidden; transition: all 0.3s; }
+        .result-hero::before { content:''; position:absolute; top:0; left:0; right:0; height:4px; }
+        .score-circle { width: 150px; height: 150px; border-radius: 50%; border: 5px solid var(--border-default); display: inline-flex; flex-direction: column; align-items: center; justify-content: center; margin-bottom: 20px; transition: border-color 0.3s; }
+        .score-big { font-family: 'Inter'; font-size: 44px; font-weight: 900; line-height: 1; }
+        .score-of { font-size: 13px; color: var(--text-muted); font-weight: 600; }
+        .result-hero h2 { font-size: 24px; font-weight: 800; margin-bottom: 6px; }
+        .result-hero .detail { color: var(--text-secondary); font-size: 13px; }
+
+        .stats-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 12px; margin-bottom: 28px; }
+        .stats-grid .stat-card { background: var(--bg-card); border: 1px solid var(--border-default); border-radius: 14px; padding: 18px 10px; text-align: center; transition: all 0.3s; }
+        .stats-grid .stat-card .s-icon { font-size: 24px; margin-bottom: 6px; }
+        .stats-grid .stat-card .s-val { font-family: 'Inter'; font-size: 28px; font-weight: 800; margin-bottom: 3px; }
+        .stats-grid .stat-card .s-lbl { font-size: 11px; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.4px; font-weight: 600; }
+        .stats-grid .stat-card.correct .s-val { color: var(--accent-green); }
+        .stats-grid .stat-card.wrong .s-val { color: var(--accent-red); }
+        .stats-grid .stat-card.skipped .s-val { color: var(--accent-amber); }
+        .stats-grid .stat-card.score .s-val { color: var(--accent-cyan); }
+        .stats-grid .stat-card.pct .s-val { color: var(--accent-purple); }
+
+        .neg-info { text-align: center; padding: 12px 20px; background: rgba(239,68,68,0.06); border: 1px solid rgba(239,68,68,0.15); border-radius: 10px; margin-bottom: 28px; font-size: 13px; color: var(--accent-red); }
+
+        /* Leaderboard */
+        .lb-section { background: var(--bg-card); border: 1px solid var(--border-default); border-radius: 16px; padding: 22px; margin-bottom: 28px; transition: all 0.3s; }
+        .lb-section h3 { text-align: center; margin-bottom: 18px; font-size: 18px; }
+        .lb-table { width: 100%; border-collapse: collapse; font-size: 13px; }
+        .lb-table th, .lb-table td { padding: 12px 10px; border-bottom: 1px solid var(--border-default); text-align: left; }
+        .lb-table th { color: var(--text-muted); font-weight: 600; text-transform: uppercase; font-size: 11px; letter-spacing: 0.5px; }
+        .lb-table tr { transition: background 0.2s; }
+        .lb-table tbody tr:hover { background: var(--bg-option); }
+        .rank-1 { color: #f59e0b; font-weight: 800; }
+        .rank-2 { color: #94a3b8; font-weight: 700; }
+        .rank-3 { color: #b45309; font-weight: 700; }
+        .lb-table .highlight-row { background: rgba(59,130,246,0.06); }
+
+        /* Answer Review */
+        .review-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 18px; flex-wrap: wrap; gap: 10px; }
+        .review-header h3 { font-size: 18px; font-weight: 700; }
+
+        .rev-block { background: var(--bg-card); border: 1px solid var(--border-default); border-radius: 14px; padding: 18px 20px; margin-bottom: 12px; transition: all 0.3s; }
+        .rev-block.is-correct { border-left: 4px solid var(--accent-green); }
+        .rev-block.is-wrong { border-left: 4px solid var(--accent-red); }
+        .rev-block.is-skipped { border-left: 4px solid var(--accent-amber); }
+        .rev-stem { display: flex; gap: 10px; align-items: flex-start; margin-bottom: 10px; }
+        .rev-num { flex-shrink: 0; width: 30px; height: 30px; border-radius: 8px; display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 12px; color: white; }
+        .rev-block.is-correct .rev-num { background: var(--accent-green); }
+        .rev-block.is-wrong .rev-num { background: var(--accent-red); }
+        .rev-block.is-skipped .rev-num { background: var(--accent-amber); }
+        .rev-q-text { flex: 1; font-size: 13px; line-height: 1.7; padding-top: 3px; }
+        .rev-tags { margin-left: 40px; display: flex; flex-wrap: wrap; gap: 7px; font-size: 12px; }
+        .rev-tag { padding: 3px 10px; border-radius: 6px; font-weight: 600; }
+        .rev-tag.correct-tag { background: rgba(16,185,129,0.1); color: var(--accent-green); border: 1px solid rgba(16,185,129,0.25); }
+        .rev-tag.wrong-tag { background: rgba(239,68,68,0.1); color: var(--accent-red); border: 1px solid rgba(239,68,68,0.25); }
+        .rev-tag.right-tag { background: rgba(16,185,129,0.1); color: var(--accent-green); border: 1px solid rgba(16,185,129,0.25); }
+        .rev-tag.skip-tag { background: rgba(245,158,11,0.1); color: var(--accent-amber); border: 1px solid rgba(245,158,11,0.25); }
+
+        .result-footer { text-align: center; padding: 28px; color: var(--text-muted); font-size: 12px; border-top: 1px solid var(--border-default); margin-top: 36px; }
+
+        /* Modal */
+        .modal-overlay { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: var(--modal-bg); backdrop-filter: blur(8px); z-index: 1000; align-items: center; justify-content: center; }
+        .modal-overlay.show { display: flex; }
+        .modal-box { background: var(--bg-card); border: 1px solid var(--border-default); border-radius: 20px; padding: 32px; max-width: 420px; width: 90%; text-align: center; box-shadow: var(--shadow-lg); animation: fadeUp 0.3s ease-out; }
+        .modal-box .m-icon { font-size: 44px; margin-bottom: 14px; }
+
+        .modal-box h3 { font-size: 19px; font-weight: 700; margin-bottom: 7px; }
+        .modal-box p { color: var(--text-secondary); font-size: 13px; margin-bottom: 20px; line-height: 1.6; }
+        .modal-btns { display: flex; gap: 10px; justify-content: center; }
+        .m-btn { padding: 11px 24px; border-radius: 10px; font-size: 14px; font-weight: 600; cursor: pointer; transition: all 0.2s; font-family: inherit; border: none; }
+        .m-btn.cancel { background: var(--bg-option); border: 1px solid var(--border-default); color: var(--text-secondary); }
+        .m-btn.cancel:hover { background: var(--bg-option-hover); }
+        .m-btn.ok { color: white; }
+        .m-btn.ok:hover { transform: translateY(-1px); box-shadow: 0 4px 14px rgba(59,130,246,0.35); }
+        .unanswered-warn { color: var(--accent-amber); font-size: 12px; margin-bottom: 14px; }
+
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 768px) {
+            .reg-card { padding: 28px 20px; }
+            .opts-grid { grid-template-columns: 1fr; margin-left: 0; }
+            .stats-grid { grid-template-columns: repeat(3, 1fr); }
+            .top-inner { flex-direction: column; gap: 6px; }
+            .review-header { flex-direction: column; align-items: flex-start; }
+            .q-stem { flex-direction: column; gap: 6px; }
+            .q-num { width: 30px; height: 30px; font-size: 12px; border-radius: 8px; }
+            .lb-table { font-size: 11px; }
+            .lb-table th, .lb-table td { padding: 8px 5px; }
+        }
+        @media (max-width: 480px) {
+            .stats-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+
+        /* ===== TABS ===== */
+        .tabs-container {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+        }
+        .tab-btn {
+            padding: 10px 20px;
+            background: var(--bg-card);
+            border: 1px solid var(--border-default);
+            color: var(--text-secondary);
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+        .tab-btn:hover {
+            background: var(--bg-card-hover);
+        }
+        .tab-btn.active {
+            background: var(--bg-option-selected);
+            color: var(--text-primary);
+            border-color: var(--border-selected);
+        }
+        .tab-content {
+            display: none;
+        }
+        .tab-content.active {
+            display: block;
+            animation: fadeUp 0.3s ease;
+        }
+
+        /* ===== LOCK SCREEN PODIUM ===== */
+        .lock-screen-box {
+            background: var(--bg-card);
+            border: 1px solid rgba(239, 68, 68, 0.15);
+            border-radius: 20px;
+            padding: 32px 24px;
+            text-align: center;
+            margin-bottom: 28px;
+            box-shadow: 0 8px 32px rgba(239, 68, 68, 0.04);
+            position: relative;
+            overflow: hidden;
+            animation: fadeUp 0.4s ease-out;
+            transition: background-color 0.4s, border-color 0.4s;
+        }
+        .lock-logo-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        .lock-logo-wrapper {
+            position: relative;
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            background: rgba(239, 68, 68, 0.08);
+            border: 2px dashed rgba(239, 68, 68, 0.3);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 0 30px rgba(239, 68, 68, 0.12);
+            transition: all 0.3s ease;
+        }
+        .lock-logo-wrapper:hover {
+            transform: rotate(5deg) scale(1.05);
+            background: rgba(239, 68, 68, 0.12);
+            border-color: rgba(239, 68, 68, 0.5);
+            box-shadow: 0 0 40px rgba(239, 68, 68, 0.2);
+        }
+        .lock-logo-big {
+            font-size: 48px;
+            display: inline-block;
+            animation: lockPulse 2s infinite ease-in-out;
+        }
+        @keyframes lockPulse {
+            0%, 100% { transform: scale(1); filter: drop-shadow(0 0 4px rgba(239,68,68,0.2)); }
+            50% { transform: scale(1.12); filter: drop-shadow(0 0 16px rgba(239,68,68,0.5)); }
+        }
+        .lock-screen-box h2 {
+            color: var(--accent-red);
+            font-size: 22px;
+            font-weight: 800;
+            margin-bottom: 8px;
+        }
+        .lock-screen-box p.lock-desc {
+            color: var(--text-secondary);
+            font-size: 14px;
+            margin-bottom: 24px;
+            line-height: 1.6;
+        }
+        .podium-title {
+            font-size: 14px;
+            font-weight: 800;
+            color: var(--accent-cyan);
+            margin-bottom: 18px;
+            text-transform: uppercase;
+            letter-spacing: 0.8px;
+        }
+        .podium-wrapper {
+            display: flex;
+            justify-content: center;
+            align-items: flex-end;
+            gap: 12px;
+            margin-bottom: 20px;
+            padding-top: 10px;
+            min-height: 150px;
+        }
+        .podium-card {
+            background: var(--bg-option);
+            border: 1px solid var(--border-default);
+            border-radius: 14px;
+            padding: 14px 10px;
+            width: 30%;
+            max-width: 130px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            transition: all 0.3s;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+        .podium-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 24px rgba(0,0,0,0.15);
+            border-color: var(--border-selected);
+        }
+        .podium-card.gold {
+            height: 145px;
+            border-color: rgba(245,158,11,0.35);
+            background: linear-gradient(180deg, rgba(245,158,11,0.08) 0%, var(--bg-option) 100%);
+            box-shadow: 0 4px 16px rgba(245,158,11,0.1);
+            z-index: 2;
+        }
+        .podium-card.gold:hover {
+            box-shadow: 0 8px 24px rgba(245,158,11,0.2);
+        }
+        .podium-card.gold::before {
+            content: '👑';
+            position: absolute;
+            top: 2px;
+            font-size: 14px;
+            filter: drop-shadow(0 2px 4px rgba(245,158,11,0.4));
+            animation: bounceCrown 2s infinite ease-in-out;
+            z-index: 10;
+        }
+        @keyframes bounceCrown {
+            0%, 100% { transform: translateY(0) scale(1); }
+            50% { transform: translateY(-3px) scale(1.1); }
+        }
+        .podium-card.silver {
+            height: 120px;
+            border-color: rgba(148,163,184,0.35);
+            background: linear-gradient(180deg, rgba(148,163,184,0.06) 0%, var(--bg-option) 100%);
+        }
+        .podium-card.silver:hover {
+            box-shadow: 0 8px 24px rgba(148,163,184,0.15);
+        }
+        .podium-card.bronze {
+            height: 110px;
+            border-color: rgba(180,83,9,0.35);
+            background: linear-gradient(180deg, rgba(180,83,9,0.06) 0%, var(--bg-option) 100%);
+        }
+        .podium-card.bronze:hover {
+            box-shadow: 0 8px 24px rgba(180,83,9,0.15);
+        }
+        .podium-badge {
+            font-size: 22px;
+            margin-bottom: 4px;
+        }
+        .podium-name {
+            font-size: 12px;
+            font-weight: 700;
+            color: var(--text-primary);
+            text-align: center;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            width: 100%;
+            margin-bottom: 6px;
+        }
+        .podium-score {
+            font-family: 'Inter';
+            font-size: 14px;
+            font-weight: 900;
+        }
+        .podium-card.gold .podium-score { color: #f59e0b; }
+        .podium-card.silver .podium-score { color: #94a3b8; }
+        .podium-card.bronze .podium-score { color: #b45309; }
+
+        .podium-hint {
+            font-size: 12px;
+            color: var(--text-muted);
+            font-style: italic;
+        }
+
+        @media (max-width: 480px) {
+            .podium-wrapper { gap: 8px; }
+            .podium-card { padding: 10px 6px; }
+            .podium-name { font-size: 11px; }
+            .podium-score { font-size: 13px; }
+            .lock-logo-big { font-size: 40px; }
+            .lock-logo-wrapper { width: 80px; height: 80px; }
+            .lock-screen-box h2 { font-size: 19px; }
+        }
+    </style>
+</head>
+<body data-theme="dark">
+<button class="theme-toggle" id="themeToggle" onclick="toggleTheme()" title="থিম পরিবর্তন">🌙</button>
+
+<!-- ==================== REGISTRATION ==================== -->
+<div id="reg-screen">
+    <div class="reg-card">
+        <div class="reg-logo">
+            <div class="icon gradient-bg">📝</div>
+            <h1 class="gradient-text">ANM & GNM</h1>
+            <p class="sub">Mock Test — Test Exam 1</p>
+        </div>
+        <div class="exam-pills">
+            <span class="pill"><strong>100</strong> প্রশ্ন</span>
+            <span class="pill"><strong>90</strong> মিনিট</span>
+            <span class="pill"><strong>100</strong> নম্বর</span>
+            <span class="pill neg">⚠️ <strong>-0.25</strong> নেগেটিভ</span>
+        </div>
+        <div id="reg-form">
+            <div class="form-group">
+                <label for="studentName">পরীক্ষার্থীর নাম</label>
+                <input type="text" id="studentName" placeholder="আপনার পুরো নাম লিখুন" autocomplete="name">
+            </div>
+            <button class="btn-primary gradient-bg" id="btnStart" onclick="startExam()">পরীক্ষা শুরু করুন →</button>
+        </div>
+        <div id="locked-msg" style="display:none;"></div>
+    </div>
+</div>
+
+<!-- ==================== EXAM ==================== -->
+<div id="exam-screen">
+    <div class="top-bar">
+        <div class="top-inner">
+            <div class="stu-info">
+                <div class="stu-avatar gradient-bg" id="avatar"></div>
+                <div class="stu-name" id="displayName"></div>
+            </div>
+            <div class="timer-box" id="timerBox">
+                <span>⏱️</span>
+                <span class="timer-display" id="timerDisplay">90:00</span>
+            </div>
+        </div>
+    </div>
+    <div class="progress-strip">
+        <div class="progress-info">
+            <span id="answeredCount">উত্তর: 0 / 100</span>
+            <span id="progressPct">0%</span>
+        </div>
+        <div class="progress-bg"><div class="progress-fill gradient-bg" id="progressFill"></div></div>
+    </div>
+    <div class="q-container" id="qContainer"></div>
+    <div class="q-container">
+        <div class="submit-area">
+            <p>⚠️ নেগেটিভ মার্কিং: প্রতি ভুল উত্তরে ০.২৫ নম্বর কাটা হবে। সমস্ত প্রশ্নের উত্তর দিয়ে নীচের বোতাম চাপুন।</p>
+            <button class="btn-submit gradient-bg" onclick="showModal()">📋 পরীক্ষা জমা দিন</button>
+        </div>
+    </div>
+</div>
+
+<!-- ==================== RESULT ==================== -->
+<div id="result-screen">
+    <div class="result-box" id="resultBox"></div>
+</div>
+
+<!-- ==================== MODAL ==================== -->
+<div class="modal-overlay" id="confirmModal">
+    <div class="modal-box">
+        <div class="m-icon">⚠️</div>
+        <h3>পরীক্ষা জমা দিতে চান?</h3>
+        <p>জমা দেওয়ার পর উত্তর পরিবর্তন করা যাবে না।</p>
+        <div id="unansweredWarn" class="unanswered-warn" style="display:none;"></div>
+        <div class="modal-btns">
+            <button class="m-btn cancel" onclick="hideModal()">বাতিল</button>
+            <button class="m-btn ok gradient-bg" onclick="submitExam()">✅ হ্যাঁ, জমা দিন</button>
+        </div>
+    </div>
+</div>
+
+<script>
+// ===== SOUND EFFECTS (Web Audio API Synthesizer) =====
+const SoundFX = {
+    ctx: null,
+    init() {
+        if (!this.ctx) {
+            this.ctx = new (window.AudioContext || window.webkitAudioContext)();
+        }
+    },
+    playClick() {
+        try {
+            this.init();
+            if (this.ctx.state === 'suspended') this.ctx.resume();
+            const osc = this.ctx.createOscillator();
+            const gain = this.ctx.createGain();
+            osc.connect(gain);
+            gain.connect(this.ctx.destination);
+            
+            osc.type = 'sine';
+            osc.frequency.setValueAtTime(750, this.ctx.currentTime);
+            osc.frequency.exponentialRampToValueAtTime(150, this.ctx.currentTime + 0.04);
+            
+            gain.gain.setValueAtTime(0.04, this.ctx.currentTime);
+            gain.gain.exponentialRampToValueAtTime(0.001, this.ctx.currentTime + 0.04);
+            
+            osc.start();
+            osc.stop(this.ctx.currentTime + 0.04);
+        } catch (e) { console.warn("Audio error: ", e); }
+    },
+    playTick() {
+        try {
+            this.init();
+            if (this.ctx.state === 'suspended') this.ctx.resume();
+            const osc = this.ctx.createOscillator();
+            const gain = this.ctx.createGain();
+            osc.connect(gain);
+            gain.connect(this.ctx.destination);
+            
+            osc.type = 'triangle';
+            osc.frequency.setValueAtTime(900, this.ctx.currentTime);
+            gain.gain.setValueAtTime(0.015, this.ctx.currentTime);
+            gain.gain.exponentialRampToValueAtTime(0.001, this.ctx.currentTime + 0.02);
+            
+            osc.start();
+            osc.stop(this.ctx.currentTime + 0.02);
+        } catch (e) { console.warn("Audio error: ", e); }
+    },
+    playSuccess() {
+        try {
+            this.init();
+            if (this.ctx.state === 'suspended') this.ctx.resume();
+            const t = this.ctx.currentTime;
+            const notes = [261.63, 329.63, 392.00, 523.25]; // C4, E4, G4, C5
+            notes.forEach((freq, idx) => {
+                const osc = this.ctx.createOscillator();
+                const gain = this.ctx.createGain();
+                osc.connect(gain);
+                gain.connect(this.ctx.destination);
+                
+                osc.type = 'sine';
+                osc.frequency.setValueAtTime(freq, t + idx * 0.08);
+                
+                gain.gain.setValueAtTime(0, t + idx * 0.08);
+                gain.gain.linearRampToValueAtTime(0.08, t + idx * 0.08 + 0.04);
+                gain.gain.exponentialRampToValueAtTime(0.001, t + idx * 0.08 + 0.35);
+                
+                osc.start(t + idx * 0.08);
+                osc.stop(t + idx * 0.08 + 0.35);
+            });
+        } catch (e) { console.warn("Audio error: ", e); }
+    },
+    playLock() {
+        try {
+            this.init();
+            if (this.ctx.state === 'suspended') this.ctx.resume();
+            const t = this.ctx.currentTime;
+            
+            // Double bass thud
+            [0, 0.06].forEach(delay => {
+                const osc = this.ctx.createOscillator();
+                const gain = this.ctx.createGain();
+                osc.connect(gain);
+                gain.connect(this.ctx.destination);
+                
+                osc.type = 'sine';
+                osc.frequency.setValueAtTime(140, t + delay);
+                osc.frequency.exponentialRampToValueAtTime(30, t + delay + 0.08);
+                
+                gain.gain.setValueAtTime(0.12, t + delay);
+                gain.gain.exponentialRampToValueAtTime(0.001, t + delay + 0.08);
+                
+                osc.start(t + delay);
+                osc.stop(t + delay + 0.08);
+            });
+            
+            // Metallic high-frequency snap
+            const oscMetal = this.ctx.createOscillator();
+            const gainMetal = this.ctx.createGain();
+            oscMetal.connect(gainMetal);
+            gainMetal.connect(this.ctx.destination);
+            
+            oscMetal.type = 'triangle';
+            oscMetal.frequency.setValueAtTime(1000, t);
+            oscMetal.frequency.exponentialRampToValueAtTime(250, t + 0.04);
+            
+            gainMetal.gain.setValueAtTime(0.04, t);
+            gainMetal.gain.exponentialRampToValueAtTime(0.001, t + 0.04);
+            
+            oscMetal.start(t);
+            oscMetal.stop(t + 0.04);
+        } catch (e) { console.warn("Audio error: ", e); }
+    }
+};
+
+// ===== CONFIG =====
+const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbxSS0ay49ZO4HekXs3ukl1HZnJtOt2m6513kQUEWNhjqDnVT6Y6PdXP30S2kbSJgn5B-A/exec';
+const EXAM_KEY = 'anm_gnm_test_exam_1';
+const OPT_LETTERS = ['(a)','(b)','(c)','(d)'];
+
+// ===== ANSWER KEY =====
+const ANSWER_KEY = [0, 2, 2, 1, 3, 2, 0, 2, 3, 0, 1, 2, 3, 2, 0, 3, 2, 1, 1, 3, 3, 1, 0, 2, 0, 0, 3, 1, 1, 2, 1, 3, 2, 0, 1, 0, 2, 3, 1, 2, 1, 3, 0, 2, 0, 1, 0, 3, 1, 2, 0, 0, 1, 1, 1, 1, 0, 0, 0, 0, 0, 2, 1, 2, 0, 3, 2, 0, 2, 1, 1, 2, 0, 3, 1, 1, 0, 0, 0, 0, 2, 3, 2, 2, 0, 0, 2, 0, 3, 1, 1, 2, 0, 3, 1, 2, 3, 2, 0, 1];
+
+// ===== DETAILED EXPLANATIONS =====
+const EXPLANATIONS = ["'Vexed' শব্দটির অর্থ হলো বিরক্ত বিো অসন্তুষ্ট হওয়ো। কোনো বি্যক্তর ওপর বিো বি্যক্তর আচরণে বিরক্ত হওয়ো বিোঝোল\n'vexed' এর পর appropriate preposition হসবি 'with' বি্যবিহৃত হয় (vexed with someone)। সুতরোং সঠিক বিোক্যটি\nহবি: \"The father was vexed with the son.\"", "'Exception' (বি্যতক্রম) शब्दটির সো ন র্থ ষ্ট নয়মর সম্পক র্থ  বিোঝোত এপ্রোপ্রয়ট প্রপজিশন হসবি সবির্থো 'to' বিস।\n\"Exception to a rule\" একটি বিহুল প্রচলত ইংরজি প্রবিোতুল্য বিোক্যোংশ। তোই সঠিক উত্তর [C]।\nANM/GNM", "ধোতু বিো বিষয়র বিচোর বিোক্যর শুরুত 'The lions' বিহুবিচন (Plural) রূপ রয়ছে। সুতরোং, তোর বিোঝোত সবির্থনোম\n(Pronoun)  হসবি 'his'  (একবিচন পুরুষবিোচক)  বি্যবিহোর করো বি্যোকরণেগতভোবি ভুল। এখোন 'his'-এর পরবিত র্থ\nবিহুবিচনবিোচক possessive pronoun 'their' বি্যবিহৃত হওয়ো উচত ছেল। সঠিক বিোক্যটি হবি: \"...and eat their meat.\"", "বিকল্প [B]-ত ওয়ো 'Sponser' বিোনোনটি ভুল। এর সঠিক বিোনোনটি হলো Sponsor (S-P-O-N-S-O-R), যোর অর্থ হলো\nপৃষ্ঠপোষক। অন্য সবিকটি বিকল্পর (Soothe - শোন্ত করো, Struggle - সংগ্রোম, Stepney - অতরক্ত চোকো) বিোনোন সঠিক\nআছে।", "কোনো অনুষ্ঠোন বিো প্রতযোগতোয় বিপুল পরমোণে সোড়ো বিো জিনসমোগম বিোঝোত 'overwhelming  response'\nপরভোষোটি বি্যবিহোর করো সবিচয় উপযুক্ত ও অর্থবিহ। 'Overwhelming' এর অর্থ বিপুল বিো অভূতপূবির্থ।\nANM/GNM", "'Senesent'  বিোনোনটি ভুল। এর সঠিক রূপ হলো Senescent  (S-E-N-E-S-C-E-N-T),  যোর অর্থ বিোধর্থক্যজিনত বিো\nক্ষয়ষ্ণ ু । বিোক শব্দগুলর বিোনোন সম্পূণের্থ সঠিক।", "ধমর্মীয় উদ্দেশ্য সমবিত হওয়ো উপোসকর বিো ভক্তর সমোবিশক এক কোয় 'Congregation' (ধমর্থসভো বিো ভক্তমণ্ডলী)\nবিলো হয়। অন্য শব্দগুলর অর্থ: Conflagration (অগ্নিকোণ্ড), Confrontation (মুখোমুখ সংঘোত)।", "ব্রিটিশ ইংরজি (British  English)  বি্যোকরণে অনুযোয়ী 'ক্ষ'  শব্দর সঠিক বিোনোন হলো Skilful  (S-K-I-L-F-U-L)।\nপ্রতযোগতোমূলক পরীক্ষোয় সোধোরণেত ব্রিটিশ মোনণ্ড অনুসরণে [C]-ক সঠিক ধরো হয়।\nANM/GNM", "'কমশন' বিো আয়োগ শব্দর সঠিক ইংরজি বিোনোন হলো Commission (C-O-M-M-I-S-S-I-O-N)। এই বিোনোন দ্বৈত 'm'\nএবিং দ্বৈত 's' বি্যবিহৃত হয়।", "ইংরজি ইডিয়ম 'by leaps and bounds'-এর অর্থ হলো অত্যন্ত দ্রুত গতত বিো অত অল্প সময় বিপুল উন্নত করো। এর\nসমোর্থক শব্দ হলো rapidly (দ্রুততোর সো)।", "'Subservient' শব্দর অর্থ হলো অধীনস্থ, োসত্বপূণের্থ বিো নম্নপস্থ বি্যক্ত যন অন্যর আশ মন চলন। এর ঠিক\nবিপরীত শব্দ হবি Superior, যোর অর্থ উচ্চপস্থ বিো প্রধোন।\nANM/GNM", "'Atrocity' শব্দর অর্থ হলো নৃশংসতো, চরম নষ্ঠুরতো বিো অত্যোচোর। বিকল্পগুলর মধ্য Violence (সহংসতো বিো নষ্ঠুরতো)\nশব্দটির অর্থ এর সবিচয় কোছেোকোছে।", "Direct ক Indirect করোর নয়ম অনুযোয়ী, Reporting verb-টি অতীত (said) োকল রপোটর্থডি স্পিচর Present\nContinuous Tense পরবিত র্থ ত হয় Past Continuous Tense-এ রূপোন্তরত হয় (is writing → was writing)।", "'Indict' শব্দটির অর্থ হলো আইনত অভযুক্ত করো বিো োষোরোপ করো। এর সমোর্থক শব্দ হলো Charge (অভযোগ গঠন\nকরো)।\nANM/GNM", "Interrogative sentence-ক indirect করোর সময় প্রশ্নবিোধক রূপটি assertive-এ পরণেত হয়। রপোটর্থডি স্পিচটি\nPast Simple Tense ('did it get') এ োকোয় তো পরবিত র্থ ত হয় Past Perfect Tense ('it had got') হবি। স্থোনবিোচক\nশব্দ 'here' পরবিত র্থ ত হয় 'there' হবি।", "সংখ্যোগুলর মধ্যকোর পোর্থক্য লক্ষ্য কর:\n43 - 17 = 26\n81 - 43 = 38 (অর্থোৎ, 26 + 12)\n131 - 81 = 50 (অর্থোৎ, 38 + 12)\nপোর্থক্যটি প্রত প 12 কর বিৃদ্ধি পোচ্ছে (26, 38, 50...)। পরবিতর্মী পোর্থক্যটি হওয়ো উচত: 50 + 12 = 62।\nঅতএবি, নণের্থয় সংখ্যোটি হবি: 131 + 62 = 193।\nANM/GNM", "অক্সিজিন গ্যোস কোনো কছেু জ্বলত বিো পুড়ত (Burn) সোহোয্য কর। অপরক কোবির্থন ডিোই অক্সিোইডি গ্যোস আগুন\nনভোত (Extinguish) সোহোয্য কর। তোই সঠিক সম্পক র্থ যুক্ত শব্দ হলো 'Extinguishes'।", "নীলম প্রম উত্তর 30 মটোর যোয়। সখোন ক বিাোক ঘুর পশ্চিম 40 মটোর প চল। পুনরোয় বিাোক ঘুর ক্ষণে\n30 মটোর হ া োট। এর ফল স তোর শুরুর রখোর সমোন্তরোল চল আস। একটি আয়তক্ষত্রের মতো প তর হয় যোর\nবিপরীত বিোহুদ্বৈয় সমোন। সুতরোং, শুরুর স্থোন ক বিত র্থ মোন ূরত্বর বি্যবিধোন হবি ঠিক 40 মটোর।\n30m\n40m\n30m\n40m(Ans)\nANM/GNM", "উভয় শব্দ ক বিণের্থমোলোর কোডি সরোসর তুলনো কর পোই:\nG = 5, L = 1, A = 3, R = %, E = #\nL = 1, I = 8, V = @, E = #\nএখন GIVE শব্দর জিন্য কোডি সোজিোল হবি: G(5) I(8) V(@) E(#) → 58@#।", "কোডিং প্যোটোনর্থটি পযর্থবিক্ষণে করল খো যোয় য এটি একটি জিটিল মশ্র বিন্যোস। প্রত্ত কোনো বিকল্পই সরোসর সোধোরণে\nসূত্রের সো মলছে নো, তোই সঠিক উত্তরটি হবি [d] None।", "ফতোক ৃ ম (Tapeworm) একটি উভয়লঙ্গ বিো অন্তপরজিীবিী প্রোণেী। এর হ স্ব-নষক বিো বিশষ ধরনর অনষক\nপ্রক্রয়ো খো যোয় কোরণে এর জিীবিনচক্র একক হ পুং ও স্ত্রী জিনন অঙ্গ সক্রয় োক।\nANM/GNM", "প্রোটিন আবিরণেবিহীন অবিন্যস্ত নউক্লিক অ্যোসডি বিো আম প্রক ৃ তর মুক্ত RNA অণেুক মূলত 'নগ্নিজিন' (Naked gene)\nহসবি অভহত করো হয়, যো আম পৃবিীর জিীবিনর উদ্ভবির অন্যতম প্রধোন উপোোন ছেল।", "ধূমপোন বিো বিোয়ুূষণের কোরণে ফ ু সফ ু সর বিোয়ুল বিো অ্যোলভওলগুলর প্রোচীর স্থোয়ীভোবি নষ্ট হয় গল য রোগ হয়,\nতোক এমফোইসমো (Emphysema)  বিল। এখোন অপশন মুদ্রণেজিনত ত্রুটির কোরণে 'এফোইলনো'  এসছে,  যো\nএমফোইসমো-ক ন র্থ শ কর।", "ইউরোপীয় কনর্থ বিোরোর (European Corn Borer) নোমক ক্ষতকোরক পোকো মন জিবিক নয়ন্ত্রণে পদ্ধিত হসবি\nএকপ্রকোর অনুজিীবি পরজিীবিী পরজিয়ো পোইরোউস্টি (Perezia pyraustae) সফলভোবি বি্যবিহৃত হয়।\nANM/GNM", "মষ্টি জিল বিো অভ্যন্তরীণে জিলোশয় (যমন হ্র, পুক ু র, নী) এবিং তোর প্রোক ৃ তক, রোসোয়নক ও জিবিক পরবিশ সংক্রোন্ত\nবিজ্ঞোন চচ র্থ োক লমনোলজি (Limnology) বিলো হয়।", "মরুভূম অঞ্চল জিলর অপচয় বিো হ্রোস ঠকোত ক্যোকটোস জিোতীয় মরু উদ্ভর পোতোগুল বিবিত র্থ নর মোধ্যম সূক্ষ্ম ক া োটোয়\n(Spines) রূপোন্তরত হয়ছে। এটি উদ্ভর একটি শোরীরবিৃত্তীয় অভযোজিন যো বিোষ্পমোচন (Transpiration) হ্রোস কর।", "জিমনোস্পিোমর্থ (Gymnosperm) বিো বি্যক্তজিীবিী উদ্ভর কোনো ফল গঠিত হয় নো। এর ডিম্বকগুল উন্মুক্ত োকোয় বিীজি\nকোনো আবিরণের ভতর নো ক সরোসর বিোইর বিো নগ্নি অবিস্থোয় োক। উোহরণে: পোইন, সোইকোস।\nANM/GNM", "বিৃক্কের বিো নফ্রনর শুরুত বিোওম্যোন্স ক্যোপসুলর ভতর ইফোরন্ট ও অ্যোফোরন্ট ধমনী দ্বৈোরো গঠিত রক্তজিোলকোর জিটলো\nবিো ক ু ন্ডলীটিক গ্লোমরুলোস (Glomerulus) বিল। এটি রক্তর অধস্রোবিণে বিো ছে া োকন কোযর্থ প্রধোন ভূমকো নয়।", "জিীবিোশ্মীভূত আম উদ্ভ রোইনয়ো (Rhynia) মস বিগর্থ (Bryophyta) এবিং ফোনর্থ বিগর্থ (Pteridophyta) এর মধ্যবিতর্মী বিশষ্ট্য\nবিহন কর সংযোগকোরী হসবি পরচত।", "ট্যোক্সিোনমর লনয়োন হোয়োরোক র্থ  অনুযোয়ী জিীবিবি্যোর শ্রণেীবিন্যোসর প্রধোন ধোপ বিো ক্যোটোগর হলো ৭টি। যো— রোজি্য\n(Kingdom), পবির্থ (Phylum), শ্রণেী (Class), বিগর্থ (Order), গোত্রে (Family), গণে (Genus) ও প্রজিোত (Species)।\nANM/GNM", "তরুণেোস্থময় মোছে বিো কনড্রকস (Chondrichthyes) শ্রণেীর মোছের (যমন: হোঙর) ত্বক আণেুবিীক্ষণেক এবিং ধোরোলো\nপ্লোকয়ডি (Placoid) আাশ দ্বৈোরো আবিৃত োক। অস্থময় মোছের সোইক্লিয়ডি বিো টিনয়ডি আাশ োক।", "ভটোমন E (টোকোফরল) ক অ্যোন্ট-স্টিরলটি বিো বিন্ধ্যোত্বরোধী ভটোমন বিলো হয়। এটি গভ র্থ োবিস্থোয় জিরোয়ুর ভতর\nভ্রূণের সুস্থ বিৃদ্ধি, অমরো (Placenta) গঠন ও স্থোয়ত্ব অত্যন্ত গুরুত্বপূণের্থ ভূমকো পোলন কর।", "কোশপ র্থ ো বিো প্লোজিমো প র্থ ো হলো একটি প্রভক ভ্য বিো বিোচনধমর্মী ভ্য (Selectively Permeable) প র্থ ো। এর অর্থ হলো\nএটি শুধুমোত্রে ন র্থ ষ্ট কছেু দ্রোবিক ও প্রয়োজিনীয় দ্রোবি অণেুকই কোশর ভতর আোন-প্রোন করত য়, সবিোইক নয়।\nANM/GNM", "বিজ্ঞোনী আনর্থস্টি হকল (Ernst Haeckel) ১৮৬৬ সোল বিখ্যোত বিোয়োজিনটিক সূত্রে (Biogenetic Law) প্রোন করন, যো\nসংক্ষপ বিল: \"Ontogeny recapitulates phylogeny\" (বি্যক্তজিন জিোতজিনক পুনরোবিৃত্ত কর)।", "বি্যোকটরয়ো বিো প্রোক্যোরওটিক কোশর শক্ত কোশপ্রোচীরটি মূলত পপটিডিোগ্লোইক্যোন (Peptidoglycan) বিো মউরন\nনোমক পলমোর যৌগ দ্বৈোরো গঠিত। অপরক ইউক্যোরওটিক উদ্ভ কোশর প্রোচীর সলুলোজি দ্বৈোরো গঠিত হয়।", "স্টিোরনোম (Sternum) হলো মোনবিহর বিক্ষপঞ্জরর ঠিক মোঝখোন অবিস্থত একটি চ্যোপ্টো আক ৃ তর সোজিো অস্থ, যোর\nসো পাোজির বিো পশু র্থ কোগুল (Ribs) যুক্ত োক। (অপশন 'যক্ষ' বিক্ষ-এর মুদ্রণে ত্রুটি)।\nANM/GNM", "উদ্ভর সবিুজি অংশ অবিস্থত ক্লিোরোফল (Chlorophyll) হলো সোলোকসংশ্লেষ প্রক্রয়োর প্রধোন আলোকগ্রোহী রঞ্জক\nকণেো। এটি সূযর্থর আলোক শক্ত শোষণে কর রোসোয়নক শক্তত রূপোন্তর করত সরোসর সোহোয্য কর।", "১৮১৩ সোল ফরোস উদ্ভবিজ্ঞোনী অগোস্টিন পরোমোস  ক্যোনডিোল (A. P. de Candolle) সবির্থপ্রম 'ট্যোক্সিোনম'\n(Taxonomy) বিো বিন্যোসবিধ শব্দটি ত া োর পুস্তক বি্যবিহোর ও প্রচলন করন। ক্যোরোলোস লনয়োসক ট্যোক্সিোনমর জিনক\nবিলো হয় কন্তু শব্দটির স্রষ্টো ক্যোনডিোল।", "রক্ত লোহত রক্তকণেকোর (RBC)  সংখ্যো স্বোভোবিক সীমোর চয় অস্বোভোবিক মোত্রেোয় বিৃদ্ধি পোওয়োর অবিস্থোক\nপলসোইময়ো (Polycythemia) বিলো হয়। লোহত রক্তকণেকো কম গল তোক অ্যোনময়ো বিল।\nANM/GNM", "নসল োনো বিো নসল বিডিগুল হলো রোইবিোপ্রোটিন দ্বৈোরো গঠিত ক্ষ ু দ্র োনো যো মূলত স্নোয়ুকোষর বিো নউরনর\nসোইটোপ্লোজিম (কোশহ)  প্রোটিন সংশ্লেষর জিন্য অবিস্থোন কর। অতএবি এটি স্নোয়ুকলো (Nervous  tissue)  এর\nविशेषता।", "ইনসুলন হরমোনটি একটি মশ্র গ্রন্থি অগ্নি্যোশয়র (Pancreas) আইলটস অবি ল্যোঙ্গোরহ্যোন্স নোমক কোশসমষ্টির বিটো\nকোষ (β-cells) ক নঃসৃত হয় রক্ত গ্লুকোজির মোত্রেো নয়ন্ত্রণে কর।", "sarpagandha উদ্ভর শকড় বিো মূল রসোরপন (Reserpine) নোমক অত্যন্ত গুরুত্বপূণের্থ উপক্ষোর (Alkaloid) পোওয়ো\nযোয়, যো মোনুষর উচ্চ রক্তচোপ (High Blood Pressure) কমোনোর ওষুধ তরত বি্যবিহৃত হয়।\nANM/GNM", "মোনুষর পোকস্থলীর অভ্যন্তরীণে প্রোচীর উপস্থত অক্সিন্টক বিো প্যোরোয়টোল কোশ ক তীব্রি হোইড্রোক্লিোরক অ্যোসডি\n(HCl) ক্ষরত হয়। এটি খো্যর ক্ষতকর বি্যোকটরয়ো ধ্বংস কর এবিং পপসন উৎসচকক সক্রয় কর।", "ম্যোলরয়ো রোগ সৃষ্টিকোরী জিীবিোণেুটি হলো এক প্রকোর আ্যপ্রোণেী বিো প্রোটোজিোয়ো, যোর বিজ্ঞোনক নোম প্লোসমোডিয়োম\nভোইভ্যোক্সি (Plasmodium vivax)। এটি স্ত্রী অ্যোনোফলস মশোর মোধ্যম ছেড়োয়।", "যসবি জিীবি উষ্ণতোর বিস্তর বিো বিড় পরসরর পরবিত র্থ ন সহ্য কর মোনয় নত পোর, তোর ইউরোমর্থোল (Eurythermal)\nবিলো হয়। মোনুষ পৃবিীর চরম ঠোণ্ডো ক তীব্রি গরম সবিরকম জিলবিোয়ুতই জিীবিনধোরণে করত সক্ষম হওয়োয়\nইউরোমর্থোল।\nANM/GNM", "গোহ র্থ স্থ্য রোন্নোর কোজি সলন্ডোর মূলত LPG (Liquefied Petroleum Gas) বিো তরলীক ৃ ত পট্রোলয়োম গ্যোস বি্যবিহোর করো\nহয়। এর প্রধোন উপোোন হলো প্রোপন ও বিউটন গ্যোস।", "পশ্চিমবিঙ্গর োজির্থলং জিলোয় অবিস্থত হমোলয় সংলগ্নি সঙ্গোললো জিোতীয় উ্যোন (Singalila National Park) বিপন্ন ও\nবিরল প্রজিোতর স্তন্যপোয়ী প্রোণেী 'রডি পোন্ডো' সংরক্ষণের জিন্য বিশষভোবি বিখ্যোত।", "যক ৃ ত (Liver)  মোনবিহর বিৃহত্তম পরপোক গ্রন্থি যখোন ৫০০-র বিশ গুরুত্বপূণের্থ বিপোকীয় ও রোসোয়নক বিক্রয়ো\nঅনবিরত চলত োক। এই কোরণে এক হর 'জিবি রসোয়নোগোর' বিলো হয়।\nANM/GNM", "নউমোনয়ো (Pneumonia) ফ ু সফ ু সর একটি তীব্রি সংক্রমণে। যহতু ফ ু সফ ু স আমোর প্রধোন শ্বোস অঙ্গ, তোই এই রোগ\nমোনবিহর শ্বসনতন্ত্র (Respiratory System) গুরুতরভোবি ক্ষতগ্রস্ত হয়।", "মোনবিহর সবির্থবিৃহৎ অভ্যন্তরীণে অঙ্গ এবিং সবিচয় বিড় গ্রন্থি হলো যক ৃ ত (Liver)। একজিন প্রোপ্তবিয়স্ক মোনুষর যক ৃ তর\nওজিন প্রোয় ১.৫ কজি হয় োক।", "প্রোক্যোরওটিক কোশ প্রোপ্ত 70S রোইবিোজিোমটি ুটি পৃক অসমোন উপ-একক নয় গঠিত। এর ক্ষ ু দ্র উপ-এককটি হলো\n30S এবিং বিৃহৎ উপ-এককটি হলো 50S।\nANM/GNM", "ডিঙ্গু জ্বরর প্রধোন লক্ষণেগুলর মধ্য রয়ছে হঠোৎ তীব্রি জ্বর, হোড় ও গঁট প্রচণ্ড বি্যো, রক্ত অণেুচক্রকো বিো প্লটলট\nকোউন্ট আশঙ্কোজিনকভোবি কম যোওয়ো।", "ভূ-রোসোয়নক চক্র মূলত ু প্রকোর: গ্যোসীয় এবিং পোললক (Sedimentary)। ফসফরোস, সোলফোর ও ক্যোলসয়োম চক্র\nহলো পোললক প্রক ৃ তর, আর নোইট্রোজিন হলো গ্যোসীয়।", "লোহত রক্তকণেকোয় োকো হমোগ্লোবিন ফ ু সফ ু স ক কোষ অক্সিজিন (O₂) সরবিরোহ কর এবিং কোশ ক কোবির্থন\nডিোই অক্সিোইডি (CO₂) ফরয় আন।\nANM/GNM", "সংবিী বিো অন্তমুর্থখী (Afferent) নউরনর প্রধোন কোজি হলো উদ্দেীপনো বিো স্নোয়ুস্পিন্দনক পরধ বিো গ্রোহক অঙ্গ ক\nকন্দ্রীয় স্নোয়ুতন্ত্র (মისიষ্ক/সুষুম্নোকোণ্ড) নয় যোওয়ো।", "গেঙ্গা বাইলিাবা (Ginkgo biloba) উদ্ভ জিগতর একটি জিীবিন্ত জিীবিোশ্ম, যো সুূর অতীত ক আজি পযর্থন্ত কোনো\nপরবিত র্থ ন ছেোড়োই বিাচ রয়ছে। লমুলোস প্রোণেীর অংশ।", "ইউক্যোরওটিক কোশর প্লোস্টিডি ও মোইটোকন্ড্রিয়ো দ্বৈ-প র্থ োবিষ্টিত অঙ্গোণেু এবিং এন্ডোপ্লোজিমক রটিক ু লোম একক প র্থ োবিৃত\nঅঙ্গোণেু।\nANM/GNM", "উদ্ভ হরমোনগুলর রোসোয়নক গঠন খো যোয় য,  অক্সিন (IAA)  এবিং সোইটোকোইনন (কোইনন)  হলো\nনোইট্রোজিনযুক্ত। জিব্বেরলন নোইট্রোজিনবিহীন।", "আধুনক জিীবিবি্যোর প্রয়োগ চকৎসোবিজ্ঞোন ও শল্য চকৎসোর উন্নত হয়ছে, খো্য উৎপোন বিড়ছে এবিং বিোস্তুতন্ত্র\nরক্ষোর বিজ্ঞোন জিোনো সম্ভবি হয়ছে।", "মোনবিহর অনোক্রম্যতো বি্যবিস্থোর সো যুক্ত প্রধোন লসকো অঙ্গ ও গ্রন্থিগুলর মধ্য প্লীহো, টনসল, োইমোস এবিং লসকো\nগ্রন্থি অত্যন্ত গুরুত্বপূণের্থ অংশ।\nANM/GNM", "জিলর অণেুর (H₂O) জি্যোমতক গঠনর জিন্য এত আংশক ধনোত্মক ও ঋণেোত্মক মরু তর হয়। এই কোরণে জিল একটি\nশক্তশোলী পোলোর (Polar) দ্রোবিক।", "গতশক্ত E = rac{1}{2}mv^2\nলবি ও হরক m দ্বৈোরো গুণে কর পোই:\nE = rac{m^2v^2}{2m} = rac{p^2}{2m}\np^2 = 2mE \\implies p = \\sqrt{2mE}।", "জিল 0^\\circ C ক 4^\\circ C উষ্ণতো পযর্থন্ত উত্তপ্ত করল আয়তন নো বিড় সংক ু চত হয়। জিলর এই বিশষ ধমর্থক\nজিলর বি্যতক্রোন্ত প্রসোরণে বিলো হয়।\nANM/GNM", "আল্ট্রোসনোগ্রোফত মোনুষর শ্রবিণের সীমোর বিোইরর উচ্চ কম্পোঙ্কর (২০,০০০ হোজির্থর বিশ) শব্দোত্তর তরঙ্গ (Ultrasonic\nwave) প্ররণে কর প্রতচ্ছেবি তর করো হয়।", "কোনো पदार्थों প্রত্ত গ্রোম ভরক তোর আণেবিক ভর বিো মোলোর ভর য় ভোগ করল উক্ত পোর্থর মোট মোল সংখ্যো\nপোওয়ো যোয়। সূত্রে: n = rac{W}{M}।", "ক ৃ তকোযর্থ W = F \\cdot d \\cdot \\cos( heta)। এখোন অভকষর্থ বিল কোজি করছে খোড়ো নচর ক এবিং ক ু লর সরণে ঘটছে\nআনুভূমকভোবি সোমনর ক। অর্থোৎ বিল ও সরণের মধ্যবিতর্মী কোণে হলো heta = 90^\\circ। যহতু \\cos(90^\\circ) = 0,\nতোই কোযর্থহীন বিলর কোরণে ক ৃ তকোযর্থ শূন্য।\nANM/GNM", "অতপরবিোহী পোর্থর ক্ষত্রে তোপমোত্রেো হ্রোসর সো সো রোধোঙ্ক কমত োক এবিং একটি ন র্থ ষ্ট সংকট তোপমোত্রেোয়\n(Critical Temperature) পৌঁছেোল পরবিোহীর রোধোঙ্ক হঠোৎ সম্পূণের্থ শূন্য (0) হয় যোয়।", "ফ্লেমং-এর বিোমহস্ত নয়ম অনুযোয়ী, বিোমহোতর তজির্থনী চৌম্বক ক্ষত্রের ক ন র্থ শ কর এবিং মধ্যমো তড়ৎ প্রবিোহর ক\nন র্থ শ কর।", "রডিওকোবির্থন ডিটিং পদ্ধিতত তজিস্ক্রিয় কোবির্থন আইসোটোপ C-14 এর ক্ষয় পরমোপ কর জিীবিোশ্মর সঠিক বিয়সকোল\nনধর্থোরণে করো হয়।\nANM/GNM", "বিজির্থত তোপ Q = m \\cdot s \\cdot \\Delta t\nএখোন, m = 1 ext{ kg} = 1000 ext{ g}\ns = 0.09 ext{ cal/g}^\\circ C\n\\Delta t = 100^\\circ C - 30^\\circ C = 70^\\circ C\nQ = 1000 \\cdot 0.09 \\cdot 70 = 6300 ext{ cal}।", "পোরমোণেবিক বিু্যৎ কন্দ্র নয়ন্ত্রত উপোয় শক্ত উৎপোনর জিন্য ইউরনয়োম বিো প্লুটোনয়োম পরমোণেুর নউক্লিয়োস ভোঙো\nহয়, যোক নউক্লিয় বিভোজিন (Nuclear Fission) বিল।", "পযর্থোয় সোরণেীর ৬ষ্ঠ পযর্থোয় গ্রুপ ৩-এর অন্তভু র্থ ক্ত সরয়োম (৫৮) ক লুটসয়োম (৭১) পযর্থন্ত মোট ১৪টি মৌলক\nল্যোন্থিোনোইডি সরজি বিলো হয়।\nANM/GNM", "সোধোরণে লবিণে বিো সোডিয়োম ক্লিোরোইডি (NaCl) হলো একটি তড়ৎযোজিী বিো আয়নক যৌগ। আয়নক যৌগ ক্যোটোয়ন ও\nঅ্যোনোয়নর মধ্য অত্যন্ত শক্তশোলী স্থর-তড়ৎ আকষর্থণে বিল োক।", "আধুনক শক্ত সোশ্রয়ী উচ্চমোনর LED (Light Emitting Diode) আলোগুল অত্যন্ত ীঘর্থস্থোয়ী হয়। এর গড় কমর্থক্ষম\nজিীবিনকোল প্রোয় ৩০,০০০ ঘণ্টো।", "গোলকীয় পর্থণের জি্যোমতক সূত্রে অনুযোয়ী, ফোকোস ঘর্থ্য বিক্রতো বি্যোসোধর্থর অধর্থক হয়।\nf = rac{R}{2}\nএখোন, R = 50 ext{ cm} \\implies f = rac{50}{2} = 25 ext{ cm}।\nANM/GNM", "বি্যতক্রমী ধোতু লয়োম (Lithium)-এর ক্ষত্রে উচ্চমোত্রেোর চোপ প্রয়োগ করল তোর অভ্যন্তরীণে বি্যোন্ড কোঠোমোর\nপরবিত র্থ নর কোরণে রোধোঙ্ক বিৃদ্ধি পোয়।", "উচ্চ তোপমোত্রেোর এই স্তরই পৃবিীর বিশরভোগ ক ৃ ত্রেম উপগ্রহ (Satellites) এবিং মহোকোশ স্টিশন কক্ষপ স্থোপন করো\nহয়।", "চোলর্থসর সূত্রে অনুযোয়ী, স্থর চোপ ন র্থ ষ্ট ভরর কোনো গ্যোসর আয়তন তোর পরম উষ্ণতোর সমোনুপোতক। সুতরোং, এই\nসূত্রে গ্যোসর ভর এবিং গ্যোসর চোপ ধ্রুবিক োক।\nANM/GNM", "শব্দ তরঙ্গর প্রতধ্বন ও প্রতফলনর নীতক কোজি লোগয় চকৎসোয় বি্যবিহৃত স্টিোস্কোপ, সোনোর (SONAR) ও\nআল্ট্রোসোনোগ্রোফ তর করো হয়ছে।", "ীঘর্থন ধর আসর্থনকযুক্ত জিল পোন করল হোতর তোলু ও পোয়র তলোয় কোলো ক্ষত বিো োগ তর হয়, যোক ব্ল্যোকফ ু ট\nডিজিজি বিল। এটি যক ৃ তর মোরোত্মক ক্ষত কর।", "আসন্ন মোন (Approximation) বি্যবিহোর কর:\n11.82 pprox 12 এবিং 168 pprox 169\n= 768 \\div 12 imes \\sqrt{169} - 42\n= 64 imes 13 - 42\n= 832 - 42 = 790।\nANM/GNM", "ধর ঘড়টির ক্রয়মূল্য = 100\\%\n১০% ক্ষতত বিক্রয়মূল্য = 90\\%, ৪% লোভ নতুন বিক্রয়মূল্য = 104\\%\nবিক্রয়মূল্যর এই শতকরো পোর্থক্য = 104\\% - 90\\% = 14\\%\nপ্রশ্নোনুযোয়ী, 14\\% = 70 ext{ টোকো} \\implies 1\\% = 5 ext{ টোকো}\nক্রয়মূল্য 100\\% = 5 imes 100 = 500 ext{ টোকো}।", "ধর রোমর মোট আয় = X টোকো।\nX imes rac{35}{100} = 17500\nX = rac{17500 imes 100}{35} = 500 imes 100 = 50000 ext{ টোকো}।\nANM/GNM", "ধর আয়তঘনকটির ঘর্থ্য, প্রস্থ ও উচ্চতো যোক্রম l, b, h সম।\nতোহল তলত্রেয়র ক্ষত্রেফল: lb = 20, bh = 15, lh = 12\nতনটি সমীকরণে গুণে কর পোই:\nl^2 b^2 h^2 = 20 imes 15 imes 12 = 3600\nঅতএবি, আয়তন V = lbh = \\sqrt{3600} = 60 ext{ ঘনসেম}।", "লবি ও হরর পর অনুপোত সমোন হওয়োয় কোটোকোটি হয় ১ আস, সখোন ক পূরক কোণের সম্পক র্থ  অনুসোর মোন\nশূন্য নধর্থোরত হয়।\nANM/GNM", "৬ বিছের সু হয় আসলর 30\\%।\nসরল সুর ক্ষত্রে প্রত বিছের সুর হোর সমোন োক।\n30\\% সু হত সময় লোগ = ৬ বিছের\nসু আসলর সমোন (অর্থোৎ 100\\%) হত সময় লোগবি = rac{6}{30} imes 100 = 20 ext{ বছর}।", "যৌগক সংখ্যোক মৌলক সংখ্যোয় ভঙ নই:\n6^{12} = (2 imes 3)^{12} = 2^{12} imes 3^{12}\nসম্পূণের্থ রোশটি হবি: 2^{12} imes 3^{12} imes 5^{13} imes 7^{23}\nমৌলক উৎপোকর মোট সংখ্যো = 12 + 12 + 13 + 23 = 60।\nANM/GNM", "বিৃত্তর ক্ষত্রেফলর অনুপোত বি্যোসোধর্থর বিগর্থর অনুপোতর সমোন (r_1^2 : r_2^2 = 4 : 9)।\nবি্যোসোধর্থর অনুপোত পোবি বিগর্থমূল কর: r_1 : r_2 = \\sqrt{4} : \\sqrt{9} = 2 : 3। পরধর অনুপোত বি্যোসোধর্থর অনুপোতর\nসমোন হয়।", "হসবি কর:\n= 900 imes rac{90}{100} imes rac{40}{100} = 9 imes 9 imes 4 = 324 ext{ টোকো}।", "छात्र সংখ্যো = 1225 imes rac{12}{100} = rac{14700}{100} = 147 ext{ জন}।\nANM/GNM", "\"Wings  of  Fire\"  হলো ভোরতর প্রোক্তন রোষ্ট্রপত ও বিশষ্ট পরমোণেু বিজ্ঞোনী ডি.  এ.  প.  ஜே.  আব্দুল কোলোমর\nআত্মজিীবিনীমূলক গ্রন্থি।", "গুজিরোটর শল্পশহর আমোবিোক ভোরতর প্রধোন কোপর্থোস বিস্ত্রবিয়ন শল্পর কন্দ্র হওয়োর জিন্য 'ভোরতর ম্যোনচস্টিোর'\nবিলো হয়।", "মোছের হৃপণ্ড কবিল ২টি প্রকোষ্ঠ নয় গঠিত— একটি অলন্দ ও একটি নলয়।\nANM/GNM", "গুপ্ত রোজিবিংশর সম্রোট সমুদ্রগুপ্তক ত া োর অসোমোন্য সোমরক ক্ষতো এবিং ভোরত বিজিয়র কোরণে 'ভোরতর নপোলয়ন'\nবিলো হয়।", "ননস্টিক ফ্রোইং প্যোন বিো বিোসন খোবিোর যোত আটক নো যোয়,  সজিন্য তোর ওপর টফলন (Teflon)  বিো\nপলটট্রোফ্লে ু রোইলনর প্রলপ ওয়ো হয়।", "ভোরতর সবির্থোচ্চ পবির্থতশৃঙ্গ হলো গডিউইন অস্টিন বিো K2, যো কোরোকোরোম পবির্থতশ্রণেীত অবিস্থত। কোঞ্চনজিঙ্ঘো হলো\nভোরতর দ্বৈতীয় সবির্থোচ্চ।\nANM/GNM", "পশ্চিমবিঙ্গ সরকোরর স্বীক ৃ ত অনুযোয়ী পশ্চিমবিঙ্গর রোজি্য প্রোণেী বিো রোষ্ট্রীয় পশু হসবি মছেো বিড়োল (Fishing Cat)-ক\nস্বীক ৃ ত ওয়ো হয়ছে।", "লোহত রক্তকণেকো ভঙ যক ৃ ত পত্তরঞ্জক বিলরুবিন তর হয়,  যো পরবিতর্মীত পরবিত র্থ ত হয় ইউরোক্রোম\n(Urochrome) রঞ্জক গঠন কর মূত্রের হলু রঙ তর কর।", "১৮৬৩ সোল সত্যন্দ্রনো ঠোক ু র প্রম ভোরতীয় হসবি ব্রিটিশ ইন্ডয়োন সভল সোভ র্থ স (ICS) পরীক্ষোয় সফলভোবি উত্তীণের্থ\nহন।\nANM/GNM", "ত া তুল প্রচুর পরমোণে টক স্বোযুক্ত টোরটোরক অ্যোসডি (Tartaric acid) নোমক জিবি অম্ল প্রোক ৃ তকভোবি উপস্থত োক।\nANM/GNM"];
+
+// ===== QUESTIONS =====
+const QUESTIONS = [{"n": 1, "text": "Fill in the blank with the most appropriate word or group of words to make the sentence\nmeaningfully complete:\nThe father was vexed ________ the son.", "opts": ["with", "about", "in", "to"]}, {"n": 2, "text": "Fill in the blank with the most appropriate word or group of words to make the sentence\nmeaningfully complete:\nThere is an exception ________ every rule.", "opts": ["for", "in", "to", "up"]}, {"n": 3, "text": "Find out which part of the sentence has an error:\nThe lions (A) / kill the animals (B) / and eat his meat. (C) / No error (D)", "opts": ["The lions", "kill the animals", "and eat his meat", "No error"]}, {"n": 4, "text": "Select the wrongly spelt word:", "opts": ["Soothe", "Sponser", "Struggle", "Stepney"]}, {"n": 5, "text": "Choose the most effective word to fill in the blank to make the sentence meaningfully\ncomplete:\nThere was an ________ response for the marathon.", "opts": ["extreme", "overriding", "excessive", "overwhelming"]}, {"n": 6, "text": "Select the wrongly spelt word:", "opts": ["Semester", "Sensory", "Senesent", "Salacious"]}, {"n": 7, "text": "Choose the option, which can best replace the group of words given:\n'An assembly of worshippers'", "opts": ["Congregation", "Conflagration", "Confrontation", "Configuration"]}, {"n": 8, "text": "Select the correctly spelt word:", "opts": ["Skillful", "Skillfull", "Skilful", "Skillfull"]}, {"n": 9, "text": "Select the correctly spelt word:", "opts": ["Colmimision", "Comision", "Comission", "Commission"]}, {"n": 10, "text": "Choose the word, which can most appropriately replace the bracketed words given in\nthe sentence:\nThe project advanced by (leaps and bounds).", "opts": ["rapidly", "sharply", "slowly", "simply"]}, {"n": 11, "text": "Choose the word, which is opposite in meaning to SUBSERVIENT:", "opts": ["Eligible", "Superior", "Powerful", "Inferior"]}, {"n": 12, "text": "Choose the word, which has nearly the same meaning as ATROCITY:", "opts": ["Envy", "Jealousy", "Violence", "Absurdity"]}, {"n": 13, "text": "A sentence is given in direct speech. Out of the four alternatives given select the one\nwhich best expresses the same sentence in indirect speech:\nHe said, \"My sister is writing letter to my uncle.\"", "opts": ["He said to me that his sister is writing a letter.", "He told that his sister is writing letter to his uncle.", "He said that her sister is writing a letter to uncle.", "He said that his sister was writing letter to his uncle."]}, {"n": 14, "text": "Choose the option, which has nearly the same meaning as INDICT:", "opts": ["Elude", "Manifest", "Charge", "Implicate"]}, {"n": 15, "text": "A sentence is given in direct speech. Out of the four alternatives given select the one\nwhich best expresses the same sentence in indirect speech:\n\"How did it get here?\" She wanted to know.", "opts": ["She wanted to know how it had got there.", "She wanted to know how did it get here.", "She wanted to know how did it got there.", "She wanted to know how it get there."]}, {"n": 16, "text": "Choose the correct alternative that will continue the same pattern and replace the\nquestion mark (?) in the given series:\n17, 43, 81, 131, ?", "opts": ["375", "468", "300", "193"]}, {"n": 17, "text": "In this question choose the correct option that holds the same relation as there in\nbetween the first two given words:\nOxygen: Burn :: Carbon Dioxide: ?", "opts": ["Foam", "Explode", "Extinguishes", "None of the above"]}, {"n": 18, "text": "Neelam walked 30 metres towards North, took a left turn and walked 40 metres. She\nagain took a left turn and walked 30 metres. How far is she from the starting point?", "opts": ["100 metres", "40 metres", "70 metres", "None"]}, {"n": 19, "text": "In a certain code, GLARE is written as 513%# and LIVE is written as 18@#. How is GIVE\nwritten in that code?", "opts": ["581#", "58@#", "5#8@", "None"]}, {"n": 20, "text": "In a coding language, SUBJECT is written as ATRIUDF. How is ORIGINAL written in that\ncoding language?", "opts": ["CONHΜΒＯ", "CONHBMO", "NOCHMBO", "None"]}, {"n": 21, "text": "কান উভয়লিঙ্গ প্রাণী অনষেক সম্পন্ন করে?", "opts": ["ক া চো", "বি্যোঙ", "অ্যোসকোরস", "ফতোক ৃ ম"]}, {"n": 22, "text": "প্রাটিন বহীন RNA ক ক বলি?", "opts": ["প্রোটিনয়ডি", "নগ্নিজিন", "প্রোটোবিোয়োন্ট", "জিন"]}, {"n": 23, "text": "ফি ু সফি ু সরে অ্যালিভওলিগুলি নষ্ট হয় গেলি কান রোগেরে সৃষ্টি হয়?", "opts": ["এমফোইসমো (এফোইলনো)", "ওটোইটিস", "রউম্যোটিজিম", "সোইনুসোইটিস"]}, {"n": 24, "text": "Europe কনর্ন বারোরে দমিন কানটি ব্যবহৃত হয়?", "opts": ["টট্রোহোইমনো SP", "নোসমো SP", "পরজিয়ো পোইরোউস্টি", "নউক্লিওপলহড্রোসস"]}, {"n": 25, "text": "পোনীয় জিলিরে প্রাক ৃ তক ও জিব পেরেবশ নয় বজ্ঞানরে যে শাখায় আলিাচনা করো হয় তাক ক\nবলি?", "opts": ["লমনোলজি", "বিোয়োনোমকস্", "অনকোলজি", "পোমোলজি"]}, {"n": 26, "text": "ক্যাকটাসরে পোতা ক া াটায় রূপোন্তরেত হয় কান কারেণ?", "opts": ["বিোষ্পমোচন রোধ করোর জিন্য", "সোলোকসংশ্লেষর জিন্য", "অঙ্গজি জিননর জিন্য", "বিোষ্পমোচন বিৃদ্ধির জিন্য"]}, {"n": 27, "text": "কান ধরেনরে উদ্ভিদরে বীজি ফিলিরে বাইরে থাক?", "opts": ["টরডিোফোইটো", "ব্রিোয়োফোইটো", "...", "জিমনোস্পিোমর্থ"]}, {"n": 28, "text": "নফ্রন অবস্থিত রেক্তজিালিকরে ন্যায় ক ু ন্ডলিীক ৃ ত অংশটিক ক বলি?", "opts": ["বিোওম্যোন ক্যোপসুল", "গ্লোমরুলোস", "ম্যোলপজিয়োন নোলকো", "হনলর লুপ"]}, {"n": 29, "text": "ব্রায়াফিাইটা ও টরেডাফিাইটারে মিধ্য সংযোগে রেক্ষাকারেী উদ্ভিদ কানটি?", "opts": ["মোসর্থলয়ো", "রোইনয়ো", "রকসয়ো", "পোগোনটোম"]}, {"n": 30, "text": "জিীবক কয়টি প্রধান ক্যাটাগেরেত (Linnaean Hierarchy) ভাগে করো হয়?", "opts": ["৫ টি", "৬ টি", "७ টি", "৮ টি"]}, {"n": 31, "text": "কাদরে ক্ষত্রে প্লাকয়ড আাশ দখা যোয়?", "opts": ["অস্টিকস", "কনড্রকস", "অ্যোম্ফিবিয়ো", "রপটিলয়ো"]}, {"n": 32, "text": "জিরোয়ুরে মিধ্য ভ্রূণরে বৃদ্ধিত সহায়তা করে কান ভটামিন?", "opts": ["ভটোমন A", "...", "...", "ভটোমন E"]}, {"n": 33, "text": "কাশপেদ র্ন া ক ধরেনরে?", "opts": ["অভ্য", "ভ্য", "প্রভক ভ্য", "অধর্থভ্য"]}, {"n": 34, "text": "ক 'বায়াজিনটিক সূত্রে' প্রণয়ন করে?", "opts": ["হকল", "ভন বিয়োর", "ডিোরউইন", "ওফ্রোস্টিোস"]}, {"n": 35, "text": "প্রাক্যারেওটিক কাশরে কাশপ্রাচীরে ক দ্বারো গেঠিত হয়?", "opts": ["সলুলোজি", "পপটিডিোগ্লোইক্যোন", "পকটিন", "..."]}, {"n": 36, "text": "স্টিারেনামি নামিক অস্থি কাথায় পোওয়া যোয়?", "opts": ["বিক্ষ (যক্ষ)", "মস্তষ্ক", "পো", "মরুন্ড"]}, {"n": 37, "text": "সালিাকসংশ্লেষেরে জিন্য প্রধান রেঞ্জক কানটি?", "opts": ["ক্যোরোটিন", "...", "ক্লিোরোফল", "ಜ್ಯಾಂಥೋಫಿಲ್"]}, {"n": 38, "text": "ট্যাক্সানমি শব্দটি ক প্রচলিন করেন?", "opts": ["লনয়োস", "ল্যোমোক র্থ", "অ্যোরস্টিটল", "ক্যোনডিোল"]}, {"n": 39, "text": "লিাহত রেক্তকণকারে সংখ্যা স্বাভাবকরে তুলিনায় বৃদ্ধি পেলি তাক ক বলি?", "opts": ["অ্যোনময়ো", "পলসোইময়ো", "লউকোপনয়ো", "থ্রম্বোসোইটোপনয়ো"]}, {"n": 40, "text": "কান কলিাত নসলি দানা (Nissl's granules) পোওয়া যোয়?", "opts": ["যোগকলো", "অস্থকলো", "স্নোয়ুকলো", "..."]}, {"n": 41, "text": "ইনসুলিন কাথায় উৎপেন্ন হয়?", "opts": ["যক ৃ ত", "অগ্নি্যোশয়", "পটুইটোর গ্রন্থি", "োইরয়ডি গ্রন্থি"]}, {"n": 42, "text": "সপের্নগেন্ধা গোছেরে মিূলি কান উপেক্ষারেটি পোওয়া যোয়?", "opts": ["ক ু ইনোইন", "ডিোটুরন", "মরফন", "রসোরপন"]}, {"n": 43, "text": "পোকস্থিলিী থক কান অ্যাসড ক্ষরেত হয়?", "opts": ["হোইড্রোক্লিোরক অ্যোসডি", "সোলফউরক অ্যোসডি", "ম্যোলক অ্যোসডি", "সোইट्रिक অ্যোসডি"]}, {"n": 44, "text": "মি্যালিরেয়া রোগেরে জিীবাণুরে নামি ক?", "opts": ["স্ট্রেপটোকক্কেোস নউমোন", "ক্লিসট্রিডিয়োম টিটোন", "প্লোসমোডিয়োম ভোইভ্যোক্সি", "..."]}, {"n": 45, "text": "মিানুষে পেরেবশরে তাপেমিাত্রো সহনশীলিতারে দক থক কান ধরেনরে?", "opts": ["ইউরোমর্থোল", "স্টিনোোমর্থোল", "সোইক্লিোোমর্থোল", "A ও B উভয়ই"]}, {"n": 46, "text": "রোন্নারে কাজি কান গে্যাস ব্যবহৃত হয়?", "opts": ["CNG", "LPG", "N2", "H2"]}, {"n": 47, "text": "পেশ্চিমিবঙ্গরে কাথায় রেড পোন্ডা (Red Panda) সংরেক্ষণ করো হয়?", "opts": ["সঙ্গোললো ন্যোশনোল পোক র্থ", "জিলোপোড়ো ন্যোশনোল পোক র্থ", "सुंदरবিন বিোয়োস্ফিয়োর", "কোনোটিই নয়"]}, {"n": 48, "text": "মিানবদহরে 'জিব রেসায়নাগোরে' (Biological Laboratory) কাক বলি?", "opts": ["হৃপণ্ড", "ফ ু সফ ু স", "মস্তষ্ক", "যক ৃ ত"]}, {"n": 49, "text": "நியூ மோனியோ (Pneumonia) রোগে কান দহতন্ত্র আক্রান্ত হয়?", "opts": ["সংবিহনতন্ত্র", "শ্বসনতন্ত্র", "রচনতন্ত্র", "পোচনতন্ত্র"]}, {"n": 50, "text": "মিানবদহ সবচয় বড় গ্রন্থি কানটি?", "opts": ["পটুইটোর গ্রন্থি", "োইরয়ডি গ্রন্থি", "যক ৃ ত", "্যোলোমোস"]}, {"n": 51, "text": "70S রোইবাজিামিরে অধঃএকক (Subunits) দুটি ক ক?", "opts": ["30S ও 50S", "40S ও 40S", "50S ও 20S", "60S ও 40S"]}, {"n": 52, "text": "ડ ે ન્ગ્ય ુ  (Dengue) রোগেরে প্রধান উপেসগের্ন বা লিক্ষণ কানগুলি?", "opts": ["ত্বক কোলচ লোল র্যোশ", "ীঘর্থস্থোয়ী কফ ও কোশ", "তীব্রি অস্থসন্ধ ও পশত বি্যো", "অণেুচক্রকো (Platelet) সংখ্যো হ্রোস"]}, {"n": 53, "text": "সডমিন্টারেী সাইকলি (Sedimentary cycle) কানগুলি?", "opts": ["নোইট্রোজিন চক্র", "সোলফোর চক্র", "ফসফরোস চক্র", "ক্যোলসয়োম চক্র"]}, {"n": 54, "text": "লিাহত রেক্তকণকারে (RBC) প্রধান কাজি কানগুলি?", "opts": ["রক্ততঞ্চন সহোয়তো করো", "O₂ এবিং CO₂ গ্যোস পরবিহন করো", "রক্ত অম্ল ও ক্ষোরর ভোরসোম্য বিজিোয় রোখো", "অ্যোন্টবিডি সংশ্লেষ করো"]}, {"n": 55, "text": "সংবদী নউরোনরে (Sensory Neuron) বশষ্ট্য কানগুলি?", "opts": ["নউরোনর মোঝ সংযোগ রক্ষো কর", "স্নোয়ুস্পিন্দন কন্দ্রীয় স্নোয়ুতন্ত্রর ক বিহন কর", "ডিনড্রোইটগুল ীঘর্থ হয়", "অ্যোক্সিনগুল ীঘর্থ হয়"]}, {"n": 56, "text": "উদ্ভিদ জিগেতরে জিীবন্ত জিীবাশ্মেরে (Living Fossil) উদাহরেণ কানগুলি?", "opts": ["ইক ু ইজিটোম", "গঙ্গো বিোইলোবিো", "লমুলোস", "নটোম"]}, {"n": 57, "text": "পেদ র্ন াবৃত কাশ অঙ্গাণু (Membrane-bound organelles) কানগুলি?", "opts": ["প্লোস্টিডি", "মোইটোকনড্রয়ো", "এন্ডোপ্লোজিমীয় জিোলকো", "কোনোটিই নয়"]}, {"n": 58, "text": "কান হরেমিান গুলিত নাইট্রাজিন (Nitrogen) থাক?", "opts": ["অক্সিন", "সোইটোকোইনন", "জিব্বেরলন", "কোনোটিই নয়"]}, {"n": 59, "text": "মিানব কলি্যাণ জিীববদ্যারে উপেকারেী ভূমিকা কানগুলি?", "opts": ["শল্য চকৎসো (Surgery)", "জিবি অস্ত্র", "খো্য উৎপোন বিৃদ্ধি", "পরবিশ রক্ষো"]}, {"n": 60, "text": "আমিাদরে দহ প্রধান লিসকা অঙ্গ (Lymphoid organs) কানগুলি?", "opts": ["প্লীহো (Spleen)", "টনসল (Tonsils)", "োইমোস গ্রন্থি", "লসকো গ্রন্থি"]}, {"n": 61, "text": "জিলি ক ধরেনরে দ্রাবক (Solvent)?", "opts": ["পোলোর দ্রোবিক", "নন-পোলোর দ্রোবিক", "জিবি দ্রোবিক", "কোনোটিই নয়"]}, {"n": 62, "text": "নম্নলিখত কান সমিীকরেণটি ভরেবগে (p) ও गतिশক্ত (E) মিধ্য সঠিক সম্পক র্ন  স্থিাপেন করে?", "opts": ["p = 2mE", "p² = mE²", "p = \\sqrt{2mE}", "\\sqrt{p} = 2mE"]}, {"n": 63, "text": "কান তরেলিরে ক্ষত্রে ব্যতক্রান্ত প্রসারেণ (Anomalous expansion) দখা যোয়?", "opts": ["পোর", "জিল", "বিঞ্জন", "অ্যোলকোহল"]}, {"n": 64, "text": "আল্ট্রাসনাগ্রাফিত (USG) কান ধরেনরে তরেঙ্গ ব্যবহৃত হয়?", "opts": ["শ্রুতগোচর শব্দতরঙ্গ", "শব্দতর তরঙ্গ", "শব্দোত্তর তরঙ্গ (Ultrasonic)", "তড়ৎচুম্বকীয় তরঙ্গ"]}, {"n": 65, "text": "রেসায়নরে সূত্রোনুযোয়ী: rac{ ext{ভর}}{ ext{মোলোর ভর}} = ?", "opts": ["মোলসংখ্যো", "অ্যোভোগোড্রো সংখ্যো", "মোলোর আয়তন", "গ্রোম আণেবিক ভর"]}, {"n": 66, "text": "একজিন ক ু লি 30 কজি ভরেরে একটি বস্তা নয় আনুভূমিক তলি 500 মিটারে পেথ অতক্রমি করেলি\nঅভকষের্ন বলিরে বরুদ্ধি ক ৃ তকাযের্ন কত হব?", "opts": ["1500 J", "153 J", "320 J", "0 J"]}, {"n": 67, "text": "অতপেরেবাহী (Superconductor) পেদাথর্নরে ক্ষত্রে 'রোধাঙ্ক-উষ্ণতা' লিখচত্রেরে প্রক ৃ ত কমিন হয়?", "opts": ["সরলরখক বিৃদ্ধি পোয়", "অধবিৃত্তীয় হ্রোস পোয়", "একটি সংকট উষ্ণতোয় হঠোৎ শূন্য হয় যোয়", "অপরবিত র্থ ত োক"]}, {"n": 68, "text": "ফ্লেমিং-এরে বামিহস্ত নয়মি তজির্ননী (Forefinger) ক নদ র্ন শ করে?", "opts": ["চৌম্বক ক্ষত্রের অভমুখ", "তড়ৎ প্রবিোহর অভমুখ", "ক্রয়োশীল বিলর অভমুখ", "পরবিোহীর গতর অভমুখ"]}, {"n": 69, "text": "প্রাচীন জিীবাশ্মেরে বয়স (Age of fossils) নণর্নয় কান আইসাটাপেটি ব্যবহৃত হয়?", "opts": ["Co-60", "P-32", "C-14", "I-131"]}, {"n": 70, "text": "1 কজি ভরেরে একটি পেতলিরে পোত্রে 100°C থক 30°C উষ্ণতায় ঠাণ্ডা হলিা। পোত্রেটি কত পেরেমিাণ\nতাপে বজির্নন করেলি? (আপেক্ষক তাপে = 0.09 cal/g°C)", "opts": ["7000 ক্যোলর", "6300 ক্যোলর", "900 ক্যোলর", "5000 ক্যোলর"]}, {"n": 71, "text": "পোরেমিাণবক বদু্যৎ চুল্লিত (Nuclear Reactor) কান ধরেনরে নউক্লয় বক্রয়া ঘটানা হয়?", "opts": ["নউক্লিয় সংযোজিন", "নউক্লিয় বিভোজিন (Fission)", "উভয়ই", "কোনোটিই নয়"]}, {"n": 72, "text": "পেযের্নায় সারেণীত কতগুলি লি্যান্থিানাইড মিৌলি उपस्थिति রেয়ছে?", "opts": ["10 টি", "12 টি", "14 টি", "15 টি"]}, {"n": 73, "text": "কান যেৌগেটিরে গেলিনাঙ্ক (Melting Point) সবচয় বশ?", "opts": ["সোধোরণে লবিণে (NaCl)", "চন", "ন্যোপোলন", "ইউরয়ো"]}, {"n": 74, "text": "LED লি্যাম্পরে আনুমিানক জিীবনকালি (Lifespan) কত হত পোরে?", "opts": ["1000 ঘন্টো", "10000 ঘন্টো", "15000 ঘন্টো", "30000 ঘন্টো"]}, {"n": 75, "text": "একটি অবতলি দপের্নণরে বক্রতা ব্যাসাধর্ন 50 সমি হলি তারে ফিাকাস দঘর্ন্য (Focus Length) কত হব?", "opts": ["50 সম", "25 সম", "100 সম", "5 সম"]}, {"n": 76, "text": "কান মিৌলিরে ক্ষত্রে চাপে প্রয়াগে করেলি বদু্যতক রোধ বৃদ্ধি পোয়?", "opts": ["কোবির্থন", "লয়োম", "ক্যোলশয়োম", "কোনোটিই নয়"]}, {"n": 77, "text": "Exosphere স্তরেরে মিূলি বশষেত্ব কানগুলি?", "opts": ["এটি উষ্ণতম স্তর", "ক ৃ ত্রেম উপগ্রহ এই স্তর অবিস্থোন কর", "...", "..."]}, {"n": 78, "text": "চালির্নসরে সূত্রে (Charles's Law) কান চলিরোশগুলি ধ্রুবক থাক?", "opts": ["গ্যোসর ভর", "গ্যোসর আয়তন", "গ্যোসর উষ্ণতো", "গ্যোসর চোপ"]}, {"n": 79, "text": "শব্দরে প্রতফিলিনরে (Reflection of sound) ব্যবহারেক প্রয়াগে কানগুলি?", "opts": ["আল্ট্রোসোনোগ্রোফ (USG)", "স্টিোস্কোপ (Stethoscope)", "সমুদ্রর গভীরতো নণের্থয় (SONAR)", "..."]}, {"n": 80, "text": "পোনীয় জিলি আসর্ননক দূষেণরে প্রভাব বা রোগে কানগুলি?", "opts": ["ব্ল্যোকফ ু ট ডিজিজি", "...", "লভোর সরোসস", "..."]}, {"n": 81, "text": "সরেলি করো: 768 \\div 11.82 imes \\sqrt{168} - 42 = ?", "opts": ["745", "755", "790", "775"]}, {"n": 82, "text": "একটি ঘড় 10% ক্ষতত বক্র করো হলিা। যেদ 70 টাকা অধক মিূলি্য ঘড়টি বক্র করো হতা তব\n4% লিাভ হতা। ঘড়টিরে ক্রয়মিূলি্য কত?", "opts": ["800 টোকো", "600 টোকো", "700 টোকো", "500 টোকো"]}, {"n": 83, "text": "যেদ রোমিরে আয়রে 35% হয় 17500 টাকা, তব তারে মিাট আয়রে পেরেমিাণ কত?", "opts": ["54300 টোকো", "27000 টোকো", "50000 টোকো", "100000 টোকো"]}, {"n": 84, "text": "একটি আয়তঘনকরে তনটি সংলিগ্ন তলিরে ক্ষত্রেফিলি যেথাক্রমি 20 বগের্নসমি, 15 বগের্নসমি ও 12\nবগের্নসমি। আয়তঘনকটিরে আয়তন কত ঘনসমি?", "opts": ["3600", "100", "60", "80"]}, {"n": 85, "text": "মিান নণর্নয় করো: rac{\\sin 15^\\circ + \\cos 75^\\circ}{\\sin 15^\\circ + \\cos 75^\\circ} - \\cot 75^\\circ", "opts": ["0", "1", "2", "3"]}, {"n": 86, "text": "ছেয় বছেরে পেরে সরেলি সুদ আসলিরে 30% হলি, কত বছেরে পেরে সুদ আসলিরে সমিান হব?", "opts": ["20 বিছের", "30 বিছের", "15 বিছের", "12 বিছের"]}, {"n": 87, "text": "6^{12} imes 5^{13} imes 7^{23} এই গুণфলিরে মিাট কতগুলি মিৌলিক উৎপোদক (Prime factors)\nরেয়ছে?", "opts": ["50", "48", "60", "42"]}, {"n": 88, "text": "দুটি বৃত্তরে ক্ষত্রেফিলিরে অনুপোত 4 : 9 হলি, বৃত্ত দুটিরে পেরেধরে অনুপোত কত হব?", "opts": ["2:3", "5:3", "6:4", "1:2"]}, {"n": 89, "text": "900 টাকারে 90% এরে 40% = কত টাকা?", "opts": ["300 টোকো", "500 টোকো", "425 টোকো", "324 টোকো"]}, {"n": 90, "text": "একটি গ্রামি জিনসংখ্যারে 12% বদ্যালিয়রে ছোত্রে। যেদ ওই গ্রামিরে মিাট জিনসংখ্যা 1225 হয়, তাহলি\nকতজিন বদ্যালিয় পেড়াশানা করে?", "opts": ["115 জিন", "147 জিন", "167 জিন", "187 জিন"]}, {"n": 91, "text": "\"Wings Of Fire\" নামিক বখ্যাত আত্মজিীবনীটি কারে লিখা?", "opts": ["ইন্দরো গোন্ধী", "এপজি আব্দুল কোলোম", "মহোত্মো গোন্ধী", "শচীন তন্ডুলকোর"]}, {"n": 92, "text": "ভারেতরে মি্যানচস্টিারে (Manchester of India) কাক বলিা হয়?", "opts": ["মুম্বোই", "ুগর্থোপুর", "আমোবিো", "চন্নোই"]}, {"n": 93, "text": "মিাছেরে হৃদপেন্ডরে প্রকাষ্ঠ সংখ্যা কয়টি?", "opts": ["2 টি", "3 টি", "4 টি", "5 টি"]}, {"n": 94, "text": "\"ভারেতরে নপোলিয়ন\" কাক বলিা হতা?", "opts": ["দ্বৈতীয় চন্দ্রগুপ্ত", "প্রম চন্দ্রগুপ্ত", "স্কন্দগুপ্ত", "সমুদ্রগুপ্ত"]}, {"n": 95, "text": "ননস্টিক বাসন ক ব্যবহৃত হয়?", "opts": ["ফ্রয়ন", "টফলন", "ক্যোরন", "পয়নর"]}, {"n": 96, "text": "ভারেতরে সবর্নাচ্চ শৃঙ্গরে নামি ক?", "opts": ["নন্দো বিী", "কোঞ্চনজিঙ্ঘো", "কোরোকোরোম (K2)", "এভোরস্টি"]}, {"n": 97, "text": "পেশ্চিমিবঙ্গ রোজি্য প্রাণী কানটি?", "opts": ["রয়্যোল বিঙ্গল টোইগোর", "হোত", "একশৃঙ্গ গণ্ডোর", "মছেো বিড়োল (Fishing Cat)"]}, {"n": 98, "text": "কানটিরে উপেস্থিতত মিুত্রেরে রেঙ হলিুদ হয়?", "opts": ["রক্ত", "ইউরয়ো", "বিলরুবিন / ইউরোক্রোম", "ক্রোমোটিন"]}, {"n": 99, "text": "প্রথমি কান ভারেতীয় আই স এস (ICS) হয়ছেলিন?", "opts": ["সত্যন্দ্রনো ঠোক ু র", "সুভোষচন্দ্র বিসু", "চত্তরঞ্জন োস", "মহোত্মো গোন্ধী"]}, {"n": 100, "text": "ত া তুলি কান অ্যাসড থাক?", "opts": ["ফরমক অ্যোসডি", "টোরটোরক অ্যোসডি", "ম্যোলক অ্যোসডি", "ল্যোক্টিক অ্যোসডি"]}];
+
+// ===== SECTIONS =====
+const SECTIONS = [{"title": "ইংরেজি ব্যাকরণ (English Grammar)", "badge": "ENGLISH GRAMMAR", "start": 1, "end": 15}, {"title": "লজিক্যাল রিজনিং (Logical Reasoning)", "badge": "LOGICAL REASONING", "start": 16, "end": 20}, {"title": "জীবন বিজ্ঞান (Life Sciences) - Category I", "badge": "LIFE SCIENCES · CATEGORY I", "start": 21, "end": 51}, {"title": "জীবন বিজ্ঞান (Life Sciences) - Category II", "badge": "LIFE SCIENCES · CATEGORY II (SINGLE CORRECT)", "start": 52, "end": 60}, {"title": "ভৌত বিজ্ঞান (Physical Sciences) - Category I", "badge": "PHYSICAL SCIENCES · CATEGORY I", "start": 61, "end": 76}, {"title": "ভৌত বিজ্ঞান (Physical Sciences) - Category II", "badge": "PHYSICAL SCIENCES · CATEGORY II (SINGLE CORRECT)", "start": 77, "end": 80}, {"title": "পাটিগণিত (Arithmetic)", "badge": "ARITHMETIC", "start": 81, "end": 90}, {"title": "সাধারণ জ্ঞান (General Knowledge)", "badge": "GENERAL KNOWLEDGE", "start": 91, "end": 100}];
+
+let timerInterval = null;
+let timeLeft = 90 * 60;
+let studentName = '';
+
+// ===== THEME =====
+function toggleTheme() {
+    const body = document.body;
+    const btn = document.getElementById('themeToggle');
+    if (body.getAttribute('data-theme') === 'dark') {
+        body.setAttribute('data-theme', 'light');
+        btn.textContent = '☀️';
+        localStorage.setItem('exam_theme', 'light');
+    } else {
+        body.setAttribute('data-theme', 'dark');
+        btn.textContent = '🌙';
+        localStorage.setItem('exam_theme', 'dark');
+    }
+}
+
+function loadTheme() {
+    const saved = localStorage.getItem('exam_theme');
+    if (saved === 'light') {
+        document.body.setAttribute('data-theme', 'light');
+        document.getElementById('themeToggle').textContent = '☀️';
+    }
+}
+
+// ===== ATTEMPT STATE =====
+function checkAttempted() {
+    const data = localStorage.getItem(EXAM_KEY);
+    if (data) {
+        const p = JSON.parse(data);
+        document.getElementById('reg-form').style.display = 'none';
+        studentName = p.name;
+        document.getElementById('reg-screen').style.display = 'none';
+        document.getElementById('exam-screen').style.display = 'none';
+        document.getElementById('result-screen').style.display = 'block';
+        
+        renderResultScreen(p.name, p.score, p.correct, p.wrong, p.skipped, p.percentage, p.timeTaken, p.results || [], true);
+        fetchLeaderboard();
+        return true;
+    }
+    return false;
+}
+
+// ===== START EXAM =====
+function startExam() {
+    const name = document.getElementById('studentName').value.trim();
+    if (!name) { 
+        alert('অনুগ্রহ করে নিজের নাম লিখুন।'); 
+        return; 
+    }
+    studentName = name;
+    
+    SoundFX.init();
+    SoundFX.playClick();
+    
+    document.getElementById('reg-screen').style.display = 'none';
+    document.getElementById('exam-screen').style.display = 'block';
+    document.getElementById('avatar').textContent = name.charAt(0).toUpperCase();
+    document.getElementById('displayName').textContent = name;
+    buildQuestions();
+    startTimer();
+    if (window.MathJax && window.MathJax.typesetPromise) window.MathJax.typesetPromise();
+}
+
+// ===== BUILD QUESTIONS =====
+function buildQuestions() {
+    const c = document.getElementById('qContainer');
+    let html = ''; 
+    let qi = 0;
+    SECTIONS.forEach(sec => {
+        html += `<div class="sec-header"><h2>${sec.title}</h2><div class="sec-badge">${sec.badge}</div></div>`;
+        for (let i = sec.start; i <= sec.end; i++) {
+            const q = QUESTIONS[qi];
+            html += `<div class="q-block" id="qb-${q.n}">
+                <div class="q-stem">
+                    <span class="q-num gradient-bg">${q.n}</span>
+                    <span class="q-text">${q.text}</span>
+                </div>
+                <div class="opts-grid">`;
+            q.opts.forEach((opt, oi) => {
+                html += `
+                <label class="opt-label" id="ol-${q.n}-${oi}" onclick="selectOpt(${q.n},${oi})">
+                    <input type="radio" name="q${q.n}" value="${oi}">
+                    <span class="radio-dot"></span>
+                    <span class="opt-letter">${OPT_LETTERS[oi]}</span>
+                    <span class="opt-content">${opt}</span>
+                </label>`;
+            });
+            html += '</div></div>';
+            qi++;
+        }
+    });
+    c.innerHTML = html;
+}
+
+// ===== SELECT OPTION =====
+function selectOpt(qn, oi) {
+    SoundFX.playClick();
+    for (let i = 0; i < 4; i++) { 
+        const e = document.getElementById(`ol-${qn}-${i}`); 
+        if(e) e.classList.remove('selected'); 
+    }
+    const sel = document.getElementById(`ol-${qn}-${oi}`);
+    if (sel) { 
+        sel.classList.add('selected'); 
+        sel.querySelector('input').checked = true; 
+    }
+    const blk = document.getElementById(`qb-${qn}`); 
+    if(blk) blk.classList.add('answered');
+    updateProgress();
+}
+
+function updateProgress() {
+    let ans = 0;
+    QUESTIONS.forEach(q => { 
+        if (document.querySelector(`input[name="q${q.n}"]:checked`)) ans++; 
+    });
+    const pct = Math.round((ans / QUESTIONS.length) * 100);
+    document.getElementById('answeredCount').textContent = `উত্তর: ${ans} / ${QUESTIONS.length}`;
+    document.getElementById('progressPct').textContent = pct + '%';
+    document.getElementById('progressFill').style.width = pct + '%';
+}
+
+// ===== TIMER =====
+function startTimer() {
+    updateTimerDisplay();
+    timerInterval = setInterval(() => {
+        timeLeft--;
+        if (timeLeft <= 0) { 
+            clearInterval(timerInterval); 
+            timeLeft = 0; 
+            updateTimerDisplay(); 
+            alert('⏰ সময় শেষ! পরীক্ষা স্বয়ংক্রিয়ভাবে জমা হচ্ছে।'); 
+            submitExam(); 
+            return; 
+        }
+        updateTimerDisplay();
+        const box = document.getElementById('timerBox');
+        if (timeLeft <= 300) { 
+            box.classList.add('danger'); 
+            box.classList.remove('warn'); 
+            SoundFX.playTick();
+        } else if (timeLeft <= 900) { 
+            box.classList.add('warn'); 
+            box.classList.remove('danger'); 
+        }
+    }, 1000);
+}
+
+function updateTimerDisplay() {
+    const m = Math.floor(timeLeft / 60), s = timeLeft % 60;
+    document.getElementById('timerDisplay').textContent = String(m).padStart(2,'0') + ':' + String(s).padStart(2,'0');
+}
+
+// ===== MODAL =====
+function showModal() {
+    let un = 0;
+    QUESTIONS.forEach(q => { 
+        if (!document.querySelector(`input[name="q${q.n}"]:checked`)) un++; 
+    });
+    const w = document.getElementById('unansweredWarn');
+    if (un > 0) { 
+        w.style.display = 'block'; 
+        w.textContent = `⚠️ ${un}টি প্রশ্নের উত্তর দেওয়া হয়নি!`; 
+    } else { 
+        w.style.display = 'none'; 
+    }
+    document.getElementById('confirmModal').classList.add('show');
+}
+function hideModal() { 
+    document.getElementById('confirmModal').classList.remove('show'); 
+}
+
+// ===== SUBMIT EXAM =====
+function submitExam() {
+    hideModal();
+    clearInterval(timerInterval);
+    const name = studentName;
+    let correct = 0, wrong = 0, skipped = 0;
+    const results = [];
+
+    QUESTIONS.forEach((q, idx) => {
+        const sel = document.querySelector(`input[name="q${q.n}"]:checked`);
+        const correctAns = ANSWER_KEY[idx];
+        let status, studentAns;
+        if (!sel) { 
+            status = 'skipped'; 
+            studentAns = -1; 
+            skipped++; 
+        } else {
+            studentAns = parseInt(sel.value);
+            if (studentAns === correctAns) { 
+                status = 'correct'; 
+                correct++; 
+            } else { 
+                status = 'wrong'; 
+                wrong++; 
+            }
+        }
+        results.push({ q, idx, status, studentAns, correctAns });
+    });
+
+    const rawScore = correct - (wrong * 0.25);
+    const score = parseFloat(rawScore.toFixed(2));
+    const percentage = parseFloat(((Math.max(0, score) / QUESTIONS.length) * 100).toFixed(1));
+    const timeTaken = 90*60 - timeLeft;
+    const tmMin = Math.floor(timeTaken / 60);
+    const tmSec = timeTaken % 60;
+    const timeStr = `${tmMin}m ${tmSec}s`;
+
+    // Save locally
+    localStorage.setItem(EXAM_KEY, JSON.stringify({ name, score, total: QUESTIONS.length, correct, wrong, skipped, percentage, date: new Date().toLocaleString('bn-IN'), timeTaken: timeStr, results }));
+
+    document.getElementById('exam-screen').style.display = 'none';
+    document.getElementById('result-screen').style.display = 'block';
+
+    renderResultScreen(name, score, correct, wrong, skipped, percentage, timeStr, results, false);
+
+    // Send to Google Sheets via Hybrid Submit (Fetch + JSONP Fallback)
+    let submitted = false;
+    function handleSuccess() {
+        if (submitted) return;
+        submitted = true;
+        console.log('Exam result recorded!');
+        fetchLeaderboard();
+    }
+
+    const submitParams = `?action=submit&examKey=${EXAM_KEY}&name=${encodeURIComponent(name)}&score=${score}&total=${QUESTIONS.length}&correct=${correct}&wrong=${wrong}&skipped=${skipped}&percentage=${percentage}&timeTaken=${encodeURIComponent(timeStr)}`;
+    const submitUrl = SCRIPT_URL + submitParams;
+
+    if (SCRIPT_URL.startsWith('http')) {
+        console.log('Submitting via fetch()...');
+        fetch(submitUrl, {
+            method: 'GET',
+            mode: 'cors',
+            credentials: 'omit'
+        })
+        .then(res => {
+            if (!res.ok) throw new Error('HTTP status ' + res.status);
+            return res.json();
+        })
+        .then(data => {
+            console.log('Submitted successfully via fetch()');
+            handleSuccess();
+        })
+        .catch(err => {
+            console.warn('fetch() failed, falling back to JSONP: ', err);
+            
+            const cb = 'submitCallback_' + Date.now();
+            window[cb] = function(res) {
+                console.log('Submitted successfully via JSONP');
+                handleSuccess();
+                delete window[cb];
+            };
+
+            const script = document.createElement('script');
+            script.src = submitUrl + '&callback=' + cb;
+            script.onerror = function() {
+                console.error('JSONP submit script failed.');
+                fetchLeaderboard();
+            };
+            document.body.appendChild(script);
+        });
+    } else {
+        console.warn('Google Apps Script URL is empty or invalid.');
+        fetchLeaderboard();
+    }
+}
+
+function switchTab(tabId) {
+    document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
+    document.querySelectorAll('.tab-content').forEach(content => content.classList.remove('active'));
+    
+    const btn = Array.from(document.querySelectorAll('.tab-btn')).find(b => b.getAttribute('onclick').includes(tabId));
+    if (btn) btn.classList.add('active');
+    
+    document.getElementById(tabId).classList.add('active');
+}
+
+function renderResultScreen(name, score, correct, wrong, skipped, percentage, timeStr, results, isReattempt = false) {
+    let emoji = '🎯', remark = 'চমৎকার!';
+    if (percentage >= 80) { emoji = '🏆'; remark = 'অসাধারণ! চমৎকার পারফরম্যান্স!'; }
+    else if (percentage >= 60) { emoji = '👏'; remark = 'ভালো করেছো! আরও চেষ্টা করো!'; }
+    else if (percentage >= 40) { emoji = '💪'; remark = 'মোটামুটি। আরও অনুশীলন দরকার।'; }
+    else { emoji = '📚'; remark = 'আরও অনেক পড়াশোনা দরকার।'; }
+
+    const scoreDisplay = score % 1 === 0 ? score : score.toFixed(2);
+    const deducted = parseFloat((wrong * 0.25).toFixed(2));
+
+    let html = '';
+    if (isReattempt) {
+        html += `
+        <div class="lock-screen-box">
+            <div class="lock-logo-container">
+                <div class="lock-logo-wrapper">
+                    <span class="lock-logo-big">🔒</span>
+                </div>
+            </div>
+            <h2>পরীক্ষা লক করা হয়েছে!</h2>
+            <p class="lock-desc">আপনি ইতিমধ্যে এই পরীক্ষাটি সম্পন্ন করেছেন। পুনরায় পরীক্ষা দেওয়া সম্ভব নয়। আপনার পূর্বের ফলাফল নিচে মার্কশিটে দেওয়া হলো।</p>
+            
+            <div class="podium-title">🏆 শীর্ষ ৩ জন পরীক্ষার্থী (Top 3)</div>
+            <div class="podium-wrapper" id="podiumWrapper">
+                <p style="color:var(--text-muted); font-size:13px; margin: 10px 0;">শীর্ষ ৩ লোড হচ্ছে...</p>
+            </div>
+            <p class="podium-hint">💡 অন্যান্য সবার বিস্তারিত র্যাংকিং দেখতে নিচে <strong>"লিডারবোর্ড"</strong> ট্যাবে ক্লিক করুন।</p>
+        </div>`;
+        
+        setTimeout(() => { SoundFX.playLock(); }, 300);
+    } else {
+        setTimeout(() => { SoundFX.playSuccess(); }, 300);
+    }
+
+    html += `
+    <div class="tabs-container">
+        <button class="tab-btn active" onclick="switchTab('tab-score')">📊 মার্কশিট</button>
+        <button class="tab-btn" onclick="switchTab('tab-leaderboard')">🏆 লিডারবোর্ড</button>
+        <button class="tab-btn" onclick="switchTab('tab-answers')">📝 আপনার উত্তর</button>
+        <button class="tab-btn" onclick="switchTab('tab-official')">📖 অফিশিয়াল সমাধান</button>
+    </div>
+
+    <div id="tab-score" class="tab-content active">
+        <div class="result-hero">
+            <div class="score-circle">
+                <span class="score-big gradient-text">${scoreDisplay}</span>
+                <span class="score-of">/ ${QUESTIONS.length}</span>
+            </div>
+            <h2>${emoji} ${remark}</h2>
+            <p class="detail"><strong>${name}</strong> | সময়: ${timeStr}</p>
+        </div>
+
+        <div class="stats-grid">
+            <div class="stat-card correct"><div class="s-icon">✅</div><div class="s-val">${correct}</div><div class="s-lbl">সঠিক</div></div>
+            <div class="stat-card wrong"><div class="s-icon">❌</div><div class="s-val">${wrong}</div><div class="s-lbl">ভুল</div></div>
+            <div class="stat-card skipped"><div class="s-icon">⏭️</div><div class="s-val">${skipped}</div><div class="s-lbl">বাদ</div></div>
+            <div class="stat-card score"><div class="s-icon">📊</div><div class="s-val">${scoreDisplay}</div><div class="s-lbl">মোট নম্বর</div></div>
+            <div class="stat-card pct"><div class="s-icon">📈</div><div class="s-val">${percentage}%</div><div class="s-lbl">শতাংশ</div></div>
+        </div>
+
+        <div class="neg-info">⚠️ নেগেティブ মার্কিং: ${wrong}টি ভুল × ০.২৫ = <strong>-${deducted}</strong> নম্বর কাটা হয়েছে। (${correct} - ${deducted} = ${scoreDisplay})</div>
+        <div class="result-footer" style="margin-top:20px;"><p>ANM & GNM Mock Test • Test Exam 1 • ${new Date().toLocaleDateString('bn-IN')}</p></div>
+    </div>
+
+    <div id="tab-leaderboard" class="tab-content">
+        <div class="lb-section" id="leaderboardContainer" style="margin-top:0;">
+            <h3>🏆 লাইভ লিডারবোর্ড লোড হচ্ছে...</h3>
+        </div>
+    </div>
+
+    <div id="tab-answers" class="tab-content">
+        <div class="review-header" style="margin-top:0;"><h3>📝 আপনার দেওয়া উত্তরপত্র</h3></div>
+        <div id="studentAnswersContainer"></div>
+    </div>
+
+    <div id="tab-official" class="tab-content">
+        <div class="review-header" style="margin-top:0;"><h3>📖 অফিশিয়াল বিস্তারিত সমাধান</h3></div>
+        <div id="officialAnswersContainer"></div>
+    </div>
+    `;
+
+    document.getElementById('resultBox').innerHTML = html;
+
+    // Render Student Answers
+    let ansHtml = '';
+    if(results && results.length > 0) {
+        results.forEach(r => {
+            const sc = r.status === 'correct' ? 'is-correct' : (r.status === 'wrong' ? 'is-wrong' : 'is-skipped');
+            let tags = '';
+            if (r.status === 'correct') {
+                tags = `<span class="rev-tag right-tag">আপনার উত্তর: ${OPT_LETTERS[r.studentAns]} ✓</span>`;
+            } else if (r.status === 'wrong') {
+                tags = `<span class="rev-tag wrong-tag">আপনার উত্তর: ${OPT_LETTERS[r.studentAns]}</span><span class="rev-tag correct-tag">সঠিক উত্তর: ${OPT_LETTERS[r.correctAns]}</span>`;
+            } else {
+                tags = `<span class="rev-tag skip-tag">উত্তর দেওয়া হয়নি</span><span class="rev-tag correct-tag">সঠিক উত্তর: ${OPT_LETTERS[r.correctAns]}</span>`;
+            }
+            ansHtml += `<div class="rev-block ${sc}"><div class="rev-stem"><span class="rev-num">${r.q.n}</span><span class="rev-q-text">${r.q.text}</span></div><div class="rev-tags">&nbsp;${tags}</div></div>`;
+        });
+    } else {
+        ansHtml = '<p style="text-align:center; padding:20px; color:var(--text-secondary);">উত্তরের তথ্য পাওয়া যায়নি।</p>';
+    }
+    document.getElementById('studentAnswersContainer').innerHTML = ansHtml;
+
+    // Render Official Answers
+    let offHtml = '';
+    QUESTIONS.forEach((q, i) => {
+        offHtml += `<div class="rev-block is-correct" style="border-left-color:var(--accent-blue); background:rgba(59,130,246,0.05); margin-bottom:20px; padding:20px;">
+            <div class="rev-stem" style="border-bottom:1px solid var(--border-default); padding-bottom:12px; margin-bottom:12px;">
+                <span class="rev-num" style="background:var(--accent-blue);">${q.n}</span>
+                <span class="rev-q-text" style="font-size:16px;">${q.text}</span>
+            </div>
+            <div style="margin-bottom:12px;"><strong>সঠিক উত্তর:</strong> <span style="color:var(--text-primary); font-weight:600;">${OPT_LETTERS[ANSWER_KEY[i]]} ${q.opts[ANSWER_KEY[i]]}</span></div>
+            <div style="font-size:14.5px; color:var(--text-secondary); line-height:1.7;">
+                <strong style="color:var(--text-primary);">ব্যাখ্যা:</strong><br>${EXPLANATIONS[i] || 'এই প্রশ্নের বিস্তারিত ব্যাখ্যা উপলব্ধ নেই।'}
+            </div>
+        </div>`;
+    });
+    document.getElementById('officialAnswersContainer').innerHTML = offHtml;
+
+    if (window.MathJax && window.MathJax.typesetPromise) {
+        window.MathJax.typesetPromise([document.getElementById('tab-official'), document.getElementById('tab-answers')]);
+    }
+    window.scrollTo({top: 0, behavior: 'smooth'});
+}
+
+// ===== FETCH LEADERBOARD =====
+function fetchLeaderboard() {
+    const lc = document.getElementById('leaderboardContainer');
+    if (!lc) return;
+
+    lc.innerHTML = '<h3>🏆 লাইভ লিডারবোর্ড লোড হচ্ছে...</h3>';
+    let loaded = false;
+
+    function renderLeaderboard(data) {
+        if (loaded) return;
+        loaded = true;
+
+        if (data && data.error) {
+            lc.innerHTML = `<p style="text-align:center;color:var(--accent-red);padding:20px;font-weight:600;">⚠️ ত্রুটি: ${data.error}</p>`;
+            return;
+        }
+
+        if (data && data.results && data.results.length > 0) {
+            let h = `<div style="overflow-x:auto;"><table class="lb-table"><thead><tr><th>Rank</th><th>নাম</th><th>Score</th><th>✅</th><th>❌</th><th>⏭️</th><th>সময়</th></tr></thead><tbody>`;
+            data.results.forEach((row, i) => {
+                let rc = '', rd = i + 1;
+                if (i === 0) { rc = 'rank-1'; rd = '🥇 1'; }
+                else if (i === 1) { rc = 'rank-2'; rd = '🥈 2'; }
+                else if (i === 2) { rc = 'rank-3'; rd = '🥉 3'; }
+                const isMe = row.name === studentName;
+                
+                const corrVal = row.correct !== undefined && row.correct !== null ? row.correct : '-';
+                const wrongVal = row.wrong !== undefined && row.wrong !== null ? row.wrong : '-';
+                const skipVal = row.skipped !== undefined && row.skipped !== null ? row.skipped : '-';
+
+                h += `<tr class="${isMe ? 'highlight-row' : ''}">
+                    <td class="${rc}">${rd}</td>
+                    <td>${row.name}${isMe ? ' ⭐' : ''}</td>
+                    <td style="font-weight:bold;color:var(--accent-cyan);">${row.score}</td>
+                    <td>${corrVal}</td>
+                    <td>${wrongVal}</td>
+                    <td>${skipVal}</td>
+                    <td>${row.timeTaken || '-'}</td>
+                </tr>`;
+            });
+            h += '</tbody></table></div>';
+            lc.innerHTML = h;
+        } else {
+            lc.innerHTML = '<p style="text-align:center;color:var(--text-muted);padding:20px;">এখনও কেউ পরীক্ষা দেয়নি।</p>';
+        }
+
+        // Podium Rendering
+        const podiumWrapper = document.getElementById('podiumWrapper');
+        if (podiumWrapper && data && data.results) {
+            const top3 = data.results.slice(0, 3);
+            if (top3.length > 0) {
+                let phtml = '';
+                
+                // 2nd (Silver)
+                if (top3[1]) {
+                    phtml += `
+                    <div class="podium-card silver">
+                        <span class="podium-badge">🥈</span>
+                        <span class="podium-name">${top3[1].name}</span>
+                        <span class="podium-score">${top3[1].score}</span>
+                    </div>`;
+                } else {
+                    phtml += `<div class="podium-card silver" style="opacity:0.3; height:90px;"><span class="podium-badge">🥈</span><span class="podium-name">-</span></div>`;
+                }
+
+                // 1st (Gold)
+                if (top3[0]) {
+                    phtml += `
+                    <div class="podium-card gold">
+                        <span class="podium-badge">🥇</span>
+                        <span class="podium-name">${top3[0].name}</span>
+                        <span class="podium-score">${top3[0].score}</span>
+                    </div>`;
+                }
+
+                // 3rd (Bronze)
+                if (top3[2]) {
+                    phtml += `
+                    <div class="podium-card bronze">
+                        <span class="podium-badge">🥉</span>
+                        <span class="podium-name">${top3[2].name}</span>
+                        <span class="podium-score">${top3[2].score}</span>
+                    </div>`;
+                } else {
+                    phtml += `<div class="podium-card bronze" style="opacity:0.3; height:90px;"><span class="podium-badge">🥉</span><span class="podium-name">-</span></div>`;
+                }
+                
+                podiumWrapper.innerHTML = phtml;
+            } else {
+                podiumWrapper.innerHTML = '<p style="color:var(--text-muted); font-size:13px;">এখনও কোনো ফলাফল নেই।</p>';
+            }
+        }
+    }
+
+    const fetchUrl = SCRIPT_URL + '?action=leaderboard&examKey=' + EXAM_KEY;
+    console.log('Fetching leaderboard from: ', fetchUrl);
+    
+    if (SCRIPT_URL.startsWith('http')) {
+        fetch(fetchUrl, {
+            method: 'GET',
+            mode: 'cors',
+            credentials: 'omit'
+        })
+        .then(res => {
+            if (!res.ok) throw new Error('HTTP status ' + res.status);
+            return res.json();
+        })
+        .then(data => {
+            console.log('Leaderboard successfully loaded via fetch()');
+            renderLeaderboard(data);
+        })
+        .catch(err => {
+            console.warn('fetch() failed, falling back to JSONP: ', err);
+            
+            const cb = 'lbCallback_' + Date.now();
+            window[cb] = function(data) {
+                console.log('Leaderboard successfully loaded via JSONP');
+                renderLeaderboard(data);
+                delete window[cb];
+            };
+
+            const script = document.createElement('script');
+            script.src = fetchUrl + '&callback=' + cb;
+            script.onerror = function() {
+                console.error('JSONP script failed.');
+                if (!loaded) {
+                    lc.innerHTML = `
+                        <div style="text-align:center;padding:20px;">
+                            <p style="color:var(--accent-red);font-weight:600;margin-bottom:12px;">⚠️ লিডারবোর্ড লোড করা যায়নি।</p>
+                            <button class="tab-btn" onclick="fetchLeaderboard()" style="padding:6px 16px;font-size:12px;">🔄 আবার চেষ্টা করুন</button>
+                        </div>`;
+                    const podiumWrapper = document.getElementById('podiumWrapper');
+                    if (podiumWrapper) {
+                        podiumWrapper.innerHTML = `
+                            <div style="text-align:center; padding: 10px 0;">
+                                <p style="color:var(--accent-red); font-size:12px; margin-bottom:6px;">⚠️ লোড করা যায়নি</p>
+                                <button class="tab-btn" onclick="fetchLeaderboard()" style="padding:4px 10px;font-size:10px;">🔄 চেষ্টা করুন</button>
+                            </div>`;
+                    }
+                }
+            };
+            document.body.appendChild(script);
+        });
+    } else {
+        // No Script URL set, render dummy data for preview
+        const dummyData = {
+            results: [
+                { name: "সৌমেন দত্ত", score: 58.25, correct: 59, wrong: 3, skipped: 3, timeTaken: "45m 12s" },
+                { name: "প্রিয়া সেন", score: 52.00, correct: 54, wrong: 8, skipped: 3, timeTaken: "52m 30s" },
+                { name: "অমিত প্রামাণিক", score: 48.75, correct: 51, wrong: 9, skipped: 5, timeTaken: "58m 10s" }
+            ]
+        };
+        setTimeout(() => { renderLeaderboard(dummyData); }, 800);
+    }
+}
+
+// ===== INIT =====
+let lockSoundPlayed = false;
+
+function triggerLockSoundIfReattempt() {
+    if (localStorage.getItem(EXAM_KEY) && !lockSoundPlayed) {
+        SoundFX.playLock();
+        lockSoundPlayed = true;
+    }
+}
+
+window.addEventListener('DOMContentLoaded', () => {
+    loadTheme();
+    const isAttempted = checkAttempted();
+    
+    if (isAttempted) {
+        const resumeAudio = () => {
+            SoundFX.init();
+            if (SoundFX.ctx) {
+                if (SoundFX.ctx.state === 'suspended') {
+                    SoundFX.ctx.resume().then(() => {
+                        triggerLockSoundIfReattempt();
+                    });
+                } else {
+                    triggerLockSoundIfReattempt();
+                }
+            }
+            document.removeEventListener('click', resumeAudio);
+            document.removeEventListener('touchstart', resumeAudio);
+        };
+        
+        document.addEventListener('click', resumeAudio);
+        document.addEventListener('touchstart', resumeAudio);
+    }
+});
+</script>
+</body>
+</html>

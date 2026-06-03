@@ -1,0 +1,1331 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test Exam 2 — ANM & GNM Set 2 Mock Test</title>
+    <meta name="description" content="ANM & GNM Mock Test - Test Exam 2 with Negative Marking & Live Leaderboard">
+    <script>
+        window.MathJax = {
+            tex: { inlineMath: [['$','$'],['\\(','\\)']], displayMath: [['$$','$$'],['\\[','\\]']] },
+            chtml: { fontURL: 'https://cdn.jsdelivr.net/npm/mathjax@3/es5/output/chtml/fonts/woff-v2' },
+            startup: { typeset: true }
+        };
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" async></script>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Bengali:wght@400;500;600;700&family=Inter:wght@400;500;600;700;800;900&family=Outfit:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        /* ===== THEME VARIABLES ===== */
+        :root, [data-theme="dark"] {
+            --bg-primary: #0b0f19;
+            --bg-secondary: #111827;
+            --bg-card: #141b2d;
+            --bg-card-hover: #1a2440;
+            --bg-option: #1a2240;
+            --bg-option-hover: #1f2d52;
+            --bg-option-selected: #1c3a6e;
+            --border-default: #2a3352;
+            --border-selected: #60a5fa;
+            --text-primary: #f1f5f9;
+            --text-secondary: #94a3b8;
+            --text-muted: #64748b;
+            --accent-blue: #3b82f6;
+            --accent-cyan: #06b6d4;
+            --accent-purple: #8b5cf6;
+            --accent-pink: #ec4899;
+            --accent-green: #10b981;
+            --accent-red: #ef4444;
+            --accent-amber: #f59e0b;
+            --shadow-lg: 0 20px 60px rgba(0,0,0,0.5);
+            --shadow-card: 0 4px 24px rgba(0,0,0,0.3);
+            --shadow-glow: 0 0 30px rgba(59,130,246,0.12);
+            --topbar-bg: rgba(11,15,25,0.92);
+            --modal-bg: rgba(0,0,0,0.75);
+            --print-bg: #0b0f19;
+        }
+
+        [data-theme="light"] {
+            --bg-primary: #f0f4f8;
+            --bg-secondary: #e8ecf1;
+            --bg-card: #ffffff;
+            --bg-card-hover: #f8f9fb;
+            --bg-option: #f3f5f9;
+            --bg-option-hover: #e8ecf4;
+            --bg-option-selected: #dbeafe;
+            --border-default: #d1d9e6;
+            --border-selected: #3b82f6;
+            --text-primary: #1a1a2e;
+            --text-secondary: #4a5568;
+            --text-muted: #718096;
+            --shadow-lg: 0 20px 60px rgba(0,0,0,0.08);
+            --shadow-card: 0 2px 12px rgba(0,0,0,0.06);
+            --shadow-glow: 0 0 20px rgba(59,130,246,0.08);
+            --topbar-bg: rgba(240,244,248,0.92);
+            --modal-bg: rgba(0,0,0,0.4);
+            --print-bg: #ffffff;
+        }
+
+        * { margin:0; padding:0; box-sizing:border-box; }
+        html { scroll-behavior: smooth; }
+
+        body {
+            font-family: 'Noto Sans Bengali', 'Outfit', 'Inter', sans-serif;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.7;
+            min-height: 100vh;
+            transition: background-color 0.4s, color 0.4s;
+        }
+
+        ::-webkit-scrollbar { width: 7px; }
+        ::-webkit-scrollbar-track { background: var(--bg-primary); }
+        ::-webkit-scrollbar-thumb { background: var(--border-default); border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: var(--accent-blue); }
+
+        /* ===== THEME TOGGLE ===== */
+        .theme-toggle {
+            position: fixed; bottom: 24px; right: 24px; z-index: 999;
+            width: 50px; height: 50px; border-radius: 50%; border: 2px solid var(--border-default);
+            background: var(--bg-card); color: var(--text-primary);
+            font-size: 22px; cursor: pointer; display: flex; align-items: center; justify-content: center;
+            box-shadow: var(--shadow-card); transition: all 0.3s;
+        }
+        .theme-toggle:hover { transform: scale(1.1); border-color: var(--accent-blue); box-shadow: 0 0 20px rgba(59,130,246,0.3); }
+
+        /* ===== ANIMATIONS ===== */
+        @keyframes fadeUp { from { opacity:0; transform:translateY(30px); } to { opacity:1; transform:translateY(0); } }
+        @keyframes pulse { 0%,100% { opacity:1; } 50% { opacity:0.5; } }
+        @keyframes shimmer { 0% { background-position: -200% center; } 100% { background-position: 200% center; } }
+        .fade-up { animation: fadeUp 0.6s ease-out; }
+
+        /* ===== GRADIENT ===== */
+        .gradient-text { background: linear-gradient(135deg, #3b82f6, #8b5cf6, #ec4899); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+        .gradient-bg { background: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 50%, #ec4899 100%); }
+        .gradient-border { border-image: linear-gradient(135deg, #3b82f6, #8b5cf6, #ec4899) 1; }
+
+        /* ===== REGISTRATION ===== */
+        #reg-screen {
+            display: flex; align-items: center; justify-content: center; min-height: 100vh; padding: 20px;
+            position: relative; overflow: hidden;
+        }
+        #reg-screen::before, #reg-screen::after {
+            content:''; position:absolute; width:500px; height:500px; border-radius:50%; pointer-events:none;
+        }
+        #reg-screen::before { top:-200px; right:-150px; background: radial-gradient(circle, rgba(59,130,246,0.07) 0%, transparent 70%); }
+        #reg-screen::after { bottom:-200px; left:-150px; background: radial-gradient(circle, rgba(139,92,246,0.07) 0%, transparent 70%); }
+
+        .reg-card {
+            background: var(--bg-card); border: 1px solid var(--border-default); border-radius: 24px;
+            padding: 44px; max-width: 520px; width: 100%; box-shadow: var(--shadow-lg);
+            position: relative; z-index: 1; animation: fadeUp 0.6s ease-out;
+            transition: background-color 0.4s, border-color 0.4s;
+        }
+        .reg-logo { text-align: center; margin-bottom: 28px; }
+        .reg-logo .icon { width: 68px; height: 68px; border-radius: 18px; display: inline-flex; align-items: center; justify-content: center; font-size: 30px; margin-bottom: 14px; box-shadow: 0 8px 28px rgba(59,130,246,0.3); }
+        .reg-logo h1 { font-family: 'Outfit', sans-serif; font-size: 26px; font-weight: 800; }
+        .reg-logo .sub { color: var(--text-secondary); font-size: 13px; margin-top: 4px; }
+
+        .exam-pills { display: flex; gap: 8px; justify-content: center; flex-wrap: wrap; margin: 18px 0 24px; }
+        .pill { background: var(--bg-option); border: 1px solid var(--border-default); border-radius: 20px; padding: 5px 14px; font-size: 12px; color: var(--text-secondary); font-weight: 500; transition: all 0.3s; }
+        .pill strong { color: var(--accent-cyan); }
+        .pill.neg { border-color: rgba(239,68,68,0.3); }
+        .pill.neg strong { color: var(--accent-red); }
+
+        .form-group { margin-bottom: 18px; }
+        .form-group label { display: block; font-size: 12px; font-weight: 600; color: var(--text-secondary); margin-bottom: 7px; text-transform: uppercase; letter-spacing: 0.5px; }
+        .form-group input {
+            width: 100%; padding: 13px 16px; background: var(--bg-option); border: 1px solid var(--border-default);
+            border-radius: 12px; color: var(--text-primary); font-size: 16px; font-family: inherit;
+            transition: all 0.3s; outline: none;
+        }
+        .form-group input:focus { border-color: var(--accent-blue); box-shadow: 0 0 0 3px rgba(59,130,246,0.15); }
+        .form-group input::placeholder { color: var(--text-muted); }
+
+        .btn-primary {
+            width: 100%; padding: 15px; border: none; border-radius: 12px; color: white;
+            font-size: 16px; font-weight: 700; font-family: inherit; cursor: pointer;
+            transition: all 0.3s; letter-spacing: 0.3px;
+        }
+        .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 28px rgba(59,130,246,0.35); }
+        .btn-primary:disabled { opacity: 0.5; cursor: not-allowed; transform: none; }
+
+        /* ===== EXAM SCREEN ===== */
+        #exam-screen { display: none; }
+
+        .top-bar {
+            position: sticky; top: 0; z-index: 100;
+            background: var(--topbar-bg); backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--border-default); padding: 10px 20px;
+            transition: background-color 0.4s;
+        }
+        .top-inner { max-width: 880px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; gap: 12px; flex-wrap: wrap; }
+        .stu-info { display: flex; align-items: center; gap: 10px; }
+        .stu-avatar { width: 36px; height: 36px; border-radius: 10px; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 15px; color: white; }
+        .stu-name { font-weight: 600; font-size: 14px; }
+
+        .timer-box { display: flex; align-items: center; gap: 7px; background: var(--bg-card); border: 1px solid var(--border-default); border-radius: 12px; padding: 7px 14px; transition: all 0.3s; }
+        .timer-display { font-family: 'JetBrains Mono', monospace; font-size: 20px; font-weight: 600; color: var(--accent-cyan); min-width: 75px; text-align: center; }
+        .timer-box.warn .timer-display { color: var(--accent-amber); }
+        .timer-box.danger .timer-display { color: var(--accent-red); animation: pulse 1s infinite; }
+
+        .progress-strip { max-width: 880px; margin: 0 auto; padding: 0 20px; }
+        .progress-info { display: flex; justify-content: space-between; margin: 14px 0 6px; font-size: 12px; color: var(--text-secondary); }
+        .progress-bg { width: 100%; height: 5px; background: var(--bg-option); border-radius: 3px; overflow: hidden; }
+        .progress-fill { height: 100%; border-radius: 3px; transition: width 0.4s ease; width: 0%; }
+
+        /* Questions */
+        .q-container { max-width: 880px; margin: 0 auto; padding: 20px; }
+        .sec-header { text-align: center; margin: 32px 0 20px; position: relative; }
+        .sec-header::before { content:''; position:absolute; top:50%; left:0; right:0; height:1px; background: linear-gradient(to right, transparent, var(--border-default), transparent); }
+        .sec-header h2 { display: inline-block; background: var(--bg-primary); padding: 0 20px; position: relative; font-size: 17px; font-weight: 700; transition: background-color 0.4s; }
+        .sec-badge { display: inline-block; background: var(--bg-card); border: 1px solid var(--border-default); border-radius: 18px; padding: 3px 14px; font-size: 10px; color: var(--accent-cyan); margin-top: 6px; font-weight: 600; letter-spacing: 1px; text-transform: uppercase; }
+
+        .q-block {
+            background: var(--bg-card); border: 1px solid var(--border-default); border-radius: 14px;
+            padding: 22px; margin-bottom: 16px; transition: all 0.3s;
+        }
+        .q-block:hover { border-color: rgba(59,130,246,0.25); box-shadow: var(--shadow-glow); }
+        .q-block.answered { border-color: rgba(16,185,129,0.3); }
+
+        .q-stem { display: flex; gap: 12px; margin-bottom: 14px; align-items: flex-start; }
+        .q-num { flex-shrink: 0; width: 36px; height: 36px; border-radius: 10px; display: flex; align-items: center; justify-content: center; font-family: 'Inter'; font-weight: 800; font-size: 14px; color: white; }
+        .q-text { flex: 1; font-size: 15px; font-weight: 500; line-height: 1.8; padding-top: 5px; }
+
+        .opts-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 9px; margin-left: 48px; }
+        .opts-grid.single-col { grid-template-columns: 1fr; }
+
+        .opt-label {
+            display: flex; align-items: flex-start; gap: 10px; padding: 11px 14px;
+            background: var(--bg-option); border: 1.5px solid var(--border-default); border-radius: 10px;
+            cursor: pointer; transition: all 0.25s; position: relative; overflow: hidden;
+        }
+        .opt-label:hover { background: var(--bg-option-hover); border-color: rgba(59,130,246,0.35); }
+        .opt-label.selected { background: var(--bg-option-selected); border-color: var(--border-selected); box-shadow: 0 0 16px rgba(59,130,246,0.08); }
+        .opt-label.selected::before { content:''; position:absolute; top:0; left:0; width:3px; height:100%; background: var(--accent-blue); }
+        .opt-label input[type="radio"] { display: none; }
+
+        .radio-dot { flex-shrink: 0; width: 18px; height: 18px; border: 2px solid var(--border-default); border-radius: 50%; display: flex; align-items: center; justify-content: center; transition: all 0.25s; margin-top: 2px; }
+        .opt-label.selected .radio-dot { border-color: var(--accent-blue); background: var(--accent-blue); }
+        .opt-label.selected .radio-dot::after { content:''; width: 7px; height: 7px; background: white; border-radius: 50%; }
+
+        .opt-letter { font-family: 'Inter'; font-weight: 700; font-size: 12px; color: var(--text-muted); min-width: 18px; margin-top: 1px; }
+        .opt-label.selected .opt-letter { color: var(--accent-blue); }
+        .opt-content { flex: 1; font-size: 13px; color: var(--text-secondary); line-height: 1.6; }
+        .opt-label.selected .opt-content { color: var(--text-primary); }
+
+        .submit-area { text-align: center; margin: 36px 0 50px; padding: 28px; background: var(--bg-card); border: 1px solid var(--border-default); border-radius: 20px; transition: all 0.3s; }
+        .submit-area p { color: var(--text-secondary); margin-bottom: 18px; font-size: 13px; }
+        .btn-submit { padding: 14px 44px; border: none; border-radius: 12px; color: white; font-size: 17px; font-weight: 700; font-family: inherit; cursor: pointer; transition: all 0.3s; }
+        .btn-submit:hover { transform: translateY(-2px); box-shadow: 0 8px 28px rgba(59,130,246,0.35); }
+
+        /* ===== RESULT SCREEN ===== */
+        #result-screen { display: none; }
+        .result-box { max-width: 880px; margin: 0 auto; padding: 20px; }
+
+        .result-hero { text-align: center; padding: 40px 28px; background: var(--bg-card); border: 1px solid var(--border-default); border-radius: 20px; margin-bottom: 28px; position: relative; overflow: hidden; transition: all 0.3s; }
+        .result-hero::before { content:''; position:absolute; top:0; left:0; right:0; height:4px; }
+        .score-circle { width: 150px; height: 150px; border-radius: 50%; border: 5px solid var(--border-default); display: inline-flex; flex-direction: column; align-items: center; justify-content: center; margin-bottom: 20px; transition: border-color 0.3s; }
+        .score-big { font-family: 'Inter'; font-size: 44px; font-weight: 900; line-height: 1; }
+        .score-of { font-size: 13px; color: var(--text-muted); font-weight: 600; }
+        .result-hero h2 { font-size: 24px; font-weight: 800; margin-bottom: 6px; }
+        .result-hero .detail { color: var(--text-secondary); font-size: 13px; }
+
+        .stats-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 12px; margin-bottom: 28px; }
+        .stats-grid .stat-card { background: var(--bg-card); border: 1px solid var(--border-default); border-radius: 14px; padding: 18px 10px; text-align: center; transition: all 0.3s; }
+        .stats-grid .stat-card .s-icon { font-size: 24px; margin-bottom: 6px; }
+        .stats-grid .stat-card .s-val { font-family: 'Inter'; font-size: 28px; font-weight: 800; margin-bottom: 3px; }
+        .stats-grid .stat-card .s-lbl { font-size: 11px; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.4px; font-weight: 600; }
+        .stats-grid .stat-card.correct .s-val { color: var(--accent-green); }
+        .stats-grid .stat-card.wrong .s-val { color: var(--accent-red); }
+        .stats-grid .stat-card.skipped .s-val { color: var(--accent-amber); }
+        .stats-grid .stat-card.score .s-val { color: var(--accent-cyan); }
+        .stats-grid .stat-card.pct .s-val { color: var(--accent-purple); }
+
+        .neg-info { text-align: center; padding: 12px 20px; background: rgba(239,68,68,0.06); border: 1px solid rgba(239,68,68,0.15); border-radius: 10px; margin-bottom: 28px; font-size: 13px; color: var(--accent-red); }
+
+        /* Leaderboard */
+        .lb-section { background: var(--bg-card); border: 1px solid var(--border-default); border-radius: 16px; padding: 22px; margin-bottom: 28px; transition: all 0.3s; }
+        .lb-section h3 { text-align: center; margin-bottom: 18px; font-size: 18px; }
+        .lb-table { width: 100%; border-collapse: collapse; font-size: 13px; }
+        .lb-table th, .lb-table td { padding: 12px 10px; border-bottom: 1px solid var(--border-default); text-align: left; }
+        .lb-table th { color: var(--text-muted); font-weight: 600; text-transform: uppercase; font-size: 11px; letter-spacing: 0.5px; }
+        .lb-table tr { transition: background 0.2s; }
+        .lb-table tbody tr:hover { background: var(--bg-option); }
+        .rank-1 { color: #f59e0b; font-weight: 800; }
+        .rank-2 { color: #94a3b8; font-weight: 700; }
+        .rank-3 { color: #b45309; font-weight: 700; }
+        .lb-table .highlight-row { background: rgba(59,130,246,0.06); }
+
+        /* Answer Review */
+        .review-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 18px; flex-wrap: wrap; gap: 10px; }
+        .review-header h3 { font-size: 18px; font-weight: 700; }
+
+        .rev-block { background: var(--bg-card); border: 1px solid var(--border-default); border-radius: 14px; padding: 18px 20px; margin-bottom: 12px; transition: all 0.3s; }
+        .rev-block.is-correct { border-left: 4px solid var(--accent-green); }
+        .rev-block.is-wrong { border-left: 4px solid var(--accent-red); }
+        .rev-block.is-skipped { border-left: 4px solid var(--accent-amber); }
+        .rev-stem { display: flex; gap: 10px; align-items: flex-start; margin-bottom: 10px; }
+        .rev-num { flex-shrink: 0; width: 30px; height: 30px; border-radius: 8px; display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 12px; color: white; }
+        .rev-block.is-correct .rev-num { background: var(--accent-green); }
+        .rev-block.is-wrong .rev-num { background: var(--accent-red); }
+        .rev-block.is-skipped .rev-num { background: var(--accent-amber); }
+        .rev-q-text { flex: 1; font-size: 13px; line-height: 1.7; padding-top: 3px; }
+        .rev-tags { margin-left: 40px; display: flex; flex-wrap: wrap; gap: 7px; font-size: 12px; }
+        .rev-tag { padding: 3px 10px; border-radius: 6px; font-weight: 600; }
+        .rev-tag.correct-tag { background: rgba(16,185,129,0.1); color: var(--accent-green); border: 1px solid rgba(16,185,129,0.25); }
+        .rev-tag.wrong-tag { background: rgba(239,68,68,0.1); color: var(--accent-red); border: 1px solid rgba(239,68,68,0.25); }
+        .rev-tag.right-tag { background: rgba(16,185,129,0.1); color: var(--accent-green); border: 1px solid rgba(16,185,129,0.25); }
+        .rev-tag.skip-tag { background: rgba(245,158,11,0.1); color: var(--accent-amber); border: 1px solid rgba(245,158,11,0.25); }
+
+        .result-footer { text-align: center; padding: 28px; color: var(--text-muted); font-size: 12px; border-top: 1px solid var(--border-default); margin-top: 36px; }
+
+        /* Modal */
+        .modal-overlay { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: var(--modal-bg); backdrop-filter: blur(8px); z-index: 1000; align-items: center; justify-content: center; }
+        .modal-overlay.show { display: flex; }
+        .modal-box { background: var(--bg-card); border: 1px solid var(--border-default); border-radius: 20px; padding: 32px; max-width: 420px; width: 90%; text-align: center; box-shadow: var(--shadow-lg); animation: fadeUp 0.3s ease-out; }
+        .modal-box .m-icon { font-size: 44px; margin-bottom: 14px; }
+
+        .modal-box h3 { font-size: 19px; font-weight: 700; margin-bottom: 7px; }
+        .modal-box p { color: var(--text-secondary); font-size: 13px; margin-bottom: 20px; line-height: 1.6; }
+        .modal-btns { display: flex; gap: 10px; justify-content: center; }
+        .m-btn { padding: 11px 24px; border-radius: 10px; font-size: 14px; font-weight: 600; cursor: pointer; transition: all 0.2s; font-family: inherit; border: none; }
+        .m-btn.cancel { background: var(--bg-option); border: 1px solid var(--border-default); color: var(--text-secondary); }
+        .m-btn.cancel:hover { background: var(--bg-option-hover); }
+        .m-btn.ok { color: white; }
+        .m-btn.ok:hover { transform: translateY(-1px); box-shadow: 0 4px 14px rgba(59,130,246,0.35); }
+        .unanswered-warn { color: var(--accent-amber); font-size: 12px; margin-bottom: 14px; }
+
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 768px) {
+            .reg-card { padding: 28px 20px; }
+            .opts-grid { grid-template-columns: 1fr; margin-left: 0; }
+            .stats-grid { grid-template-columns: repeat(3, 1fr); }
+            .top-inner { flex-direction: column; gap: 6px; }
+            .review-header { flex-direction: column; align-items: flex-start; }
+            .q-stem { flex-direction: column; gap: 6px; }
+            .q-num { width: 30px; height: 30px; font-size: 12px; border-radius: 8px; }
+            .lb-table { font-size: 11px; }
+            .lb-table th, .lb-table td { padding: 8px 5px; }
+        }
+        @media (max-width: 480px) {
+            .stats-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+
+        /* ===== TABS ===== */
+        .tabs-container {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+        }
+        .tab-btn {
+            padding: 10px 20px;
+            background: var(--bg-card);
+            border: 1px solid var(--border-default);
+            color: var(--text-secondary);
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+        .tab-btn:hover {
+            background: var(--bg-card-hover);
+        }
+        .tab-btn.active {
+            background: var(--bg-option-selected);
+            color: var(--text-primary);
+            border-color: var(--border-selected);
+        }
+        .tab-content {
+            display: none;
+        }
+        .tab-content.active {
+            display: block;
+            animation: fadeUp 0.3s ease;
+        }
+
+        /* ===== LOCK SCREEN PODIUM ===== */
+        .lock-screen-box {
+            background: var(--bg-card);
+            border: 1px solid rgba(239, 68, 68, 0.15);
+            border-radius: 20px;
+            padding: 32px 24px;
+            text-align: center;
+            margin-bottom: 28px;
+            box-shadow: 0 8px 32px rgba(239, 68, 68, 0.04);
+            position: relative;
+            overflow: hidden;
+            animation: fadeUp 0.4s ease-out;
+            transition: background-color 0.4s, border-color 0.4s;
+        }
+        .lock-logo-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        .lock-logo-wrapper {
+            position: relative;
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            background: rgba(239, 68, 68, 0.08);
+            border: 2px dashed rgba(239, 68, 68, 0.3);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 0 30px rgba(239, 68, 68, 0.12);
+            transition: all 0.3s ease;
+        }
+        .lock-logo-wrapper:hover {
+            transform: rotate(5deg) scale(1.05);
+            background: rgba(239, 68, 68, 0.12);
+            border-color: rgba(239, 68, 68, 0.5);
+            box-shadow: 0 0 40px rgba(239, 68, 68, 0.2);
+        }
+        .lock-logo-big {
+            font-size: 48px;
+            display: inline-block;
+            animation: lockPulse 2s infinite ease-in-out;
+        }
+        @keyframes lockPulse {
+            0%, 100% { transform: scale(1); filter: drop-shadow(0 0 4px rgba(239,68,68,0.2)); }
+            50% { transform: scale(1.12); filter: drop-shadow(0 0 16px rgba(239,68,68,0.5)); }
+        }
+        .lock-screen-box h2 {
+            color: var(--accent-red);
+            font-size: 22px;
+            font-weight: 800;
+            margin-bottom: 8px;
+        }
+        .lock-screen-box p.lock-desc {
+            color: var(--text-secondary);
+            font-size: 14px;
+            margin-bottom: 24px;
+            line-height: 1.6;
+        }
+        .podium-title {
+            font-size: 14px;
+            font-weight: 800;
+            color: var(--accent-cyan);
+            margin-bottom: 18px;
+            text-transform: uppercase;
+            letter-spacing: 0.8px;
+        }
+        .podium-wrapper {
+            display: flex;
+            justify-content: center;
+            align-items: flex-end;
+            gap: 12px;
+            margin-bottom: 20px;
+            padding-top: 10px;
+            min-height: 150px;
+        }
+        .podium-card {
+            background: var(--bg-option);
+            border: 1px solid var(--border-default);
+            border-radius: 14px;
+            padding: 14px 10px;
+            width: 30%;
+            max-width: 130px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            transition: all 0.3s;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+        .podium-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 24px rgba(0,0,0,0.15);
+            border-color: var(--border-selected);
+        }
+        .podium-card.gold {
+            height: 145px;
+            border-color: rgba(245,158,11,0.35);
+            background: linear-gradient(180deg, rgba(245,158,11,0.08) 0%, var(--bg-option) 100%);
+            box-shadow: 0 4px 16px rgba(245,158,11,0.1);
+            z-index: 2;
+        }
+        .podium-card.gold:hover {
+            box-shadow: 0 8px 24px rgba(245,158,11,0.2);
+        }
+        .podium-card.gold::before {
+            content: '👑';
+            position: absolute;
+            top: 2px;
+            font-size: 14px;
+            filter: drop-shadow(0 2px 4px rgba(245,158,11,0.4));
+            animation: bounceCrown 2s infinite ease-in-out;
+            z-index: 10;
+        }
+        @keyframes bounceCrown {
+            0%, 100% { transform: translateY(0) scale(1); }
+            50% { transform: translateY(-3px) scale(1.1); }
+        }
+        .podium-card.silver {
+            height: 120px;
+            border-color: rgba(148,163,184,0.35);
+            background: linear-gradient(180deg, rgba(148,163,184,0.06) 0%, var(--bg-option) 100%);
+        }
+        .podium-card.silver:hover {
+            box-shadow: 0 8px 24px rgba(148,163,184,0.15);
+        }
+        .podium-card.bronze {
+            height: 110px;
+            border-color: rgba(180,83,9,0.35);
+            background: linear-gradient(180deg, rgba(180,83,9,0.06) 0%, var(--bg-option) 100%);
+        }
+        .podium-card.bronze:hover {
+            box-shadow: 0 8px 24px rgba(180,83,9,0.15);
+        }
+        .podium-badge {
+            font-size: 22px;
+            margin-bottom: 4px;
+        }
+        .podium-name {
+            font-size: 12px;
+            font-weight: 700;
+            color: var(--text-primary);
+            text-align: center;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            width: 100%;
+            margin-bottom: 6px;
+        }
+        .podium-score {
+            font-family: 'Inter';
+            font-size: 14px;
+            font-weight: 900;
+        }
+        .podium-card.gold .podium-score { color: #f59e0b; }
+        .podium-card.silver .podium-score { color: #94a3b8; }
+        .podium-card.bronze .podium-score { color: #b45309; }
+
+        .podium-hint {
+            font-size: 12px;
+            color: var(--text-muted);
+            font-style: italic;
+        }
+
+        @media (max-width: 480px) {
+            .podium-wrapper { gap: 8px; }
+            .podium-card { padding: 10px 6px; }
+            .podium-name { font-size: 11px; }
+            .podium-score { font-size: 13px; }
+            .lock-logo-big { font-size: 40px; }
+            .lock-logo-wrapper { width: 80px; height: 80px; }
+            .lock-screen-box h2 { font-size: 19px; }
+        }
+    </style>
+</head>
+<body data-theme="dark">
+<button class="theme-toggle" id="themeToggle" onclick="toggleTheme()" title="থিম পরিবর্তন">🌙</button>
+
+<!-- ==================== REGISTRATION ==================== -->
+<div id="reg-screen">
+    <div class="reg-card">
+        <div class="reg-logo">
+            <div class="icon gradient-bg">📝</div>
+            <h1 class="gradient-text">ANM & GNM</h1>
+            <p class="sub">Mock Test — Test Exam 2</p>
+        </div>
+        <div class="exam-pills">
+            <span class="pill"><strong>65</strong> প্রশ্ন</span>
+            <span class="pill"><strong>90</strong> মিনিট</span>
+            <span class="pill"><strong>65</strong> নম্বর</span>
+            <span class="pill neg">⚠️ <strong>-0.25</strong> নেগেটিভ</span>
+        </div>
+        <div id="reg-form">
+            <div class="form-group">
+                <label for="studentName">পরীক্ষার্থীর নাম</label>
+                <input type="text" id="studentName" placeholder="আপনার পুরো নাম লিখুন" autocomplete="name">
+            </div>
+            <button class="btn-primary gradient-bg" id="btnStart" onclick="startExam()">পরীক্ষা শুরু করুন →</button>
+        </div>
+        <div id="locked-msg" style="display:none;"></div>
+    </div>
+</div>
+
+<!-- ==================== EXAM ==================== -->
+<div id="exam-screen">
+    <div class="top-bar">
+        <div class="top-inner">
+            <div class="stu-info">
+                <div class="stu-avatar gradient-bg" id="avatar"></div>
+                <div class="stu-name" id="displayName"></div>
+            </div>
+            <div class="timer-box" id="timerBox">
+                <span>⏱️</span>
+                <span class="timer-display" id="timerDisplay">90:00</span>
+            </div>
+        </div>
+    </div>
+    <div class="progress-strip">
+        <div class="progress-info">
+            <span id="answeredCount">উত্তর: 0 / 65</span>
+            <span id="progressPct">0%</span>
+        </div>
+        <div class="progress-bg"><div class="progress-fill gradient-bg" id="progressFill"></div></div>
+    </div>
+    <div class="q-container" id="qContainer"></div>
+    <div class="q-container">
+        <div class="submit-area">
+            <p>⚠️ নেগেটিভ মার্কিং: প্রতি ভুল উত্তরে ০.২৫ নম্বর কাটা হবে। সমস্ত প্রশ্নের উত্তর দিয়ে নীচের বোতাম চাপুন।</p>
+            <button class="btn-submit gradient-bg" onclick="showModal()">📋 পরীক্ষা জমা দিন</button>
+        </div>
+    </div>
+</div>
+
+<!-- ==================== RESULT ==================== -->
+<div id="result-screen">
+    <div class="result-box" id="resultBox"></div>
+</div>
+
+<!-- ==================== MODAL ==================== -->
+<div class="modal-overlay" id="confirmModal">
+    <div class="modal-box">
+        <div class="m-icon">⚠️</div>
+        <h3>পরীক্ষা জমা দিতে চান?</h3>
+        <p>জমা দেওয়ার পর উত্তর পরিবর্তন করা যাবে না।</p>
+        <div id="unansweredWarn" class="unanswered-warn" style="display:none;"></div>
+        <div class="modal-btns">
+            <button class="m-btn cancel" onclick="hideModal()">বাতিল</button>
+            <button class="m-btn ok gradient-bg" onclick="submitExam()">✅ হ্যাঁ, জমা দিন</button>
+        </div>
+    </div>
+</div>
+
+<script>
+// ===== SOUND EFFECTS (Web Audio API Synthesizer) =====
+const SoundFX = {
+    ctx: null,
+    init() {
+        if (!this.ctx) {
+            this.ctx = new (window.AudioContext || window.webkitAudioContext)();
+        }
+    },
+    playClick() {
+        try {
+            this.init();
+            if (this.ctx.state === 'suspended') this.ctx.resume();
+            const osc = this.ctx.createOscillator();
+            const gain = this.ctx.createGain();
+            osc.connect(gain);
+            gain.connect(this.ctx.destination);
+            
+            osc.type = 'sine';
+            osc.frequency.setValueAtTime(750, this.ctx.currentTime);
+            osc.frequency.exponentialRampToValueAtTime(150, this.ctx.currentTime + 0.04);
+            
+            gain.gain.setValueAtTime(0.04, this.ctx.currentTime);
+            gain.gain.exponentialRampToValueAtTime(0.001, this.ctx.currentTime + 0.04);
+            
+            osc.start();
+            osc.stop(this.ctx.currentTime + 0.04);
+        } catch (e) { console.warn("Audio error: ", e); }
+    },
+    playTick() {
+        try {
+            this.init();
+            if (this.ctx.state === 'suspended') this.ctx.resume();
+            const osc = this.ctx.createOscillator();
+            const gain = this.ctx.createGain();
+            osc.connect(gain);
+            gain.connect(this.ctx.destination);
+            
+            osc.type = 'triangle';
+            osc.frequency.setValueAtTime(900, this.ctx.currentTime);
+            gain.gain.setValueAtTime(0.015, this.ctx.currentTime);
+            gain.gain.exponentialRampToValueAtTime(0.001, this.ctx.currentTime + 0.02);
+            
+            osc.start();
+            osc.stop(this.ctx.currentTime + 0.02);
+        } catch (e) { console.warn("Audio error: ", e); }
+    },
+    playSuccess() {
+        try {
+            this.init();
+            if (this.ctx.state === 'suspended') this.ctx.resume();
+            const t = this.ctx.currentTime;
+            const notes = [261.63, 329.63, 392.00, 523.25]; // C4, E4, G4, C5
+            notes.forEach((freq, idx) => {
+                const osc = this.ctx.createOscillator();
+                const gain = this.ctx.createGain();
+                osc.connect(gain);
+                gain.connect(this.ctx.destination);
+                
+                osc.type = 'sine';
+                osc.frequency.setValueAtTime(freq, t + idx * 0.08);
+                
+                gain.gain.setValueAtTime(0, t + idx * 0.08);
+                gain.gain.linearRampToValueAtTime(0.08, t + idx * 0.08 + 0.04);
+                gain.gain.exponentialRampToValueAtTime(0.001, t + idx * 0.08 + 0.35);
+                
+                osc.start(t + idx * 0.08);
+                osc.stop(t + idx * 0.08 + 0.35);
+            });
+        } catch (e) { console.warn("Audio error: ", e); }
+    },
+    playLock() {
+        try {
+            this.init();
+            if (this.ctx.state === 'suspended') this.ctx.resume();
+            const t = this.ctx.currentTime;
+            
+            // Double bass thud
+            [0, 0.06].forEach(delay => {
+                const osc = this.ctx.createOscillator();
+                const gain = this.ctx.createGain();
+                osc.connect(gain);
+                gain.connect(this.ctx.destination);
+                
+                osc.type = 'sine';
+                osc.frequency.setValueAtTime(140, t + delay);
+                osc.frequency.exponentialRampToValueAtTime(30, t + delay + 0.08);
+                
+                gain.gain.setValueAtTime(0.12, t + delay);
+                gain.gain.exponentialRampToValueAtTime(0.001, t + delay + 0.08);
+                
+                osc.start(t + delay);
+                osc.stop(t + delay + 0.08);
+            });
+            
+            // Metallic high-frequency snap
+            const oscMetal = this.ctx.createOscillator();
+            const gainMetal = this.ctx.createGain();
+            oscMetal.connect(gainMetal);
+            gainMetal.connect(this.ctx.destination);
+            
+            oscMetal.type = 'triangle';
+            oscMetal.frequency.setValueAtTime(1000, t);
+            oscMetal.frequency.exponentialRampToValueAtTime(250, t + 0.04);
+            
+            gainMetal.gain.setValueAtTime(0.04, t);
+            gainMetal.gain.exponentialRampToValueAtTime(0.001, t + 0.04);
+            
+            oscMetal.start(t);
+            oscMetal.stop(t + 0.04);
+        } catch (e) { console.warn("Audio error: ", e); }
+    }
+};
+
+// ===== CONFIG =====
+const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbxSS0ay49ZO4HekXs3ukl1HZnJtOt2m6513kQUEWNhjqDnVT6Y6PdXP30S2kbSJgn5B-A/exec';
+const EXAM_KEY = 'anm_gnm_test_exam_2';
+const OPT_LETTERS = ['(a)','(b)','(c)','(d)'];
+
+// ===== ANSWER KEY =====
+const ANSWER_KEY = [2, 2, 1, 0, 0, 1, 3, 2, 1, 0, 1, 1, 3, 2, 0, 2, 1, 3, 2, 0, 0, 1, 2, 0, 0, 1, 3, 2, 1, 2, 0, 1, 0, 3, 1, 1, 1, 0, 2, 0, 2, 1, 1, 1, 3, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3, 3, 1, 1, 3, 0, 0, 1, 2, 0];
+
+// ===== DETAILED EXPLANATIONS =====
+const EXPLANATIONS = ["ানিুষের  সোধারণ  দেহকোশ  এবং  আদে  জনিনিকোশগুলি  ডিপ্লয়ডি  বা  2n (৪৬টি  ক্রাাজা)  প্রকে ৃ তির  হয়।\nস্পার্মাটাগানিয়া, উগানিয়া এবং জাইগাট বা ভ্রূণানিু হলিা ডিপ্লয়ডি (2n=46)। কেন্তু প্রথ য়াসেসে বভাজনির ফলি উৎপন্ন\nসেকেন্ডারী উসোইট (Secondary oocyte) হ্যাপ্লয়ডি বা n প্রকে ৃ তির হয়, যাতি ২৩টি ক্রাাজা উপস্থিতি থাকে।", "হাইড্রালিজ (Hydrolases) শ্রেণীর উৎসেচকেগুলি জলির অণুর উপস্থিতিতি জটিলি যৌগর রাসোয়নিকে বন্ধনি ভাঙতি\nসোহায্য কের (আর্মবশ্লেষেণ)। অ্যাাইলিজ শ্বেতিসোর বা স্টাচ র্ম কে জলির সেহায়তিায় ভঙ লিটাজ পরণতি কের, তিাই এটি\nহাইড্রালিজ শ্রেণীর অন্তগর্মতি।", "বায়ুণ্ডলি  উপস্থিতি  সোলিফার  ডিাইঅক্সিাইডি  (SO2)  এবং  নিাইট্রাজনির  অক্সিাইডিগুলি  (NOx)  ঘের  জলির  সোথ\nবক্রয়া কের যথাক্র সোলিফউরকে অ্যাসেডি (H2SO4) ও নিাইট্রিকে অ্যাসেডি (HNO3) তির কের, যা অম্লবৃষ্টির প্রধানি কোরণ।\n=== PAGE 2 ===", "পাইরফরসে (Piriformis) পশীটি হলিা ানিুষের শ্রোণীচক্র বা নিতিম্ব অঞ্চলির একেটি গুরুত্বপূণর্ম রাটটর পশী। এটি\nফার বা উরুর অস্থিকে বাইরর দেকে ঘোরাতি (External Rotation) সোহায্য কের।", "Joint Forest Management (JFM) বা যৌথ বনি পরচালিনি ব্যবস্থিা ১৯৭১ সোলি পশ্চিবঙ্গর দেনিীপুর জলিার\nআড়াবাড় অরণ্য প্রথ পরীক্ষাূলিকেভাব শুরু হয়ছিলি। শালি গাছি বাাচানিার জনি্য স্থিানিীয় ানিুষের সেহযাগতিায় এই প্রকেল্প\nপ্রভূতি সোফলি্য পায়।", "রক্ত তিঞ্চনি প্রক্রয়ায় াট ১৩টি ক্লটিং ফ্যাক্টর জড়তি থাকে। এর ধ্য ফ্যাক্টর I হলিা ফাইব্রিনিাজনি এবং ফ্যাক্টর II\nহলিা প্রাথ্রবনি। ফ্যাক্টর III হলিা থ্রম্বাপ্লাস্টনি এবং ফ্যাক্টর IV হলিা কে্যালিসেয়া আয়নি (Ca2+)।", "াছির পটকো বা বায়ুথলি হলিা একেটি হাইড্রাস্ট্যাটিকে বা উদেস্থিতিকে অঙ্গ। এটি পটকোর অভ্যন্তর গ্যাসের পরাণ\nনিয়ন্ত্রণ কের াছিকে জলির বভন্ন গভীরতিায় ভাসেতি বা ডিুবতি (আপক্ষকে গুরুত্ব নিয়ন্ত্রণ) সোহায্য কের।\n=== PAGE 3 ===", "ইনিসেুলিনি ফ্যাটর ভাঙনি বা লিপালিাইসেসে প্রক্রয়াকে রাধ কের শরীর কেটানি বডি (Ketone bodies) তিরতি বাধা\nদেয়। এই কোরণ ইনিসেুলিনিকে অ্যান্টিকেটাজনিকে হরানি বলিা হয়। অপরদেকে গ্লুকোগনি কেটানি বডি তিরতি সোহায্য কের।", "আর ফ ু লি পরাগযাগ ূলিতি বভন্ন পতিঙ্গ (যনি াছি, ৌাছি) দ্বারা সেম্পন্ন হয়, তিাই আ হলিা একেটি পতিঙ্গপরাগী\n(Entomophilous) ফ ু লি। ধানি হলিা বায়ুপরাগী এবং হাইড্রলিা জলিপরাগী।", "রুভূ অঞ্চলি জলির অপচয় বা বাষ্পাচনি রাধ কেরার জনি্য ফণনিসো (Opuntia) জাতিীয় কে্যাকেটাসের পাতিাগুলি\nতিীক্ষ্ণ কে া াটায় বা পত্রকেন্টিকে (Spines) রূপান্তরতি হয়।", "রুভূর জাঙ্গলি উদ্ভিদে (Xerophytes) বাষ্পাচনির হার কোনিার জনি্য পত্ররন্ধ্র ত্বকের গভীর প্রাথতি থাকে, একে\nনিজ্জিতি পত্ররন্ধ্র বা Sunken Stomata বলি। কে্যাকেটাসে এই বশষ্ট্য স্পষ্ট দেখা যায়।\n=== PAGE 4 ===", "ফণনিসো  বা  কে্যাকেটাসের  কোণ্ড  রূপান্তরতি  হয়  চ্যাপ্টা,  সেবুজ  ও  রসোলি  পাতিার  তিা  আকোর  ধারণ  কের  যা\nসোলিাকেসেংশ্লেষে কেরতি সেক্ষ এবং জলি সেঞ্চয় কের। এই রূপান্তরতি কোণ্ডকে পণর্মকোণ্ড বা ফলিাত্লাডি (Phylloclade) বলি।", "অ্যাভসেনিয়া (Avicennia) হলিা বাইনি গাছির বজ্ঞানিকে নিা, যা সেুন্দরবনির একেটি অনি্যতি প্রধানি ্যানিগ্রাভ বা\nলিবণাম্বু উদ্ভিদে। এদের শ্বোসেূলি ও ঠেসেূলি দেখা যায়।", "দেুটি সেংকের লিম্বা টরগাছির জনিাটাইপ হলিা Tt। এদের ধ্য ক্রসে ঘেটালি:\nTt × Tt → TT (বশুদ্ধ লিম্বা), Tt, Tt (সেংকের লিম্বা), tt (বশুদ্ধ খবর্ম)।\nফনিাটাইপ অনিুপাতি অনিুযায়ী ৩টি লিম্বা (৭৫%) এবং ১টি খবর্ম (২৫%) উদ্ভিদে সেৃষ্টি হব।", "অ্যাসেবসেটসে কোরখানিায় কের্মরতি শ্রেকেদের ফ ু সেফ ু সে দেীঘের্মদেনি ধর অ্যাসেবসেটসে তিন্তু জা হওয়ার ফলি য ারাত্মকে\nফ ু সেফ ু সের রাগ সেৃষ্টি হয়, তিাকে অ্যাসেবসেটাসেসে বলি। এটি একেটি পশাগতি রাগ (Occupational Disease)।\n=== PAGE 5 ===", "থবসেয়ানি কেপাটিকো (Thebesian valve) বা কেরানিারী সোইনিাসের কেপাটিকো হৃদেপণ্ডর ডিানি অলিন্দ কেরানিারী\nসোইনিাসের উন্মুক্ত ুখ অবস্থিতি থাকে, যা রক্তকে উল্টাদেকে ফর যতি বাধা দেয়।", "SA নিাডি-কে হৃদেপণ্ডর স্বাভাবকে বা প্রধানি পসেকোর (Primary Pacemaker) বলিা হয়। যদে কোনিা কোরণ SA\nনিাডি নিষ্ক্রয় হয় পড়, তিব AV নিাডি হৃদেস্পন্দনি তির কেরার দোয়ত্ব নিয়। তিাই AV নিাডি-কে রজাভ র্ম  পসেকোর (Reserve\nPacemaker) বলিা হয়।", "হাফলিয়া হলিা একেটি X-ক্রাাজা বাহতি প্রচ্ছন্ন জনিগতি রাগ (X-linked recessive disorder)। এই রাগ\nরক্ত তিঞ্চনিকোরী ফ্যাক্টর VIII বা IX এর অভাব ক্ষতিস্থিানি থকে রক্ত ক্ষরণ বন্ধ হয় নিা।", "ানিুষের চাখর বভন্ন প্রতিসোরকে াধ্যর ধ্য লিন্সর প্রতিসেরাঙ্ক (Refractive Index) সেবচয় বশ, যার ানি প্রায়\n1.40 - 1.42। কেণর্ময়ার প্রতিসেরাঙ্ক প্রায় ১.৩৭ এবং অ্যাকে ু য়াসে ও ভট্রিয়াসে হউরর প্রতিসেরাঙ্ক প্রায় ১.৩৩।\n=== PAGE 6 ===", "কোশ বভাজনির অন্ত পযর্মায় বা টলিাফজ ক্রাাজাগুলির জলিযাজনি বা জলি শাষেণ (Hydration) ঘেট, যার\nফলি  ক্রাাজাগুলি  পুনিরায়  প্রসোরতি  ও  সেরু  হয়  ক্রাাটিনি  তিন্তুতি  পরণতি  হয়।  প্রফজ  এর  ঠিকে  উল্টা  অথর্মাৎ\nজলিবয়াজনি বা Dehydration ঘেট।", "অযৌনি জনিনি (Asexual reproduction) হলিা এনি একেটি প্রক্রয়া যখানি গ্যাট উৎপাদেনি ছিাড়াই একেটি াত্র জনিতিৃ\nজীব একো অপতি্য জীব সেৃষ্টি কেরতি সেক্ষ হয়। (ষ্টব্য: রণু উৎপাদেনি ও অঙ্গজ জনিনি ূলিতি অযৌনি জনিনিরই বশষে রূপ, তিব\nূলি সোগ্রকে পদ্ধতিটি হলিা অযৌনি জনিনি)।", "গ্যাট প্রকোরভদের সেূত্রটি হলিা  2n, যখানি  n হলিা হটরাজাইগাসে জাড়র সেংখ্যা।  AaBB জনিাটাইপ কেবলি\nএকেটি হটরাজাইগাসে জাড় (Aa) আছি এবং BB হলিা হাাজাইগাসে। সেুতিরাং, 21 = 2 ধরনির গ্যাট তির হব। গ্যাট\nদেুটি হলিা: AB এবং aB।", "বাফার বণ (Buffer solution) হলিা এনি একে বশষে বণ যা বাইর থকে সোানি্য পরাণ অ্যাসেডি বা ক্ষার যাগ\nকেরলিও নিজর pH এর ানিকে অপরবতি র্ম তি রাখতি সেচষ্ট হয়, অথর্মাৎ pH পরবতি র্ম নি তিীব্রি বাধা সেৃষ্টি কের।\n=== PAGE 7 ===", "স্টাচ র্ম  বা শ্বেতিসোরর উপস্থিতি পরীক্ষা কেরার জনি্য আয়াডিনি বণ ব্যবহার কেরা হয়। স্টাচ র্ম র অণুর সোথ আয়াডিনি যুক্ত\nহয় একেটি গাঢ় নিীলি-কোলিা (Blue-black) রঙর জটিলি যৌগ গঠেনি কের।", "প্রাটিনি পরপাকের পর অ্যানিা অ্যাসেডি পরণতি হয়। অতিরক্ত অ্যানিা অ্যাসেডি যকে ৃ তি এসে ডিঅ্যানিশনি\nপ্রক্রয়ার  াধ্য  অ্যাানিয়া  উৎপন্ন  কের।  এই  ক্ষতিকের  অ্যাানিয়া  অরনিথনি  চক্রর  াধ্য  কে  ক্ষতিকের  ইউরয়ায়\nরূপান্তরতি হয়। সেুতিরাং ইউরয়া প্রাটিনির বপাকের ফলি তির প্রধানি রচনি পদোথর্ম।\nPHYSICAL SCIENCE (ভৌতে বজ্ঞান)", "নিয়নি (Ne) হলিা পযর্মায় সোরণীর ১৮ নিম্বর শ্রেণীর একেটি নিষ্ক্রয় বা নিাবলি গ্যাসে। এর সেবর্মবহঃস্থি কেক্ষ ৮টি ইলিকেট্রনি\nপূণর্ম থাকোয় এটি অতি্যন্ত সেুস্থিতি এবং সোধারণ অবস্থিায় কোনিা রাসোয়নিকে বক্রয়ায় অংশ নিয় নিা।\n=== PAGE 8 ===", "বরফ গলিনির লিীনি তিাপ হলিা 80 cal/g। অথর্মাৎ 0°C তিাপাত্রার 1 g বরফকে সেম্পূণর্ম জলি পরণতি কেরতি 80 cal তিাপর\nপ্রয়াজনি।\nঅতিএব, 10 g বরফ গলিাতি প্রয়াজনিীয় তিাপ = 10 × 80 = 800 cal।\nযহতিু সেরবরাহকে ৃ তি তিাপ ঠিকে ৮০০ কে্যালিার, তিাই সেম্পূণর্ম ১০ গ্রা বরফ গলি 0°C তিাপাত্রার ১০ গ্রা জলি রূপান্তরতি হব,\nতিাপাত্রা বৃদ্ধ পাব নিা।", "কোনিা শ্রে সেুর উপস্থিতি সেবর্মনিম্ন কেম্পাঙ্কটিকে ূলিসেুর (Fundamental tone) বলি। এখানি ২৫৬ Hz হলিা ূলিসেুর।\nূলিসেুরর য কোনিা সেরলি গুণতিকে কেম্পাঙ্ককে সেলি (Harmonic) বলিা হয়। এখানি 256 × 2 = 512 Hz, যা ূলিসেুরর দ্বগুণ\n(দ্বতিীয় সেলি)। তিাই ৫১২ Hz সেুরটি একেটি সেলি।", "ানিুষের চাখর লিন্সটি হলিা একেটি স্থিতিস্থিাপকে, স্বচ্ছ এবং উভাত্তলি (Biconvex) বা উত্তলি লিন্স। এটি আলিাকে\nরশ্মিকে অভসোরী কের রটিনিার ওপর বস্তুর প্রকে ৃ তি ও উল্টা প্রতিবম্ব গঠেনি কেরতি সোহায্য কের।\n=== PAGE 9 ===", "বস্তুর ভর (m) হলিা তিার ধ্য থাকো জড়পদোথর্মর পরাণ, যা হাবশ্বের সেবর্মত্র অপরবতি র্ম তি ও কেখনিা শূনি্য হতি পার\nনিা। কেন্তু ওজনি (W = mg) অভকেষের্মজ ত্বরণর ওপর নিভ র্ম রশীলি। পৃথবীর কেন্দ্রে বা কে ৃ ত্র উপগ্রহ বা অবাধ পতিনিশীলি বস্তুর\nক্ষত্র g = 0 হওয়ায় বস্তুর ওজনি শূনি্য (ওজনিহীনিতিা) হতি পার।", "দেওয়া আছি, বুলিটর ভর m = 20 g = 0.02 kg, প্রাথকে বগ u = 100 m/s, অন্ত বগ v = 0 (থ গলি)। সেরণ s =\n10 cm = 0.1 m।\nগতির সেূত্রানিুযায়ী: v2 = u2 - 2as (যখানি a হলিা ন্দনি)\n0 = 1002 - 2 × a × 0.1 → 0.2a = 10000 → a = 50000 m/s2\nপ্রতিরাধকোরী বলি F = m × a = 0.02 × 50000 = 1000 N।", "SI পদ্ধতিতি বলির (Force) একেকে হলিা নিউটনি (N)। ১ কেজ ভরর কোনিা বস্তুর ওপর য পরাণ বলি প্রয়াগ\nকেরলি  ১  /সেকেন্ড² ত্বরণ  সেৃষ্টি  হয়  তিাকে  ১  নিউটনি  বলি।  ভরর  একেকে  হলিা  কেলিাগ্রা  এবং  তিড়ৎ  প্রবাহর  একেকে\nঅ্যাম্পয়ার।", "সোধারণ তিুলিাযন্ত্র বা দে া াড়পাল্লা দেয় কোনিা বস্তুর ভর (Mass) পরাপ কেরা হয়। অপরদেকে স্প্রিং তিুলিাযন্ত্রর (Spring\nbalance) সোহায্য বস্তুর ওপর প্রযুক্ত পৃথবীর অভকেষের্মজ বলি বা ওজনি (Weight) পরাপ কেরা হয়।\n=== PAGE 10 ===", "বগর্মাকোর াঠের একেটি বাহু ১০ টার হলি, াঠেটির াট পরসেীা (অতিক্রান্ত দেূরত্ব) = 4 × 10 = 40 m।\nব্যক্তটির াট সেয় লিাগ ১৬ সেকেন্ড। অতিএব, গড় দ্রুতি = মোট দূরত্ব / মোট সময় = 40 / 16 = 2.5 m/s।\nযহতিু ব্যক্তটি য স্থিানি থকে যাত্রা শুরু কেরছিলি, একেবার সেম্পূণর্ম ঘেুর আবার সেই নিদে র্ম ষ্ট স্থিানিই ফর এসেছি, তিাই তিার\nপ্রাথকে ও অন্ত অবস্থিানির কোনিা দেূরত্ব নিই। সেুতিরাং াট সেরণ (Displacement) হব 0 m।\nচত্র: সেরণ = ০ কোরণ যাত্রা শুরু ও শষে বন্দু অভন্ন (A)।", "তিরলির পৃষ্ঠটানি (Surface Tension) ধর্মর জনি্য তিরলি পৃষ্ঠ সেবর্মদো তিার ক্ষত্রফলি সেবর্মনিম্ন কেরার চষ্টা কের। জ্যাতিকে\nনিয় অনিুযায়ী নিদে র্ম ষ্ট আয়তিনির ক্ষত্র গালিকের উপরভাগর ক্ষত্রফলি সেবচয় কে হয়। তিাই পৃষ্ঠটানির টানি শশর বন্দু বা\nজলির ফ া াটা গালিকোকোর রূপ নিয়।", "যসেব পরাণুর প্রাটনি সেংখ্যা (পারাণবকে সেংখ্যা) ভন্ন কেন্তু ভর সেংখ্যা (Mass number) একেই হয়, তিাদের একে\nঅপরর আইসোবার (Isobars) বলি। এখানি আগর্মনি, পটাসেয়া ও কে্যালিসেয়ার পারাণবকে সেংখ্যা যথাক্র ১৮, ১৯ ও ২০\nহলিও প্রতি্যকেরই ভর সেংখ্যা ৪০। তিাই এরা পরস্পর আইসোবার।\nA (Start/End) B\nCD\n=== PAGE 11 ===", "সোলিফউরকে অ্যাসেডির রাসোয়নিকে সেংকেতি হলিা H2SO4।\nএর আণবকে গুরুত্ব =  (২ × H এর পোরমোণবিক গুরুত্ব) + (১ × S এর পোরমোণবিক গুরুত্ব) + (৪ × O এর পোরমোণবিক\nগুরুত্ব)\nআণবকে গুরুত্ব = (2 × 1) + (1 × 32) + (4 × 16) = 2 + 32 + 64 = 98।", "সেঠিকে লিসেূহ নিম্নরূপ:\n১. নিুনি জলি (Brine) হলিা নিুনি ও জলির একেটি সেসেত্ত্ব শ্রেণ বা দ্রবণি (Solution) [1-c]।\n২. ধাায়া হলিা বায়ুতি কেঠিনি কোবর্মনি কেণার বস্তৃতি অথর্মাৎ কেঠিনি-গ্যাসেীয় কলেয়ড (Colloid) [2-d]।\n৩. াখনি হলিা তিরলি-কেঠিনি ফ্যাটজাতিীয় ইমালেশন (Emulsion) [3-b]।\n৪. াটি হলিা বভন্ন পদোথর্মর জটিলি অসেসেত্ত্ব মশ্রিণি (Mixture) [4-a]।", "অম্লবৃষ্টির ধ্য বভন্ন অ্যাসেডির শ্রেণ থাকেলিও প্রধানি উপাদোনিটি হলিা সোলিফউরকে অ্যাসেডি (H2SO4), যা াট\nঅম্লতিার প্রায় ৬০-৭০% গঠেনি কের। দ্বতিীয় স্থিানি থাকে নিাইট্রিকে অ্যাসেডি (HNO3)।\n=== PAGE 12 ===", "জলির আয়তিনি ৫০০ লিটার অথর্মাৎ জলির ভর m = 500 kg। উচ্চতিা h = 6 m।\nসেয় t = 50 min = 50 × 60 = 3000 seconds।\nপাম্প দ্বারা কে ৃ তিকোযর্ম (স্থিতিশক্ত) = mgh = 500 × 10 × 6 = 30000 Joule।\nপাম্পর ক্ষতিা (P) = ক ৃ তকোর্য / সময় = 30000 / 3000 = 10 Watt।\nARITHMETIC (পাটিগেণিতে)", "ধরা যাকে, নিণর্ময় সেংখ্যাটি হলিা x। প্রশ্নানিুসোর:\n(5+x) / (10+x) = (15+x) / (25+x)\nবজ্রগুণনি কের পাই: (5+x)(25+x) = (10+x)(15+x)\n125 + 5x + 25x + x2 = 150 + 10x + 15x + x2\n125 + 30x = 150 + 25x → 30x - 25x = 150 - 125\n5x = 25 → x = 5।\nবকেল্প পদ্ধতি (Option Test): ৫ যাগ কেরলি সেংখ্যাগুলি হয় যথাক্র ১০, ১৫, ২০ ও ৩০। এখানি 10/15 = 2/3 এবং 20/30 =\n2/3। সেুতিরাং ৫ সেঠিকে উত্তর।", "সেূলি চক্রবৃদ্ধর সেূত্রানিুসোর, A = P(1 + r/100)n\nএখানি আসেলি P = 400, চক্রবৃদ্ধ ূলিধনি A = 441, সেয় n = 2 বছির।\n441 = 400(1 + r/100)2 → 441 / 400 = (1 + r/100)2\n(21/20)2 = (1 + r/100)2 → 21/20 = 1 + r/100\nr/100 = 21/20 - 1 = 1/20 → r = 100/20 = 5%।\n=== PAGE 13 ===", "ধরা যাকে গালিকে এবং চাঙ উভয়রই সোধারণ ব্যাসোধর্ম হলিা r এবং চাঙর উচ্চতিা h।\nগালিকের আয়তিনি = (4/3)πr3 এবং লিম্ব বৃত্তাকোর চাঙর আয়তিনি = πr2h।\nশতি র্ম ানিুসোর: (4/3)πr3 = πr2h\nউভয়পক্ষ থকে πr2 বাদে দেলি পাই: (4/3)r = h → r / h = 3 / 4।\nসেুতিরাং চাঙটির ব্যাসোধর্ম ও উচ্চতিার অনিুপাতি = 3:4।", "নি কের, দো কোর আগ প্রতি ডিজনি ডির ূলি্য ছিলি x টাকো।\nতিাহলি ৩০ টাকোয় ডি পাওয়া যতি = (30 / x) ডিজনি।\nএখনি দো ডিজনি প্রতি ৬ টাকো কোয় বতি র্ম ানি ূলি্য = (x - 6) টাকো। বতি র্ম ানি ৩০ টাকোয় ডি পাওয়া যায় = 30 / (x - 6) ডিজনি।\n৩টি ডি ানি হলিা 3/12 = 1/4 ডিজনি।\nশতি র্ম ানিুসোর: 30 / (x - 6) - 30 / x = 1/4\nঅপশনি থকে x = 24 বসেয় যাচাই কের: 30/18 - 30/24 = 5/3 - 5/4 = (20-15)/12 = 5/12 (যা লিনি)।\nআসেুনি সেীকেরণটি সোধানি কের: 30 [ (x - (x - 6)) / (x(x - 6)) ] = 1/4 → 30 [ 6 / (x2 - 6x) ] = 1/4\n180 × 4 = x2 - 6x → x2 - 6x - 720 = 0\n(x - 30)(x + 24) = 0। যহতিু ূলি্য ঋণাত্মকে হতি পার নিা, তিাই কোর আগ ডির দো ছিলি ₹30 ডিজনি।\n(সংশোধনী: মূল প্রশ্নের বিকল্পসমূহের মধধ্যে সঠিক উত্তর ₹30 অপশন (A) তে উপস্থিতে)।\n=== PAGE 14 ===", "ধরা যাকে ঘেনিকের একেটি বাহুর দেঘের্ম্য = a একেকে।\nঘেনিকের সেগ্র তিলির ক্ষত্রফলি S = 6a2 এবং ঘেনিকের কেণর্মর দেঘের্ম্য D = √3 a।\nএখনি, D2 = 3a2 → a2 = D2 / 3\nএই a2 এর ানি S এর সেীকেরণ বসোলি পাই: S = 6 × (D2 / 3) = 2D2।\nঅতিএব সেঠিকে রূপটি হব S = 2D2 অথবা D2 = S / 2 (যদে টাইপা সেংশাধতি কেরা হয়)। অপশনি D এর গঠেনিগতি কোছিাকোছি।\nENGLISH GRAMMAR (ইংরজী ব্যাকরণি)", "'Unless' শব্দটির অথর্ম হলিা 'যদে নিা' (if not)। বাকে্যটির অথর্ম দে া াড়ায়— \"আ যাগদোনি কেরব নিা যদে নিা তিাার\nআাকে প্রয়াজনি হয়।\" এখানি শতি র্ম বাচকে নিতিবাচকে অথর্ম প্রকোশ কেরতি 'unless' একেদে উপযুক্ত।", "'Replete' শব্দটির পর উপযুক্ত Appropriate Preposition হসেব সেবর্মদো 'with' বসে। 'Replete with' কেথাটির অথর্ম\nহলিা 'পরপূণর্ম' বা 'ভতি র্ম '। বাকে্যটির অথর্ম হলিা— \"তিার বক্তব্যটি বপরীতি্য বা বরাধতিায় পূণর্ম।\"", "সেগ্র অন্ধ জাতিকে একেসোথ বাঝাতি 'The blind' ব্যবহৃতি হয় (Plural adjective used as noun)। 'Blind' এর\nসোথ আলিাদো কের 's' যুক্ত কেরার প্রয়াজনি নিই। তিাই পাটর্ম (A)-তি ভুলি রয়ছি; এটি 'The blind' হওয়া উচতি ছিলি।\n=== PAGE 15 ===", "'Obligatory' শব্দর অথর্ম হলিা বাধ্যতিাূলিকে, আবশ্যকে বা কেতি র্ম ব্যূলিকে। বকেল্পগুলির ধ্য 'Required' শব্দর অথর্মও\nহলিা প্রয়াজনিীয় বা আবশ্যকে। তিাই এটিই সোথর্মকে শব্দ।", "'Fickle' শব্দর অথর্ম হলিা চঞ্চলি, পরবতি র্ম নিশীলি বা অস্থির তি। এর বপরীতি শব্দ হলিা 'Constant', যার অথর্ম হলিা\nচরস্থিায়ী, ধ্রুবকে বা স্থির।", "'Invalid' এনি একেটি শব্দ যা আইনি নিথর ক্ষত্র 'বাতিলি' বা 'অসেদ্ধ' (void) অথর্ম প্রকোশ কের, আবার শারীরকে দেকে\nথকে দেুবর্মলি বা 'অসেুস্থি ব্যক্ত' (sickly person) বাঝাতিও ব্যবহৃতি হয়। তিাই এটি উভয় বাকে্যই প্রতিস্থিাপনিযাগ্য।", "প্রাচীনিকোলির দেবতিা এবং বীরদের নিয় প্রচলিতি জনিপ্রয় কোহনিী বা উপকেথাকে একে কেথায় 'Legend' (কেংবদেন্ত)\nবলিা হয়।\n=== PAGE 16 ===", "গ্রাীণ  জীবনি  থকে  শহর  জীবনি  স্থিানিান্তরর  কেঠিনি  প্রক্রয়াকে  যারা  ভালিাভাব  পরচালিনিা  বা  ানিয়  নিতি\n(managed) পরছি, তিারাই জীবনি উন্নতি কেরছি। প্রসেঙ্গ অনিুযায়ী 'managed' শব্দটি সেবচয় ানিানিসেই।", "প্রথ বাকে্য 'censur' বানিানিটি ভুলি, সেঠিকে বানিানিটি হলিা 'Censure' (নিন্দা প্রস্তাব)। দ্বতিীয় বাকে্য 'Censor Board'\n(চলিচ্চত্র সেন্সর বাডি র্ম ) বানিানি ও অথর্ম সেম্পূণর্ম সেঠিকে। সেুতিরাং কেবলি দ্বতিীয় বাকে্যটি শুদ্ধ।", "'Commitments' শব্দর অথর্ম হলিা সোাজকে বা পশাগতি পূবর্মনিধর্মারতি বাধ্যবাধকেতিা বা প্রতিশ্রুতি। অশাকের কেছিু পূবর্ম\nপ্রতিশ্রুতি বা কোজ থাকোয় সে পকেনিকে যাওয়ার পরকেল্পনিা বাতিলি কেরতি বাধ্য হয়ছিলি।\n=== PAGE 17 ===\nGENERAL KNOWLEDGE (সোারণি জ্ঞান)", "বজ্ঞানিী র কে ু রী এবং তি া ার স্বাী পয়র কে ু রী ১৮৯৮ সোলি পচব্লেন্ড নিাকে আকেরকে থকে বখ্যাতি তিজস্ক্রিয় ৌলি\nরডিয়া (Radium) আবষ্কার কেরনি।", "একেজনি পূণর্মবয়স্ক ানিুষের কেঙ্কালিতিন্ত্র াট ২০৬টি অস্থি বা হাড় থাকে। শশুদের জন্মসেয় হাড়র সেংখ্যা প্রায় ৩০০টির\nকোছিাকোছি থাকে, যা বয়সের সোথ সোথ জুড় গয় ২০৬টিতি দে া াড়ায়।", "ভারতির প্রথ প্রধানিন্ত্রী জওহরলিালি নিহরু ১৯৪৪ সোলির এপ্রলি থকে সেপ্টম্বর াসে অহদেনিগর ফাটর্ম বন্দী\nথাকোকোলিীনি এই বখ্যাতি 'The Discovery of India' গ্রন্থটি রচনিা কেরছিলিনি।\n=== PAGE 18 ===", "চোরমনার  ভারতের  তেলেঙ্গানা  রাজ্যর  রাজানী  হায়দ্রাবাদ  অবস্থৈতে  একটি  ঐতেহাসেক  মসেজদ  এবং\nস্মৃতেস্তম্ভে। এটি ১৫৯১ সোলে ক ু তেুব শাহী বংশর সেুলেতোন মুহম্মদ ক ু লে ক ু তেুব শাহ নমর্গাণি করন।", "খ্রিষ্টপূবর্ম ৩২৬ অব্দ সেম্রাট আলিকেজান্ডার যখনি ভারতি আক্রণ কেরনি, তিখনি গধ তিথা সেগ্র উত্তর ভারতি জুড়\nশক্তশালিী নিন্দ বংশর শাসেনি ছিলি। সেই সেয় নিন্দ বংশর শষে সেম্রাট ধনিনিন্দ সেংহাসেনি আসেীনি ছিলিনি।\nLOGICAL REASONING (লেজকালে রজনং)", "সেম্পকে র্ম টি হলিা 'বাহনি এবং তিার চলিার পথ'। ট্রনি যনি লিাইনির (Rails) ওপর দেয় চলি, ঠিকে তিনি নিৌকো (Boat)\nনিদেীর (River) ওপর বা জলিপথ দেয় চলিাচলি কের। তিাই (C) হলিা সেঠিকে সোদেৃশ্য।", "শূনি্যস্থিানি 'ore' বসোলি দেুটি সেম্পূণর্ম অথর্মপূণর্ম শব্দ পাওয়া যায়। প্রথ শব্দটি হয় ST + ORE =  STORE (দোকোনি/\nসেংগ্রহ)। দ্বতিীয় শব্দটি হয় ORE + PLE = (সংশোধনী: যদি 'or' বিো 'ri' বিসোনো হেয়, যমন ST + RIP = STRIP এবিং RIP +\nPLE = RIPPLE)। আসেুনি 'rip' দেয় যাচাই কের: ST + RIP = STRIP (একেটি খণ্ড), RIP + PLE = RIPPLE (জলির তিরঙ্গ)।\nসেুতিরাং সেঠিকে বকেল্পটি হব (A) rip।\n=== PAGE 19 ===", "এই প্রকোর জ্যাতিকে চত্রূলিকে সেরজ বাহুর সেংখ্যা ক্রান্বয় বৃদ্ধ পায়। প্রথ ত্রভুজ (৩টি বাহু), তিারপর বৃত্ত/বন্দু\nথাকেলি পরবতির্তী পদেটি চতিুভু র্ম জ বা সেুষে বহুভুজ সেম্পন্ন চত্ররূপ ধারণ কের।", "এই সেরজ ত্রভুজ, বগর্মক্ষত্র ইতি্যাদে সেরলিরখা দ্বারা গঠিতি বহুভুজ চত্র। কেন্তু বৃত্ত কোনিা সেরলিরখা দ্বারা গঠিতি নিয়,\nএটি একেটি বক্ররখা। তিাই বৃত্তটি এই সেরজর দেলিভুক্ত নিয়।", "২০২০ সোলিটি একেটি লিপ ইয়ার বা অধবষের্ম কোরণ এটি ৪ দ্বারা সেম্পূণর্মরূপ বভাজ্য। শতিাব্দী বছির ১৯০০ কেন্তু ৪০০ দ্বারা\nবভাজ্য নিয়, তিাই এটি অধবষের্ম নিয়। সেুতিরাং ২০২০ সোলিটি এখানি ব্যতিক্রী জাড়।"];
+
+// ===== QUESTIONS =====
+const QUESTIONS = [{"n": 1, "text": "নীচের কানটিতে ২৩ টি ক্রামাজাম থাক?", "opts": ["স্পার্মাটাগানিয়া (Spermatogonia)", "ভ্রূণানিু (Zygote)", "সেকেন্ডারী উসোইট (Secondary oocyte)", "উগানিয়া (Oogonia)"]}, {"n": 2, "text": "অ্যামাইলেজ উৎসেচেক কান বভাগের অন্তগের্গতে? (Enzyme amylase belongs to category-)", "opts": ["অক্সিডিারডিাকেটজ (Oxidoreductase)", "ট্রান্সফারজ (Transferase)", "হাইড্রালিজসে (Hydrolases)", "আইসোারজ (Isomerase)"]}, {"n": 3, "text": "অম্লবৃষ্টির মূলে উপাদানটি হলে - (The main elements of acid rain are-)", "opts": ["HCl এবং H2SO4", "HNO3 এবং H2SO4", "HCl এবং HF", "HNO3 এবং HF"]}, {"n": 4, "text": "নীচের কান পদ্ধতেতে পাইরফরমসে পশী সোহায্য কর? (Piriformis muscle helps in which of the\nmentioned method?)", "opts": ["রাটশনি (Rotation)", "ফ্লেক্সিনি (Flexion)", "অ্যাবডিাকেশনি (Abduction)", "অ্যাডিাকেশনি (Adduction)"]}, {"n": 5, "text": "JFM প্রজক্ট কান রাজ্য প্রথম চোলেু হয়? (JFM project started at first in -)", "opts": ["পশ্চিবঙ্গ (West Bengal)", "কেরালিা (Kerala)", "নিাগালি্যান্ড (Nagaland)", "জম্মু (Jammu)"]}, {"n": 6, "text": "প্রাথ্রমবন অন্য কান নাম পরচেতে? (Prothrombin is known as-)", "opts": ["ফ্যাক্টর I (Factor I)", "ফ্যাক্টর II (Factor II)", "ফ্যাক্টর III (Factor III)", "ফ্যাক্টর IV (Factor IV)"]}, {"n": 7, "text": "মাছের বায়ুথলে বা পটকা সের্গক নম্নলেখতে কানটি যথাযথ? (Choose which of the following terms is\napplicable for swim bladder in fish-)", "opts": ["সেসেংস্থি অঙ্গ (Homologous organ)", "সেবৃত্তীয় অঙ্গ (Analogous organ)", "নিষ্ক্রীয় অঙ্গ (Vestigial organ)", "উদেস্থিতিকে অঙ্গ (Hydrostatic organ)"]}, {"n": 8, "text": "অ্যান্টিকটাজনক হরমানটি হলে- (Antiketogenic hormone is -)", "opts": ["অ্যাড্রনিালিনি (Adrenaline)", "নির অ্যাড্রনিালিনি (Noradrenaline)", "ইনিসেুলিনি (Insulin)", "গ্লুকোগনি (Glucagon)"]}, {"n": 9, "text": "নীচের কানটি পতেঙ্গপরাগেী ফ ু লে? (Which of the following flower is insect pollinated?)", "opts": ["ধানি (Paddy)", "আ (Mango)", "হাইড্রলিা (Hydrilla)", "বগানিয়া (Bigonia)"]}, {"n": 10, "text": "ফণিমনসোর পাতো কান অঙ্গ রূপান্তরতে হয়ছে? (Leaves of Opuntia get modified into-)", "opts": ["পত্রকেন্টিকে (Spine)", "শাখাকেন্টিকে (Prickle)", "সেূচালিা উপাঙ্গ (Thorn)", "পণর্মবৃন্ত (Phyllode)"]}, {"n": 11, "text": "নম্নলেখতে কান উদ্ভিদ নমজ্জিতে পত্ররন্ধ্র দখা যায়? (Sunken stomata is found in-)", "opts": ["সেুন্দরী (Sundari)", "কে্যাকেটাসে (Cactus)", "পদ্ম (Lotus)", "তিুলিসেী (Ocimum)"]}, {"n": 12, "text": "অঙ্গस्थानিক পরবতে র্গ ন হসোব পণির্গকান্ড নম্নলেখতে কান উদ্ভিদ দখা যায়? (Phylloclade is a\nmorphological change found in -)", "opts": ["সেুন্দরী (Sundari)", "কে্যাকেটাসে (Cactus)", "টর গাছি (Pea Plant)", "পাথর্মনিয়া (Parthenium)"]}, {"n": 13, "text": "নীচের কানটি লেবণিাম্বু উদ্ভিদর উদাহরণি? (Which of the following is a mangrove plant ?)", "opts": ["হাইগ্রাফলিা (Hygrophila)", "সে্যালিভয়া (Salvia)", "ওয়াটারচষ্টনিাট (Waterchestnut)", "অ্যাভসেনিয়া (Avicennia)"]}, {"n": 14, "text": "দুটি সেংকর লেম্বা মটরগোছের ম্য সেংকরায়ন ঘটালে প্রথম অপতে্য বংশ কতে শতোংশ লেম্বা এবং খবর্গ মটরগোছে\nউৎপন্ন হব? (The percentage of tall and dwarf pea plants produced in F1 generation...)", "opts": ["50% এবং 25%", "25% এবং 25%", "75% এবং 25%", "50% এবং 50%"]}, {"n": 15, "text": "নীচের কানটি পশাগেতে অসেুস্থৈতো? (Which of the following is an occupational disease?)", "opts": ["অ্যাসেবসেটাসেসে (Asbestosis)", "হপাটাইটিসে (Hepatitis)", "অ্যাবকে ডিসেন্ট্রি (Amoebic dysentery)", "্যালিরয়া (Malaria)"]}, {"n": 16, "text": "থবসেয়ান কপাটিকা য রক্তনালেীর মুখ থাক সেটি হলে - (Thebesian valve is present in the opening of\nwhich blood vessel ?)", "opts": ["ফ ু সেফ ু সেীয় ধনিী (Pulmonary artery)", "ফ ু সেফ ু সেীয় শরা (Pulmonary vein)", "কেরানিারী সোইনিাসে (Coronary sinus)", "কেরানিারী ধনিী (Coronary artery)"]}, {"n": 17, "text": "রজর্গাভ পসেমকারটি হলে - (Reserve pacemaker is -)", "opts": ["SA নিাডি (SA Node)", "AV নিাডি (AV Node)", "হজর বান্ডলি (Bundle of His)", "পারকেনিজ তিন্তু (Purkinje fibres)"]}, {"n": 18, "text": "হমাফলেয়া রাগেটি নীচের কানটির সোথ সেক র্গ তে? (Select which of the following Hemophilia\ndisease is linked to-)", "opts": ["Y-লিঙ্কডি্ (Y-Linked)", "নিনি্ জনিটিকে (Non genetic)", "অটাজাালি (Autosomal)", "X-লিঙ্কডি (X-Linked)"]}, {"n": 19, "text": "নীচের কান মা্যমটির প্রতেসেরাঙ্ক সেবচেয় বশী? (Which of the following media has maximum\nrefractive index?)", "opts": ["অ্যাকে ু য়াসে হউর (Aqueous humor)", "ভট্রিয়াসে হউর (Vitreous humor)", "লিন্স (Lens)", "কেণর্ময়া (Cornea)"]}, {"n": 20, "text": "কাশ বভাজনর কান পযর্গায় ক্রামাজাম জলে শাষিতে হয়? (Absorption of water from chromosome\ntakes place in which stage of cell division?)", "opts": ["টলিাফজ (Telophase)", "অ্যানিাফজ (Anaphase)", "টাফজ (Metaphase)", "প্রফজ (Prophase)"]}, {"n": 21, "text": "কান জনন পদ্ধতেতে একটি স্বতেন্ত্র জীব, অন্য কারা সোহায্য ছোড়াই অপতে্য জীব সেৃষ্টি করতে পার? (The mode\nof reproduction in which an individual produces offspring without the help of another...)", "opts": ["অযৌনি জনিনি (Asexual reproduction)", "নিষেকে (Fertilisation)", "রণু উৎপাদেনি (Spore formation)", "অঙ্গজ জনিনি (Vegetative reproduction)"]}, {"n": 22, "text": "AaBB থক কতে রনর গে্যামট তেরী হতে পার? (Gamete produced from AaBB is -)", "opts": ["একে ধরনির (One type)", "দেুই ধরনির (Two types)", "তিনি ধরনির (Three types)", "চার ধরনির (Four types)"]}, {"n": 23, "text": "বাফারর কাজ হলে - (Function of Buffer is -)", "opts": ["pH এর াত্রা কোনিা", "pH এর াত্রা বাড়ানিা", "pH পরবতি র্ম নি বাধা দেওয়া", "pH এর সোথ সেম্পকে র্ম তি নিয়"]}, {"n": 24, "text": "আয়ানর প্রভাব শ্বেতেসোর কান বণির্গ পরবতে র্গ তে হয়? (Iodine makes starch turn to-)", "opts": ["নিীলিাভকোলিা (Blue black)", "লিালি (Red)", "সেবুজ (Green)", "বণর্মহীনি (Colourless)"]}, {"n": 25, "text": "কান উপাদানর ভাঙনর ফলে দূষিতে ইউরয়া উৎপন্ন হয়? (Urea is a waste produced in the process of\nthe breaking down of-)", "opts": ["প্রাটিনি (Proteins)", "শকে র্ম রা (Carbohydrates)", "ফ্যাট (Fats)", "চনি (Sugars)"]}, {"n": 26, "text": "নম্নলেখতে গে্যাসেগুলের ম্য কানটি সোারনতেঃ কানা রাসোয়নক বক্রয়ায় অংশগ্রহণি কর না? (Which of\nthe following gases does not normally participate in any chemical reaction?)", "opts": ["হাইড্রাজনি (Hydrogen)", "নিয়নি (Neon)", "কোবর্মনি ডিাইঅক্সিাইডি (Carbon dioxide)", "থনি (Methane)"]}, {"n": 27, "text": "0°C তোপমাত্রায় 10 g বরফক 800 ক্যালোর তোপ প্রয়াগে করলে কী ঘটব? (If 800 calorie of heat is\napplied to 10 g of ice at 0°C)", "opts": ["প্রায় অধর্মকে বরফ গলি যাব", "সেব বরফ জলি হয় বাষ্প হয় যাব", "10°C তিাপাত্রায় 10g জলি পাওয়া যাব", "0°C তিাপাত্রায় 10g জলি পাওয়া যাব"]}, {"n": 28, "text": "একটি স্বর যদ 256, 400, 512 ও 630 কাঙ্কর চোরটি সেুর মশ্রিতে থাক তেব সেমমলে কানটি? (If a note\ncontains four tones of frequencies 256, 400, 512 and 630, which one is a harmonic?)", "opts": ["256 কেম্পাঙ্কর সেুরটি", "400 কেম্পাঙ্কর সেুরটি", "512 কেম্পাঙ্কর সেুরটি", "630 কেম্পাঙ্কর সেুরটি"]}, {"n": 29, "text": "মানব দহর চেক্ষ ু  লেন্স হলে একটি - (The eye lens of a human body is a)", "opts": ["উভাবতিলি লিন্স (biconcave lens)", "উভাত্তলি লিন্স (biconvex lens)", "সেতিলি দেপর্মণ (plane mirror)", "প্রজ (prism)"]}, {"n": 30, "text": "সেঠিক উত্তরটি নবর্গাচেন কর। বশষি পরস্থৈতেতে কান বস্তুর - (Under special circumstances, a body's-)", "opts": ["ভর ও ওজনি দেুই-ই শূনি্য হতি পার", "ভর শূনি্য হতি পার কেন্তু ওজনি শূনি্য হতি পার নিা", "ভর শূনি্য হতি পার নিা কেন্তু ওজনি শূনি্য হতি পার", "ভর বা ওজনি কোনিাটি-ই শূনি্য হতি পার নিা"]}, {"n": 31, "text": "একটি বন্দুক থক 20 g ভরর একটি বুলেট ছে ো াড়া হলে। বুলেটটি 100 m/s বগে একটি বালের বস্তাক আঘাতে\nকর বস্তার ম্য 10 cm দূর গেয় থম গেলে। বুলেটটির উপর বালের প্রতেরা বলে কতে ছেলে?", "opts": ["1000 N", "100 N", "200 N", "500 dyne"]}, {"n": 32, "text": "'নউটন' কসের একক? (Newton is a unit of)", "opts": ["ভর (mass)", "বলি (force)", "অভকেষের্ম (gravitation)", "তিড়ৎ প্রবাহ (electric current)"]}, {"n": 33, "text": "সোারণি তেুলোযন্ত্র (দ ো াড়পাল্লা) দয় কী মাপা হয়? (What is measured by a common balance?)", "opts": ["ভর (Mass)", "ওজনি (Weight)", "বলি (Force)", "চাপ (Pressure)"]}, {"n": 34, "text": "এক ব্যক্ত একটি 10 m বাহু বশষ্ট বগের্গাকার মাঠের চোরদক 16 সেকন্ড একবার ঘুর এলে তোর গেড় দ্রুতে ও\nমাট সেরণি হব -", "opts": ["1.6 m/s, 10 m", "2.5 m/s, 40 m", "3.2 m/s, 10 m", "2.5 m/s, 0 m"]}, {"n": 35, "text": "ছোট ছোট শশর বন্দু সেবর্গদাই গোলোকাকার ারণি কর। এর কারণি - (Small drops of dew are always\nspherical in shape. It is due to its)", "opts": ["স্থিতিস্থিাপকেতিা (elasticity)", "পৃষ্ঠটানি (surface tension)", "সোন্দ্রেতিা (viscosity)", "ঘেনিত্ব (density)"]}, {"n": 36, "text": "18Ar40, 19K40 এবং 20Ca40 - এই তেনটি মৌলেক বলো যায় -", "opts": ["আইসোটাপ (isotopes)", "আইসোবার (isobars)", "আইসোটানি (isotones)", "আইসোকে (isochems)"]}, {"n": 37, "text": "অক্সিজন, হাইড্রাজন ও সোলেফারর পারমাণিবক গুরুত্ব যদ যথাক্রম 16, 1 ও 32 হয় তেব সোলেফউরক\nঅ্যাসেডর আণিবক গুরুত্ব কতে? [দ্রষ্টব্য: প্রশ্নে উল্লখতে মানগুলে পারমাণিবক গুরুত্বর নরখ সেংশাতে]", "opts": ["49", "98", "82", "66"]}, {"n": 38, "text": "নীচের সোরণিীতে প্রথম স্তম্ভে দওয়া বস্তুগুলের সেঙ্গ দ্বিতেীয় স্তম্ভে দওয়া শ্রিণিী নামগুলের সেঠিক সোমঞ্জসে্য নণির্গয়\nকর:\nবস্তু (Substances) শ্রিণিী (Classification)\n1. নিুনি জলি (Brine) a. শ্রেণ (Mixture)\n2. ধাায়া (Smoke) b. ইালিশনি (Emulsion)\n3. াখনি (Butter) c. বণ (Solution)\n4. াটি (Soil) d. কেলিয়ডি (Colloid)", "opts": ["1-c, 2-d, 3-b, 4-a", "1-a, 2-b, 3-c, 4-d", "1-d, 2-c, 3-a, 4-b", "1-b, 2-d, 3-c, 4-a"]}, {"n": 39, "text": "অম্লবৃষ্টিতে য অ্যাসেড সেবথক বশ থাক তো হলে - (The acid which is mostly present in acid rain is)", "opts": ["নিাইট্রিকে অ্যাসেডি (Nitric acid)", "হাইড্রাক্লারকে অ্যাসেডি (Hydrochloric acid)", "সোলিফউরকে অ্যাসেডি (Sulphuric acid)", "সোইট্রিকে অ্যাসেডি (Citric acid)"]}, {"n": 40, "text": "একটি জলের পা 50 মনট 6 মটার উচ্চতোয় রাখা একটি 500 লেটার জলের ট্যাঙ্ক জলে তেুলে ভতে র্গ  করতে\nপার। পাটির ক্ষমতো কতে? (g = 10 m/s2)", "opts": ["10 Watt", "30 Watt", "5 Watt", "15 Watt"]}, {"n": 41, "text": "5, 10, 15 ও 25-এর প্রতে্যকর সেঙ্গ কান সেংখ্যা যাগে করলে যাগেফলেগুলে সেমানুপাতেী হব?", "opts": ["10", "3", "5", "7"]}, {"n": 42, "text": "400 টাকার দুই বছের সেমূলে চেক্রবৃদ্ধ 441 টাকা হলে বাষির্গক শতেকরা চেক্রবৃদ্ধ সেুদর হার কতে?", "opts": ["7%", "5%", "10%", "11%"]}, {"n": 43, "text": "একটি নরট গোলেক ও একটি লেম্ব বৃত্তাকার চোঙর ব্যাসোর্গ ও ঘনফলে সেমান হলে চোঙটির ব্যাসোর্গ ও উচ্চতোর\nঅনুপাতে কতে হব?", "opts": ["4:3", "3:4", "4:5", "5:4"]}, {"n": 44, "text": "ডজন প্রতে ডমর দাম 6 টাকা কমলে 30 টাকায় আরও তেনটি বশ ডম পাওয়া যায়। কমার আগে এক ডজন\nডমর দাম কতে ছেলে?", "opts": ["₹30", "₹24", "₹60", "₹48"]}, {"n": 45, "text": "একটি ঘনকর সেমগ্র তেলের ক্ষত্রফলে S বগের্গ একক ও কণির্গর দঘর্গ্য D একক হলে S ও D-এর সেক র্গ  হলে -", "opts": ["S = 6D2", "3S = 7D", "S3 = D2", "D2 = S / 2"]}, {"n": 46, "text": "Fill in the blank: \"I shall not join ________ you need me.\"", "opts": ["if not", "if", "whether", "unless"]}, {"n": 47, "text": "Fill in the blank: \"His statement is replete ________ contradictions.\"", "opts": ["in", "of", "by", "with"]}, {"n": 48, "text": "Find out which part of the sentence has an error: \"The blinds", "opts": ["/ deserve", "/ our sympathy", "/ and cooperation", ".\""]}, {"n": 49, "text": "Choose the word, which has nearly the same meaning as OBLIGATORY:", "opts": ["Agreeable", "Required", "Stubborn", "Useful"]}, {"n": 50, "text": "Choose the word, which is opposite in meaning to FICKLE:", "opts": ["Tasty", "Quick", "Constant", "Healthy"]}, {"n": 51, "text": "Choose the word that can replace both the italicized words in the two given sentences:\nI. The document was declared void.\nII. I felt pity for the sickly person.", "opts": ["Useless", "Defective", "Invalid", "Weak"]}, {"n": 52, "text": "Choose the word, which can most appropriately replace the italicized words: \"Primitive tales\nmainly comprised stories of old-time gods and heroes.\"", "opts": ["ode", "legend", "epic", "allegory"]}, {"n": 53, "text": "Choose the most effective word to fill in the blank: \"Those who have well ________ their transition\nfrom village life to city life have prospered.\"", "opts": ["managed", "taken", "tried", "finalised"]}, {"n": 54, "text": "Give your observation on the two sentences:\nI. A vote of censur was passed against the Chairman.\nII. Every film needs a clearance from the Censor Board.", "opts": ["Only sentence-I is correct", "Only sentence-II is correct", "Both sentences I and II are correct", "Neither sentence I nor sentence II is correct"]}, {"n": 55, "text": "Choose the most effective word to fill in the blank: \"Ashok had to drop his plan of going to the\npicnic as he had certain ________ to keep during that period.\"", "opts": ["urgencies", "preparations", "commitments", "arrangements"]}, {"n": 56, "text": "কান বজ্ঞানী তেজস্ক্রিয় মৌলে রডয়াম আবস্কার করন? (Which scientist discovered the radioactive\nelement radium?)", "opts": ["আইজাকে নিউটনি", "এ্যালিবাটর্ম আইনিস্টাইনি", "বঞ্জানি ফ্র্যাঙ্কলিনি", "র কে ু রী (Marie Curie)"]}, {"n": 57, "text": "মানব দহ হাড়র সেংখ্যা হলে - (The number of bones in an adult human skeleton is)", "opts": ["২০০", "২২৫", "৩০৬", "২০৬"]}, {"n": 58, "text": "'The Discovery of India' বইটি লেখছেলেন -", "opts": ["হাত্মা গান্ধী", "জহরলিালি নিহরু", "ইন্দরা গান্ধী", "সেতি্যজৎ রায়"]}, {"n": 59, "text": "চোর মনার কাথায় অবস্থৈতে? (The 'Char Minar' is in)", "opts": ["আদোবাদে", "হায়াবাদে", "দেল্ল", "আগ্রা"]}, {"n": 60, "text": "সেম্রাট আলেকজান্ডার যখন ভারতে আক্রমণি করন তেখন সেমগ্র উত্তর ভারতে কান রাজবংশর রাজত্ব ছেলে?", "opts": ["গুপ্ত বংশ", "ৌযর্ম্য বংশ", "শাকে্য বংশ", "নিন্দ বংশ"]}, {"n": 61, "text": "Find the right option below where the two given words have the same relationship as, 'TRAIN -\nRAILS'", "opts": ["Bus - Driver", "Car - Engine", "Boat - River", "Cart - Horse"]}, {"n": 62, "text": "Choose the right option which will complete the first word and begin the second word: ST (\n. . . . ) PLE", "opts": ["rip", "ore", "ricke", "udent"]}, {"n": 63, "text": "Select the right option that will replace the question mark and continue the pattern: Δ        ?", "opts": ["বৃত্ত (Circle)", "চতুর্ভুজ (Quadrilateral)", "সরলরেখা (Straight line)", "বিন্দু (Point)"]}, {"n": 64, "text": "Which of the following figures does not belong to the series? [Δ, □, ∘, □]", "opts": ["ত্রিভুজ (Δ)", "বর্গক্ষেত্র (□)", "বৃত্ত (∘)", "পঞ্চভুজ (Pentagon)"]}, {"n": 65, "text": "Find the odd one out:", "opts": ["Year 1900", "Year 2020", "Year 2013", "Year 1967"]}];
+
+// ===== SECTIONS =====
+const SECTIONS = [{"title": "জীবন বিজ্ঞান (Life Sciences)", "badge": "LIFE SCIENCES · CATEGORY I", "start": 1, "end": 25}, {"title": "ভৌত বিজ্ঞান (Physical Sciences)", "badge": "PHYSICAL SCIENCES · CATEGORY I", "start": 26, "end": 40}, {"title": "পাটিগণিত (Arithmetic)", "badge": "ARITHMETIC · CATEGORY I", "start": 41, "end": 45}, {"title": "ইংরেজি ব্যাকরণ (English Grammar)", "badge": "ENGLISH GRAMMAR · CATEGORY I", "start": 46, "end": 55}, {"title": "সাধারণ জ্ঞান (General Knowledge)", "badge": "GENERAL KNOWLEDGE · CATEGORY I", "start": 56, "end": 60}, {"title": "লজিক্যাল রিজনিং (Logical Reasoning)", "badge": "LOGICAL REASONING · CATEGORY I", "start": 61, "end": 65}];
+
+let timerInterval = null;
+let timeLeft = 90 * 60;
+let studentName = '';
+
+// ===== THEME =====
+function toggleTheme() {
+    const body = document.body;
+    const btn = document.getElementById('themeToggle');
+    if (body.getAttribute('data-theme') === 'dark') {
+        body.setAttribute('data-theme', 'light');
+        btn.textContent = '☀️';
+        localStorage.setItem('exam_theme', 'light');
+    } else {
+        body.setAttribute('data-theme', 'dark');
+        btn.textContent = '🌙';
+        localStorage.setItem('exam_theme', 'dark');
+    }
+}
+
+function loadTheme() {
+    const saved = localStorage.getItem('exam_theme');
+    if (saved === 'light') {
+        document.body.setAttribute('data-theme', 'light');
+        document.getElementById('themeToggle').textContent = '☀️';
+    }
+}
+
+// ===== ATTEMPT STATE =====
+function checkAttempted() {
+    const data = localStorage.getItem(EXAM_KEY);
+    if (data) {
+        const p = JSON.parse(data);
+        document.getElementById('reg-form').style.display = 'none';
+        studentName = p.name;
+        document.getElementById('reg-screen').style.display = 'none';
+        document.getElementById('exam-screen').style.display = 'none';
+        document.getElementById('result-screen').style.display = 'block';
+        
+        renderResultScreen(p.name, p.score, p.correct, p.wrong, p.skipped, p.percentage, p.timeTaken, p.results || [], true);
+        fetchLeaderboard();
+        return true;
+    }
+    return false;
+}
+
+// ===== START EXAM =====
+function startExam() {
+    const name = document.getElementById('studentName').value.trim();
+    if (!name) { 
+        alert('অনুগ্রহ করে নিজের নাম লিখুন।'); 
+        return; 
+    }
+    studentName = name;
+    
+    SoundFX.init();
+    SoundFX.playClick();
+    
+    document.getElementById('reg-screen').style.display = 'none';
+    document.getElementById('exam-screen').style.display = 'block';
+    document.getElementById('avatar').textContent = name.charAt(0).toUpperCase();
+    document.getElementById('displayName').textContent = name;
+    buildQuestions();
+    startTimer();
+    if (window.MathJax && window.MathJax.typesetPromise) window.MathJax.typesetPromise();
+}
+
+// ===== BUILD QUESTIONS =====
+function buildQuestions() {
+    const c = document.getElementById('qContainer');
+    let html = ''; 
+    let qi = 0;
+    SECTIONS.forEach(sec => {
+        html += `<div class="sec-header"><h2>${sec.title}</h2><div class="sec-badge">${sec.badge}</div></div>`;
+        for (let i = sec.start; i <= sec.end; i++) {
+            const q = QUESTIONS[qi];
+            html += `<div class="q-block" id="qb-${q.n}">
+                <div class="q-stem">
+                    <span class="q-num gradient-bg">${q.n}</span>
+                    <span class="q-text">${q.text}</span>
+                </div>
+                <div class="opts-grid">`;
+            q.opts.forEach((opt, oi) => {
+                html += `
+                <label class="opt-label" id="ol-${q.n}-${oi}" onclick="selectOpt(${q.n},${oi})">
+                    <input type="radio" name="q${q.n}" value="${oi}">
+                    <span class="radio-dot"></span>
+                    <span class="opt-letter">${OPT_LETTERS[oi]}</span>
+                    <span class="opt-content">${opt}</span>
+                </label>`;
+            });
+            html += '</div></div>';
+            qi++;
+        }
+    });
+    c.innerHTML = html;
+}
+
+// ===== SELECT OPTION =====
+function selectOpt(qn, oi) {
+    SoundFX.playClick();
+    for (let i = 0; i < 4; i++) { 
+        const e = document.getElementById(`ol-${qn}-${i}`); 
+        if(e) e.classList.remove('selected'); 
+    }
+    const sel = document.getElementById(`ol-${qn}-${oi}`);
+    if (sel) { 
+        sel.classList.add('selected'); 
+        sel.querySelector('input').checked = true; 
+    }
+    const blk = document.getElementById(`qb-${qn}`); 
+    if(blk) blk.classList.add('answered');
+    updateProgress();
+}
+
+function updateProgress() {
+    let ans = 0;
+    QUESTIONS.forEach(q => { 
+        if (document.querySelector(`input[name="q${q.n}"]:checked`)) ans++; 
+    });
+    const pct = Math.round((ans / QUESTIONS.length) * 100);
+    document.getElementById('answeredCount').textContent = `উত্তর: ${ans} / ${QUESTIONS.length}`;
+    document.getElementById('progressPct').textContent = pct + '%';
+    document.getElementById('progressFill').style.width = pct + '%';
+}
+
+// ===== TIMER =====
+function startTimer() {
+    updateTimerDisplay();
+    timerInterval = setInterval(() => {
+        timeLeft--;
+        if (timeLeft <= 0) { 
+            clearInterval(timerInterval); 
+            timeLeft = 0; 
+            updateTimerDisplay(); 
+            alert('⏰ সময় শেষ! পরীক্ষা স্বয়ংক্রিয়ভাবে জমা হচ্ছে।'); 
+            submitExam(); 
+            return; 
+        }
+        updateTimerDisplay();
+        const box = document.getElementById('timerBox');
+        if (timeLeft <= 300) { 
+            box.classList.add('danger'); 
+            box.classList.remove('warn'); 
+            SoundFX.playTick();
+        } else if (timeLeft <= 900) { 
+            box.classList.add('warn'); 
+            box.classList.remove('danger'); 
+        }
+    }, 1000);
+}
+
+function updateTimerDisplay() {
+    const m = Math.floor(timeLeft / 60), s = timeLeft % 60;
+    document.getElementById('timerDisplay').textContent = String(m).padStart(2,'0') + ':' + String(s).padStart(2,'0');
+}
+
+// ===== MODAL =====
+function showModal() {
+    let un = 0;
+    QUESTIONS.forEach(q => { 
+        if (!document.querySelector(`input[name="q${q.n}"]:checked`)) un++; 
+    });
+    const w = document.getElementById('unansweredWarn');
+    if (un > 0) { 
+        w.style.display = 'block'; 
+        w.textContent = `⚠️ ${un}টি প্রশ্নের উত্তর দেওয়া হয়নি!`; 
+    } else { 
+        w.style.display = 'none'; 
+    }
+    document.getElementById('confirmModal').classList.add('show');
+}
+function hideModal() { 
+    document.getElementById('confirmModal').classList.remove('show'); 
+}
+
+// ===== SUBMIT EXAM =====
+function submitExam() {
+    hideModal();
+    clearInterval(timerInterval);
+    const name = studentName;
+    let correct = 0, wrong = 0, skipped = 0;
+    const results = [];
+
+    QUESTIONS.forEach((q, idx) => {
+        const sel = document.querySelector(`input[name="q${q.n}"]:checked`);
+        const correctAns = ANSWER_KEY[idx];
+        let status, studentAns;
+        if (!sel) { 
+            status = 'skipped'; 
+            studentAns = -1; 
+            skipped++; 
+        } else {
+            studentAns = parseInt(sel.value);
+            if (studentAns === correctAns) { 
+                status = 'correct'; 
+                correct++; 
+            } else { 
+                status = 'wrong'; 
+                wrong++; 
+            }
+        }
+        results.push({ q, idx, status, studentAns, correctAns });
+    });
+
+    const rawScore = correct - (wrong * 0.25);
+    const score = parseFloat(rawScore.toFixed(2));
+    const percentage = parseFloat(((Math.max(0, score) / QUESTIONS.length) * 100).toFixed(1));
+    const timeTaken = 90*60 - timeLeft;
+    const tmMin = Math.floor(timeTaken / 60);
+    const tmSec = timeTaken % 60;
+    const timeStr = `${tmMin}m ${tmSec}s`;
+
+    // Save locally
+    localStorage.setItem(EXAM_KEY, JSON.stringify({ name, score, total: QUESTIONS.length, correct, wrong, skipped, percentage, date: new Date().toLocaleString('bn-IN'), timeTaken: timeStr, results }));
+
+    document.getElementById('exam-screen').style.display = 'none';
+    document.getElementById('result-screen').style.display = 'block';
+
+    renderResultScreen(name, score, correct, wrong, skipped, percentage, timeStr, results, false);
+
+    // Send to Google Sheets via Hybrid Submit (Fetch + JSONP Fallback)
+    let submitted = false;
+    function handleSuccess() {
+        if (submitted) return;
+        submitted = true;
+        console.log('Exam result recorded!');
+        fetchLeaderboard();
+    }
+
+    const submitParams = `?action=submit&examKey=${EXAM_KEY}&name=${encodeURIComponent(name)}&score=${score}&total=${QUESTIONS.length}&correct=${correct}&wrong=${wrong}&skipped=${skipped}&percentage=${percentage}&timeTaken=${encodeURIComponent(timeStr)}`;
+    const submitUrl = SCRIPT_URL + submitParams;
+
+    if (SCRIPT_URL.startsWith('http')) {
+        console.log('Submitting via fetch()...');
+        fetch(submitUrl, {
+            method: 'GET',
+            mode: 'cors',
+            credentials: 'omit'
+        })
+        .then(res => {
+            if (!res.ok) throw new Error('HTTP status ' + res.status);
+            return res.json();
+        })
+        .then(data => {
+            console.log('Submitted successfully via fetch()');
+            handleSuccess();
+        })
+        .catch(err => {
+            console.warn('fetch() failed, falling back to JSONP: ', err);
+            
+            const cb = 'submitCallback_' + Date.now();
+            window[cb] = function(res) {
+                console.log('Submitted successfully via JSONP');
+                handleSuccess();
+                delete window[cb];
+            };
+
+            const script = document.createElement('script');
+            script.src = submitUrl + '&callback=' + cb;
+            script.onerror = function() {
+                console.error('JSONP submit script failed.');
+                fetchLeaderboard();
+            };
+            document.body.appendChild(script);
+        });
+    } else {
+        console.warn('Google Apps Script URL is empty or invalid.');
+        fetchLeaderboard();
+    }
+}
+
+function switchTab(tabId) {
+    document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
+    document.querySelectorAll('.tab-content').forEach(content => content.classList.remove('active'));
+    
+    const btn = Array.from(document.querySelectorAll('.tab-btn')).find(b => b.getAttribute('onclick').includes(tabId));
+    if (btn) btn.classList.add('active');
+    
+    document.getElementById(tabId).classList.add('active');
+}
+
+function renderResultScreen(name, score, correct, wrong, skipped, percentage, timeStr, results, isReattempt = false) {
+    let emoji = '🎯', remark = 'চমৎকার!';
+    if (percentage >= 80) { emoji = '🏆'; remark = 'অসাধারণ! চমৎকার পারফরম্যান্স!'; }
+    else if (percentage >= 60) { emoji = '👏'; remark = 'ভালো করেছো! আরও চেষ্টা করো!'; }
+    else if (percentage >= 40) { emoji = '💪'; remark = 'মোটামুটি। আরও অনুশীলন দরকার।'; }
+    else { emoji = '📚'; remark = 'আরও অনেক পড়াশোনা দরকার।'; }
+
+    const scoreDisplay = score % 1 === 0 ? score : score.toFixed(2);
+    const deducted = parseFloat((wrong * 0.25).toFixed(2));
+
+    let html = '';
+    if (isReattempt) {
+        html += `
+        <div class="lock-screen-box">
+            <div class="lock-logo-container">
+                <div class="lock-logo-wrapper">
+                    <span class="lock-logo-big">🔒</span>
+                </div>
+            </div>
+            <h2>পরীক্ষা লক করা হয়েছে!</h2>
+            <p class="lock-desc">আপনি ইতিমধ্যে এই পরীক্ষাটি সম্পন্ন করেছেন। পুনরায় পরীক্ষা দেওয়া সম্ভব নয়। আপনার পূর্বের ফলাফল নিচে মার্কশিটে দেওয়া হলো।</p>
+            
+            <div class="podium-title">🏆 শীর্ষ ৩ জন পরীক্ষার্থী (Top 3)</div>
+            <div class="podium-wrapper" id="podiumWrapper">
+                <p style="color:var(--text-muted); font-size:13px; margin: 10px 0;">শীর্ষ ৩ লোড হচ্ছে...</p>
+            </div>
+            <p class="podium-hint">💡 অন্যান্য সবার বিস্তারিত র্যাংকিং দেখতে নিচে <strong>"লিডারবোর্ড"</strong> ট্যাবে ক্লিক করুন।</p>
+        </div>`;
+        
+        setTimeout(() => { SoundFX.playLock(); }, 300);
+    } else {
+        setTimeout(() => { SoundFX.playSuccess(); }, 300);
+    }
+
+    html += `
+    <div class="tabs-container">
+        <button class="tab-btn active" onclick="switchTab('tab-score')">📊 মার্কশিট</button>
+        <button class="tab-btn" onclick="switchTab('tab-leaderboard')">🏆 লিডারবোর্ড</button>
+        <button class="tab-btn" onclick="switchTab('tab-answers')">📝 আপনার উত্তর</button>
+        <button class="tab-btn" onclick="switchTab('tab-official')">📖 অফিশিয়াল সমাধান</button>
+    </div>
+
+    <div id="tab-score" class="tab-content active">
+        <div class="result-hero">
+            <div class="score-circle">
+                <span class="score-big gradient-text">${scoreDisplay}</span>
+                <span class="score-of">/ ${QUESTIONS.length}</span>
+            </div>
+            <h2>${emoji} ${remark}</h2>
+            <p class="detail"><strong>${name}</strong> | সময়: ${timeStr}</p>
+        </div>
+
+        <div class="stats-grid">
+            <div class="stat-card correct"><div class="s-icon">✅</div><div class="s-val">${correct}</div><div class="s-lbl">সঠিক</div></div>
+            <div class="stat-card wrong"><div class="s-icon">❌</div><div class="s-val">${wrong}</div><div class="s-lbl">ভুল</div></div>
+            <div class="stat-card skipped"><div class="s-icon">⏭️</div><div class="s-val">${skipped}</div><div class="s-lbl">বাদ</div></div>
+            <div class="stat-card score"><div class="s-icon">📊</div><div class="s-val">${scoreDisplay}</div><div class="s-lbl">মোট নম্বর</div></div>
+            <div class="stat-card pct"><div class="s-icon">📈</div><div class="s-val">${percentage}%</div><div class="s-lbl">শতাংশ</div></div>
+        </div>
+
+        <div class="neg-info">⚠️ নেগেティブ মার্কিং: ${wrong}টি ভুল × ০.২৫ = <strong>-${deducted}</strong> নম্বর কাটা হয়েছে। (${correct} - ${deducted} = ${scoreDisplay})</div>
+        <div class="result-footer" style="margin-top:20px;"><p>ANM & GNM Mock Test • Test Exam 2 • ${new Date().toLocaleDateString('bn-IN')}</p></div>
+    </div>
+
+    <div id="tab-leaderboard" class="tab-content">
+        <div class="lb-section" id="leaderboardContainer" style="margin-top:0;">
+            <h3>🏆 লাইভ লিডারবোর্ড লোড হচ্ছে...</h3>
+        </div>
+    </div>
+
+    <div id="tab-answers" class="tab-content">
+        <div class="review-header" style="margin-top:0;"><h3>📝 আপনার দেওয়া উত্তরপত্র</h3></div>
+        <div id="studentAnswersContainer"></div>
+    </div>
+
+    <div id="tab-official" class="tab-content">
+        <div class="review-header" style="margin-top:0;"><h3>📖 অফিশিয়াল বিস্তারিত সমাধান</h3></div>
+        <div id="officialAnswersContainer"></div>
+    </div>
+    `;
+
+    document.getElementById('resultBox').innerHTML = html;
+
+    // Render Student Answers
+    let ansHtml = '';
+    if(results && results.length > 0) {
+        results.forEach(r => {
+            const sc = r.status === 'correct' ? 'is-correct' : (r.status === 'wrong' ? 'is-wrong' : 'is-skipped');
+            let tags = '';
+            if (r.status === 'correct') {
+                tags = `<span class="rev-tag right-tag">আপনার উত্তর: ${OPT_LETTERS[r.studentAns]} ✓</span>`;
+            } else if (r.status === 'wrong') {
+                tags = `<span class="rev-tag wrong-tag">আপনার উত্তর: ${OPT_LETTERS[r.studentAns]}</span><span class="rev-tag correct-tag">সঠিক উত্তর: ${OPT_LETTERS[r.correctAns]}</span>`;
+            } else {
+                tags = `<span class="rev-tag skip-tag">উত্তর দেওয়া হয়নি</span><span class="rev-tag correct-tag">সঠিক উত্তর: ${OPT_LETTERS[r.correctAns]}</span>`;
+            }
+            ansHtml += `<div class="rev-block ${sc}"><div class="rev-stem"><span class="rev-num">${r.q.n}</span><span class="rev-q-text">${r.q.text}</span></div><div class="rev-tags">&nbsp;${tags}</div></div>`;
+        });
+    } else {
+        ansHtml = '<p style="text-align:center; padding:20px; color:var(--text-secondary);">উত্তরের তথ্য পাওয়া যায়নি।</p>';
+    }
+    document.getElementById('studentAnswersContainer').innerHTML = ansHtml;
+
+    // Render Official Answers
+    let offHtml = '';
+    QUESTIONS.forEach((q, i) => {
+        offHtml += `<div class="rev-block is-correct" style="border-left-color:var(--accent-blue); background:rgba(59,130,246,0.05); margin-bottom:20px; padding:20px;">
+            <div class="rev-stem" style="border-bottom:1px solid var(--border-default); padding-bottom:12px; margin-bottom:12px;">
+                <span class="rev-num" style="background:var(--accent-blue);">${q.n}</span>
+                <span class="rev-q-text" style="font-size:16px;">${q.text}</span>
+            </div>
+            <div style="margin-bottom:12px;"><strong>সঠিক উত্তর:</strong> <span style="color:var(--text-primary); font-weight:600;">${OPT_LETTERS[ANSWER_KEY[i]]} ${q.opts[ANSWER_KEY[i]]}</span></div>
+            <div style="font-size:14.5px; color:var(--text-secondary); line-height:1.7;">
+                <strong style="color:var(--text-primary);">ব্যাখ্যা:</strong><br>${EXPLANATIONS[i] || 'এই প্রশ্নের বিস্তারিত ব্যাখ্যা উপলব্ধ নেই।'}
+            </div>
+        </div>`;
+    });
+    document.getElementById('officialAnswersContainer').innerHTML = offHtml;
+
+    if (window.MathJax && window.MathJax.typesetPromise) {
+        window.MathJax.typesetPromise([document.getElementById('tab-official'), document.getElementById('tab-answers')]);
+    }
+    window.scrollTo({top: 0, behavior: 'smooth'});
+}
+
+// ===== FETCH LEADERBOARD =====
+function fetchLeaderboard() {
+    const lc = document.getElementById('leaderboardContainer');
+    if (!lc) return;
+
+    lc.innerHTML = '<h3>🏆 লাইভ লিডারবোর্ড লোড হচ্ছে...</h3>';
+    let loaded = false;
+
+    function renderLeaderboard(data) {
+        if (loaded) return;
+        loaded = true;
+
+        if (data && data.error) {
+            lc.innerHTML = `<p style="text-align:center;color:var(--accent-red);padding:20px;font-weight:600;">⚠️ ত্রুটি: ${data.error}</p>`;
+            return;
+        }
+
+        if (data && data.results && data.results.length > 0) {
+            let h = `<div style="overflow-x:auto;"><table class="lb-table"><thead><tr><th>Rank</th><th>নাম</th><th>Score</th><th>✅</th><th>❌</th><th>⏭️</th><th>সময়</th></tr></thead><tbody>`;
+            data.results.forEach((row, i) => {
+                let rc = '', rd = i + 1;
+                if (i === 0) { rc = 'rank-1'; rd = '🥇 1'; }
+                else if (i === 1) { rc = 'rank-2'; rd = '🥈 2'; }
+                else if (i === 2) { rc = 'rank-3'; rd = '🥉 3'; }
+                const isMe = row.name === studentName;
+                
+                const corrVal = row.correct !== undefined && row.correct !== null ? row.correct : '-';
+                const wrongVal = row.wrong !== undefined && row.wrong !== null ? row.wrong : '-';
+                const skipVal = row.skipped !== undefined && row.skipped !== null ? row.skipped : '-';
+
+                h += `<tr class="${isMe ? 'highlight-row' : ''}">
+                    <td class="${rc}">${rd}</td>
+                    <td>${row.name}${isMe ? ' ⭐' : ''}</td>
+                    <td style="font-weight:bold;color:var(--accent-cyan);">${row.score}</td>
+                    <td>${corrVal}</td>
+                    <td>${wrongVal}</td>
+                    <td>${skipVal}</td>
+                    <td>${row.timeTaken || '-'}</td>
+                </tr>`;
+            });
+            h += '</tbody></table></div>';
+            lc.innerHTML = h;
+        } else {
+            lc.innerHTML = '<p style="text-align:center;color:var(--text-muted);padding:20px;">এখনও কেউ পরীক্ষা দেয়নি।</p>';
+        }
+
+        // Podium Rendering
+        const podiumWrapper = document.getElementById('podiumWrapper');
+        if (podiumWrapper && data && data.results) {
+            const top3 = data.results.slice(0, 3);
+            if (top3.length > 0) {
+                let phtml = '';
+                
+                // 2nd (Silver)
+                if (top3[1]) {
+                    phtml += `
+                    <div class="podium-card silver">
+                        <span class="podium-badge">🥈</span>
+                        <span class="podium-name">${top3[1].name}</span>
+                        <span class="podium-score">${top3[1].score}</span>
+                    </div>`;
+                } else {
+                    phtml += `<div class="podium-card silver" style="opacity:0.3; height:90px;"><span class="podium-badge">🥈</span><span class="podium-name">-</span></div>`;
+                }
+
+                // 1st (Gold)
+                if (top3[0]) {
+                    phtml += `
+                    <div class="podium-card gold">
+                        <span class="podium-badge">🥇</span>
+                        <span class="podium-name">${top3[0].name}</span>
+                        <span class="podium-score">${top3[0].score}</span>
+                    </div>`;
+                }
+
+                // 3rd (Bronze)
+                if (top3[2]) {
+                    phtml += `
+                    <div class="podium-card bronze">
+                        <span class="podium-badge">🥉</span>
+                        <span class="podium-name">${top3[2].name}</span>
+                        <span class="podium-score">${top3[2].score}</span>
+                    </div>`;
+                } else {
+                    phtml += `<div class="podium-card bronze" style="opacity:0.3; height:90px;"><span class="podium-badge">🥉</span><span class="podium-name">-</span></div>`;
+                }
+                
+                podiumWrapper.innerHTML = phtml;
+            } else {
+                podiumWrapper.innerHTML = '<p style="color:var(--text-muted); font-size:13px;">এখনও কোনো ফলাফল নেই।</p>';
+            }
+        }
+    }
+
+    const fetchUrl = SCRIPT_URL + '?action=leaderboard&examKey=' + EXAM_KEY;
+    console.log('Fetching leaderboard from: ', fetchUrl);
+    
+    if (SCRIPT_URL.startsWith('http')) {
+        fetch(fetchUrl, {
+            method: 'GET',
+            mode: 'cors',
+            credentials: 'omit'
+        })
+        .then(res => {
+            if (!res.ok) throw new Error('HTTP status ' + res.status);
+            return res.json();
+        })
+        .then(data => {
+            console.log('Leaderboard successfully loaded via fetch()');
+            renderLeaderboard(data);
+        })
+        .catch(err => {
+            console.warn('fetch() failed, falling back to JSONP: ', err);
+            
+            const cb = 'lbCallback_' + Date.now();
+            window[cb] = function(data) {
+                console.log('Leaderboard successfully loaded via JSONP');
+                renderLeaderboard(data);
+                delete window[cb];
+            };
+
+            const script = document.createElement('script');
+            script.src = fetchUrl + '&callback=' + cb;
+            script.onerror = function() {
+                console.error('JSONP script failed.');
+                if (!loaded) {
+                    lc.innerHTML = `
+                        <div style="text-align:center;padding:20px;">
+                            <p style="color:var(--accent-red);font-weight:600;margin-bottom:12px;">⚠️ লিডারবোর্ড লোড করা যায়নি।</p>
+                            <button class="tab-btn" onclick="fetchLeaderboard()" style="padding:6px 16px;font-size:12px;">🔄 আবার চেষ্টা করুন</button>
+                        </div>`;
+                    const podiumWrapper = document.getElementById('podiumWrapper');
+                    if (podiumWrapper) {
+                        podiumWrapper.innerHTML = `
+                            <div style="text-align:center; padding: 10px 0;">
+                                <p style="color:var(--accent-red); font-size:12px; margin-bottom:6px;">⚠️ লোড করা যায়নি</p>
+                                <button class="tab-btn" onclick="fetchLeaderboard()" style="padding:4px 10px;font-size:10px;">🔄 চেষ্টা করুন</button>
+                            </div>`;
+                    }
+                }
+            };
+            document.body.appendChild(script);
+        });
+    } else {
+        // No Script URL set, render dummy data for preview
+        const dummyData = {
+            results: [
+                { name: "সৌমেন দত্ত", score: 58.25, correct: 59, wrong: 3, skipped: 3, timeTaken: "45m 12s" },
+                { name: "প্রিয়া সেন", score: 52.00, correct: 54, wrong: 8, skipped: 3, timeTaken: "52m 30s" },
+                { name: "অমিত প্রামাণিক", score: 48.75, correct: 51, wrong: 9, skipped: 5, timeTaken: "58m 10s" }
+            ]
+        };
+        setTimeout(() => { renderLeaderboard(dummyData); }, 800);
+    }
+}
+
+// ===== INIT =====
+let lockSoundPlayed = false;
+
+function triggerLockSoundIfReattempt() {
+    if (localStorage.getItem(EXAM_KEY) && !lockSoundPlayed) {
+        SoundFX.playLock();
+        lockSoundPlayed = true;
+    }
+}
+
+window.addEventListener('DOMContentLoaded', () => {
+    loadTheme();
+    const isAttempted = checkAttempted();
+    
+    if (isAttempted) {
+        const resumeAudio = () => {
+            SoundFX.init();
+            if (SoundFX.ctx) {
+                if (SoundFX.ctx.state === 'suspended') {
+                    SoundFX.ctx.resume().then(() => {
+                        triggerLockSoundIfReattempt();
+                    });
+                } else {
+                    triggerLockSoundIfReattempt();
+                }
+            }
+            document.removeEventListener('click', resumeAudio);
+            document.removeEventListener('touchstart', resumeAudio);
+        };
+        
+        document.addEventListener('click', resumeAudio);
+        document.addEventListener('touchstart', resumeAudio);
+    }
+});
+</script>
+</body>
+</html>
